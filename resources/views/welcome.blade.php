@@ -1,407 +1,102 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="shortcut icon" href="img/favicon.png">
-  <title>Sandbox</title>
+  <title>Rifas Jr</title>
   <link rel="stylesheet" href="{{asset('css/plugins.css')}}">
   <link rel="stylesheet" href="{{asset('css/theme/blue.css')}}">
   <link rel="preload" href="{{asset('css/font/dm.css')}}" as="style" onload="this.rel='stylesheet'">
+  <link rel="stylesheet" href="{{asset('css/app.css')}}">
+
 </head>
 
 <body>
   <div class="content-wrapper">
-    <header class="wrapper bg-light">
-      <div class="bg-primary text-white fw-bold fs-15 mb-2">
-        <div class="container py-2 d-md-flex flex-md-row">
-          <div class="d-flex flex-row align-items-center">
-            <div class="icon text-white fs-22 mt-1 me-2"> <i class="uil uil-location-pin-alt"></i></div>
-            <address class="mb-0">Moonshine St. 14/05 Light City</address>
-          </div>
-          <div class="d-flex flex-row align-items-center me-6 ms-auto">
-            <div class="icon text-white fs-22 mt-1 me-2"> <i class="uil uil-phone-volume"></i></div>
-            <p class="mb-0">00 (123) 456 78 90</p>
-          </div>
-          <div class="d-flex flex-row align-items-center">
-            <div class="icon text-white fs-22 mt-1 me-2"> <i class="uil uil-message"></i></div>
-            <p class="mb-0"><a href="mailto:sandbox@email.com" class="link-white hover">sandbox@email.com</a></p>
-          </div>
-        </div>
-        <!-- /.container -->
-      </div>
-      <nav class="navbar center-nav transparent navbar-expand-lg navbar-light">
-        <div class="container flex-lg-row flex-nowrap align-items-center">
-          <div class="navbar-brand w-100"><a href="index.html"><img src="img/logo.png" srcset="img/logo@2x.png 2x" alt="" /></a></div>
-          <div class="navbar-collapse offcanvas-nav">
-            <div class="offcanvas-header d-lg-none d-xl-none">
-              <a href="index.html"><img src="img/logo-light.png" srcset="img/logo-light@2x.png 2x" alt="" /></a>
-              <button type="button" class="btn-close btn-close-white offcanvas-close offcanvas-nav-close" aria-label="Close"></button>
-            </div>
-            <ul class="navbar-nav">
-              <li class="nav-item"><a class="nav-link" href="#!">Demos</a>
-                <ul class="dropdown-menu mega-menu mega-menu-img">
-                  <li class="mega-menu-content">
-                    <ul class="row row-cols-1 row-cols-lg-6 gx-0 gx-lg-4 gy-lg-2 list-unstyled">
-                      <li class="col"><a class="dropdown-item" href="index.html">
-                          <figure class="rounded lift d-none d-lg-block"><img src="img/demos/mi1.jpg" srcset="img/demos/mi1@2x.jpg 2x" alt=""></figure>
-                          <span class="d-lg-none">Demo I</span>
-                        </a></li>
-                      <li class="col"><a class="dropdown-item" href="index2.html">
-                          <figure class="rounded lift d-none d-lg-block"><img src="img/demos/mi2.jpg" srcset="img/demos/mi2@2x.jpg 2x" alt=""></figure>
-                          <span class="d-lg-none">Demo II</span>
-                        </a></li>
-                      <li class="col"><a class="dropdown-item" href="index3.html">
-                          <figure class="rounded lift d-none d-lg-block"><img src="img/demos/mi3.jpg" srcset="img/demos/mi3@2x.jpg 2x" alt=""></figure>
-                          <span class="d-lg-none">Demo III</span>
-                        </a></li>
-                      <li class="col"><a class="dropdown-item" href="index4.html">
-                          <figure class="rounded lift d-none d-lg-block"><img src="img/demos/mi4.jpg" srcset="img/demos/mi4@2x.jpg 2x" alt=""></figure>
-                          <span class="d-lg-none">Demo IV</span>
-                        </a></li>
-                      <li class="col"><a class="dropdown-item" href="index5.html">
-                          <figure class="rounded lift d-none d-lg-block"><img src="img/demos/mi5.jpg" srcset="img/demos/mi5@2x.jpg 2x" alt=""></figure>
-                          <span class="d-lg-none">Demo V</span>
-                        </a></li>
-                      <li class="col"><a class="dropdown-item" href="index6.html">
-                          <figure class="rounded lift d-none d-lg-block"><img src="img/demos/mi6.jpg" srcset="img/demos/mi6@2x.jpg 2x" alt=""></figure>
-                          <span class="d-lg-none">Demo VI</span>
-                        </a></li>
-                      <li class="col"><a class="dropdown-item" href="index7.html">
-                          <figure class="rounded lift d-none d-lg-block"><img src="img/demos/mi7.jpg" srcset="img/demos/mi7@2x.jpg 2x" alt=""></figure>
-                          <span class="d-lg-none">Demo VII</span>
-                        </a></li>
-                      <li class="col"><a class="dropdown-item" href="index8.html">
-                          <figure class="rounded lift d-none d-lg-block"><img src="img/demos/mi8.jpg" srcset="img/demos/mi8@2x.jpg 2x" alt=""></figure>
-                          <span class="d-lg-none">Demo VIII</span>
-                        </a></li>
-                      <li class="col"><a class="dropdown-item" href="index9.html">
-                          <figure class="rounded lift d-none d-lg-block"><img src="img/demos/mi9.jpg" srcset="img/demos/mi9@2x.jpg 2x" alt=""></figure>
-                          <span class="d-lg-none">Demo IX</span>
-                        </a></li>
-                      <li class="col"><a class="dropdown-item" href="index10.html">
-                          <figure class="rounded lift d-none d-lg-block"><img src="img/demos/mi10.jpg" srcset="img/demos/mi10@2x.jpg 2x" alt=""></figure>
-                          <span class="d-lg-none">Demo X</span>
-                        </a></li>
-                      <li class="col"><a class="dropdown-item" href="index11.html">
-                          <figure class="rounded lift d-none d-lg-block"><img src="img/demos/mi11.jpg" srcset="img/demos/mi11@2x.jpg 2x" alt=""></figure>
-                          <span class="d-lg-none">Demo XI</span>
-                        </a></li>
-                      <li class="col"><a class="dropdown-item" href="index12.html">
-                          <figure class="rounded lift d-none d-lg-block"><img src="img/demos/mi12.jpg" srcset="img/demos/mi12@2x.jpg 2x" alt=""></figure>
-                          <span class="d-lg-none">Demo XII</span>
-                        </a></li>
-                      <li class="col"><a class="dropdown-item" href="index13.html">
-                          <figure class="rounded lift d-none d-lg-block"><img src="img/demos/mi13.jpg" srcset="img/demos/mi13@2x.jpg 2x" alt=""></figure>
-                          <span class="d-lg-none">Demo XIII</span>
-                        </a></li>
-                      <li class="col"><a class="dropdown-item" href="index14.html">
-                          <figure class="rounded lift d-none d-lg-block"><img src="img/demos/mi14.jpg" srcset="img/demos/mi14@2x.jpg 2x" alt=""></figure>
-                          <span class="d-lg-none">Demo XIV</span>
-                        </a></li>
-                      <li class="col"><a class="dropdown-item" href="index15.html">
-                          <figure class="rounded lift d-none d-lg-block"><img src="img/demos/mi15.jpg" srcset="img/demos/mi15@2x.jpg 2x" alt=""></figure>
-                          <span class="d-lg-none">Demo XV</span>
-                        </a></li>
-                      <li class="col"><a class="dropdown-item" href="index16.html">
-                          <figure class="rounded lift d-none d-lg-block"><img src="img/demos/mi16.jpg" srcset="img/demos/mi16@2x.jpg 2x" alt=""></figure>
-                          <span class="d-lg-none">Demo XVI</span>
-                        </a></li>
-                      <li class="col"><a class="dropdown-item" href="index17.html">
-                          <figure class="rounded lift d-none d-lg-block"><img src="img/demos/mi17.jpg" srcset="img/demos/mi17@2x.jpg 2x" alt=""></figure>
-                          <span class="d-lg-none">Demo XVII</span>
-                        </a></li>
-                      <li class="col"><a class="dropdown-item" href="index18.html">
-                          <figure class="rounded lift d-none d-lg-block"><img src="img/demos/mi18.jpg" srcset="img/demos/mi18@2x.jpg 2x" alt=""></figure>
-                          <span class="d-lg-none">Demo XVIII</span>
-                        </a></li>
-                    </ul>
-                    <!--/.row -->
-                  </li>
-                  <!--/.mega-menu-content-->
-                </ul>
-                <!--/.dropdown-menu -->
-              </li>
-              <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#!">Projects</a>
-                <ul class="dropdown-menu">
-                  <li class="nav-item"><a class="dropdown-item" href="projects.html">Projects I</a></li>
-                  <li class="nav-item"><a class="dropdown-item" href="projects2.html">Projects II</a></li>
-                  <li class="nav-item"><a class="dropdown-item" href="projects3.html">Projects III</a></li>
-                  <li class="nav-item"><a class="dropdown-item" href="projects4.html">Projects IV</a></li>
-                  <li class="dropdown"><a class="dropdown-item dropdown-toggle" href="#">Single Projects</a>
-                    <ul class="dropdown-menu">
-                      <li class="nav-item"><a class="dropdown-item" href="single-project.html">Single Project I</a></li>
-                      <li class="nav-item"><a class="dropdown-item" href="single-project2.html">Single Project II</a></li>
-                      <li class="nav-item"><a class="dropdown-item" href="single-project3.html">Single Project III</a></li>
-                    </ul>
-                  </li>
-                </ul>
-              </li>
-              <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#!">Blocks</a>
-                <ul class="dropdown-menu">
-                  <li class="nav-item"><a class="dropdown-item" href="blocks.html">About</a></li>
-                  <li class="nav-item"><a class="dropdown-item" href="blocks2.html">Blog</a></li>
-                  <li class="nav-item"><a class="dropdown-item" href="blocks3.html">Clients</a></li>
-                  <li class="nav-item"><a class="dropdown-item" href="blocks4.html">Contact</a></li>
-                  <li class="nav-item"><a class="dropdown-item" href="blocks5.html">Facts</a></li>
-                  <li class="nav-item"><a class="dropdown-item" href="blocks6.html">FAQ</a></li>
-                  <li class="nav-item"><a class="dropdown-item" href="blocks7.html">Portfolio</a></li>
-                  <li class="nav-item"><a class="dropdown-item" href="blocks8.html">Pricing</a></li>
-                  <li class="nav-item"><a class="dropdown-item" href="blocks9.html">Process</a></li>
-                  <li class="nav-item"><a class="dropdown-item" href="blocks10.html">Services</a></li>
-                  <li class="nav-item"><a class="dropdown-item" href="blocks11.html">Team</a></li>
-                  <li class="nav-item"><a class="dropdown-item" href="blocks12.html">Testimonials</a></li>
-                </ul>
-              </li>
-              <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#!">Pages</a>
-                <ul class="dropdown-menu">
-                  <li class="dropdown"><a class="dropdown-item dropdown-toggle" href="#">Services</a>
-                    <ul class="dropdown-menu">
-                      <li class="nav-item"><a class="dropdown-item" href="services.html">Services I</a></li>
-                      <li class="nav-item"><a class="dropdown-item" href="services2.html">Services II</a></li>
-                    </ul>
-                  </li>
-                  <li class="dropdown"><a class="dropdown-item dropdown-toggle" href="#">About</a>
-                    <ul class="dropdown-menu">
-                      <li class="nav-item"><a class="dropdown-item" href="about.html">About I</a></li>
-                      <li class="nav-item"><a class="dropdown-item" href="about2.html">About II</a></li>
-                    </ul>
-                  </li>
-                  <li class="dropdown"><a class="dropdown-item dropdown-toggle" href="#">Blog</a>
-                    <ul class="dropdown-menu">
-                      <li class="nav-item"><a class="dropdown-item" href="blog.html">Blog without Sidebar</a></li>
-                      <li class="nav-item"><a class="dropdown-item" href="blog2.html">Blog with Sidebar</a></li>
-                      <li class="nav-item"><a class="dropdown-item" href="blog3.html">Blog with Left Sidebar</a></li>
-                      <li class="dropdown"><a class="dropdown-item dropdown-toggle" href="#">Blog Posts</a>
-                        <ul class="dropdown-menu">
-                          <li class="nav-item"><a class="dropdown-item" href="blog-post.html">Post without Sidebar</a></li>
-                          <li class="nav-item"><a class="dropdown-item" href="blog-post2.html">Post with Sidebar</a></li>
-                          <li class="nav-item"><a class="dropdown-item" href="blog-post3.html">Post with Left Sidebar</a></li>
-                        </ul>
-                      </li>
-                    </ul>
-                  </li>
-                  <li class="dropdown"><a class="dropdown-item dropdown-toggle" href="#">Contact</a>
-                    <ul class="dropdown-menu">
-                      <li class="nav-item"><a class="dropdown-item" href="contact.html">Contact I</a></li>
-                      <li class="nav-item"><a class="dropdown-item" href="contact2.html">Contact II</a></li>
-                      <li class="nav-item"><a class="dropdown-item" href="contact3.html">Contact III</a></li>
-                    </ul>
-                  </li>
-                  <li class="nav-item"><a class="dropdown-item" href="pricing.html">Pricing</a></li>
-                </ul>
-              </li>
-              <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#!">Features</a>
-                <ul class="dropdown-menu">
-                  <li class="dropdown"><a class="dropdown-item dropdown-toggle" href="#">Header</a>
-                    <ul class="dropdown-menu">
-                      <li class="dropdown"><a class="dropdown-item dropdown-toggle" href="#">Center Nav</a>
-                        <ul class="dropdown-menu">
-                          <li class="nav-item"><a class="dropdown-item" href="header.html">Transparent</a></li>
-                          <li class="nav-item"><a class="dropdown-item" href="header2.html">Light</a></li>
-                          <li class="nav-item"><a class="dropdown-item" href="header3.html">Dark</a></li>
-                          <li class="nav-item"><a class="dropdown-item" href="header4.html">Fancy</a></li>
-                        </ul>
-                      </li>
-                      <li class="dropdown"><a class="dropdown-item dropdown-toggle" href="#">Classic</a>
-                        <ul class="dropdown-menu">
-                          <li class="nav-item"><a class="dropdown-item" href="header5.html">Transparent</a></li>
-                          <li class="nav-item"><a class="dropdown-item" href="header6.html">Light</a></li>
-                          <li class="nav-item"><a class="dropdown-item" href="header7.html">Dark</a></li>
-                          <li class="nav-item"><a class="dropdown-item" href="header8.html">Fancy</a></li>
-                        </ul>
-                      </li>
-                      <li class="dropdown"><a class="dropdown-item dropdown-toggle" href="#">Center Logo</a>
-                        <ul class="dropdown-menu">
-                          <li class="nav-item"><a class="dropdown-item" href="header9.html">Transparent</a></li>
-                          <li class="nav-item"><a class="dropdown-item" href="header10.html">Light</a></li>
-                          <li class="nav-item"><a class="dropdown-item" href="header11.html">Dark</a></li>
-                          <li class="nav-item"><a class="dropdown-item" href="header12.html">Fancy</a></li>
-                        </ul>
-                      </li>
-                      <li class="nav-item"><a class="dropdown-item" href="header13.html">Extended</a></li>
-                    </ul>
-                  </li>
-                  <li class="dropdown"><a class="dropdown-item dropdown-toggle" href="#">Footer</a>
-                    <ul class="dropdown-menu">
-                      <li class="nav-item"><a class="dropdown-item" href="footer.html">Footer I</a></li>
-                      <li class="nav-item"><a class="dropdown-item" href="footer2.html">Footer II</a></li>
-                      <li class="nav-item"><a class="dropdown-item" href="footer3.html">Footer III</a></li>
-                      <li class="nav-item"><a class="dropdown-item" href="footer4.html">Footer IV</a></li>
-                      <li class="nav-item"><a class="dropdown-item" href="footer5.html">Footer V</a></li>
-                    </ul>
-                  </li>
-                  <li class="dropdown"><a class="dropdown-item dropdown-toggle" href="#">Page Title</a>
-                    <ul class="dropdown-menu">
-                      <li class="nav-item"><a class="dropdown-item" href="page-title.html">Page Title I</a></li>
-                      <li class="nav-item"><a class="dropdown-item" href="page-title2.html">Page Title II</a></li>
-                      <li class="nav-item"><a class="dropdown-item" href="page-title3.html">Page Title III</a></li>
-                    </ul>
-                  </li>
-                  <li class="dropdown"><a class="dropdown-item dropdown-toggle" href="#">Modal Popup</a>
-                    <ul class="dropdown-menu">
-                      <li class="nav-item"><a class="dropdown-item" href="modal-popup1.html">Modal Popup I</a></li>
-                      <li class="nav-item"><a class="dropdown-item" href="modal-popup2.html">Modal Popup II</a></li>
-                      <li class="nav-item"><a class="dropdown-item" href="modal-popup3.html">Modal Popup III</a></li>
-                    </ul>
-                  </li>
-                  <li class="nav-item"><a class="dropdown-item" href="notification-bar.html">Notification Bar</a></li>
-                  <li class="nav-item"><a class="dropdown-item" href="colors.html">Colors</a></li>
-                  <li class="nav-item"><a class="dropdown-item" href="onepage.html">One Page</a></li>
-                </ul>
-              </li>
-              <li class="nav-item"><a class="nav-link" href="elements.html">Elements</a>
-                <ul class="dropdown-menu mega-menu">
-                  <li class="mega-menu-content">
-                    <div class="row gx-0 gx-lg-3">
-                      <div class="col-lg-6">
-                        <h6 class="dropdown-header">General Elements</h6>
-                        <div class="row gx-0">
-                          <div class="col-lg-6">
-                            <ul class="list-unstyled">
-                              <li><a class="dropdown-item scroll" href="elements.html#buttons-badges">Buttons & Badges</a></li>
-                              <li><a class="dropdown-item scroll" href="elements.html#counter">Counter</a></li>
-                              <li><a class="dropdown-item scroll" href="elements.html#dividers">Dividers</a></li>
-                              <li><a class="dropdown-item scroll" href="elements.html#form-elements">Form Elements</a></li>
-                              <li><a class="dropdown-item scroll" href="elements.html#icon-box">Icon Box</a></li>
-                              <li><a class="dropdown-item scroll" href="elements.html#image-hover">Image Hover</a></li>
-                              <li><a class="dropdown-item scroll" href="elements.html#lightbox">Lightbox</a></li>
-                              <li><a class="dropdown-item scroll" href="elements.html#modal">Modal</a></li>
-                            </ul>
-                          </div>
-                          <!--/column -->
-                          <div class="col-lg-6">
-                            <ul class="list-unstyled">
-                              <li><a class="dropdown-item scroll" href="elements.html#pricing-table">Pricing Table</a></li>
-                              <li><a class="dropdown-item scroll" href="elements.html#process">Process</a></li>
-                              <li><a class="dropdown-item scroll" href="elements.html#progressbar">Progressbar</a></li>
-                              <li><a class="dropdown-item scroll" href="elements.html#shadows">Shadows</a></li>
-                              <li><a class="dropdown-item scroll" href="elements.html#tabs">Tabs</a></li>
-                              <li><a class="dropdown-item scroll" href="elements.html#team">Team</a></li>
-                              <li><a class="dropdown-item scroll" href="elements.html#testimonials">Testimonials</a></li>
-                              <li><a class="dropdown-item scroll" href="elements.html#toggle-accordion">Toggle & Accordion</a></li>
-                            </ul>
-                          </div>
-                          <!--/column -->
-                        </div>
-                        <!--/.row -->
-                      </div>
-                      <!--/column -->
-                      <div class="col-lg-3">
-                        <h6 class="dropdown-header">Misc Elements</h6>
-                        <ul class="list-unstyled">
-                          <li><a class="dropdown-item" href="carousel.html">Carousel</a></li>
-                          <li><a class="dropdown-item" href="icon-concept.html">Icons - Concept</a></li>
-                          <li><a class="dropdown-item" href="icon-duotone.html">Icons - Duotone</a></li>
-                          <li><a class="dropdown-item" href="icon-unicons.html">Icons - Unicons</a></li>
-                          <li><a class="dropdown-item" href="player.html">Media Player</a></li>
-                          <li><a class="dropdown-item" href="animations.html">Scroll Animations</a></li>
-                          <li><a class="dropdown-item" href="wrappers.html">Wrappers</a></li>
-                          <li><a class="dropdown-item" href="wrappers-angled.html">Wrappers - Angled</a></li>
-                        </ul>
-                      </div>
-                      <!--/column -->
-                      <div class="col-lg-3">
-                        <h6 class="dropdown-header">Typography</h6>
-                        <ul class="list-unstyled">
-                          <li><a class="dropdown-item scroll" href="typography.html#basic">Basic Typography</a></li>
-                          <li><a class="dropdown-item scroll" href="typography.html#alerts">Alerts</a></li>
-                          <li><a class="dropdown-item scroll" href="typography.html#animated-text">Animated Text</a></li>
-                          <li><a class="dropdown-item scroll" href="typography.html#blockquote">Blockquote</a></li>
-                          <li><a class="dropdown-item scroll" href="typography.html#dropcap">Dropcap</a></li>
-                          <li><a class="dropdown-item scroll" href="typography.html#lists">Lists</a></li>
-                          <li><a class="dropdown-item scroll" href="typography.html#tooltip-popover">Tooltip & Popover</a></li>
-                          <li><a class="dropdown-item scroll" href="typography.html#misc">Miscellaneous</a></li>
-                        </ul>
-                      </div>
-                      <!--/column -->
-                    </div>
-                    <!--/.row -->
-                  </li>
-                  <!--/.mega-menu-content-->
-                </ul>
-                <!--/.dropdown-menu -->
-              </li>
-            </ul>
-            <!-- /.navbar-nav -->
-          </div>
-          <!-- /.navbar-collapse -->
-          <div class="navbar-other w-100 d-flex ms-auto">
-            <ul class="navbar-nav flex-row align-items-center ms-auto" data-sm-skip="true">
-              <li class="nav-item dropdown language-select text-uppercase">
-                <a class="nav-link dropdown-item dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">En</a>
-                <ul class="dropdown-menu">
-                  <li class="nav-item"><a class="dropdown-item" href="#">En</a></li>
-                  <li class="nav-item"><a class="dropdown-item" href="#">De</a></li>
-                  <li class="nav-item"><a class="dropdown-item" href="#">Es</a></li>
-                </ul>
-              </li>
-              <li class="nav-item d-none d-md-block">
-                <a href="contact.html" class="btn btn-sm btn-primary rounded-pill">Contact</a>
-              </li>
-              <li class="nav-item d-lg-none">
-                <div class="navbar-hamburger"><button class="hamburger animate plain" data-toggle="offcanvas-nav"><span></span></button></div>
-              </li>
-            </ul>
-            <!-- /.navbar-nav -->
-          </div>
-          <!-- /.navbar-other -->
-        </div>
-        <!-- /.container -->
-      </nav>
-      <!-- /.navbar -->
-    </header>
-    <!-- /header -->
+    @include("partials.navbar")
+
     <section class="wrapper bg-light">
       <div class="container pt-8 pt-md-14">
         <div class="row gx-lg-0 gx-xl-8 gy-10 gy-md-13 gy-lg-0 mb-7 mb-md-10 mb-lg-16 align-items-center">
           <div class="col-md-8 offset-md-2 col-lg-6 offset-lg-1 position-relative order-lg-2" data-cue="zoomIn">
             <div class="shape bg-dot primary rellax w-17 h-19" data-rellax-speed="1" style="top: -1.7rem; left: -1.5rem;"></div>
             <div class="shape rounded bg-soft-primary rellax d-md-block" data-rellax-speed="0" style="bottom: -1.8rem; right: -0.8rem; width: 85%; height: 90%;"></div>
-            <figure class="rounded"><img src="img/photos/about7.jpg" srcset="img/photos/about7@2x.jpg 2x" alt="" /></figure>
+            <figure class="rounded"><img src="{{asset("img/corvette.jpg")}}" srcset="img/photos/about7@2x.jpg 2x" alt="" /></figure>
           </div>
           <!--/column -->
           <div class="col-lg-5 mt-lg-n10 text-center text-lg-start" data-cues="slideInDown" data-group="page-title" data-delay="600">
-            <h1 class="display-1 mb-5">We bring solutions to make life easier for our customers.</h1>
-            <p class="lead fs-25 lh-sm mb-7 px-md-10 px-lg-0">We have considered our solutions to support every stage of your growth.</p>
+            <h1 class="display-1 mb-5">Rifas Junior te ofrece la posibilidad de ganar un</h1>
+            <p class="lead fs-25 lh-sm mb-7 px-md-10 px-lg-0">CORVETTE STINGRAY 2021</p>
             <div class="d-flex justify-content-center justify-content-lg-start" data-cues="slideInDown" data-group="page-title-buttons" data-delay="900">
-              <span><a href="#" class="btn btn-lg btn-primary rounded-pill me-2">Explore Now</a></span>
-              <span><a href="#" class="btn btn-lg btn-outline-primary rounded-pill">Free Trial</a></span>
+              <span><a href="#" class="btn btn-lg btn-primary rounded-pill me-2">Comprar boletos</a></span>
+              <span><a href="#" class="btn btn-lg btn-outline-primary rounded-pill">Más información</a></span>
             </div>
           </div>
           <!--/column -->
         </div>
         <!-- /.row -->
-        <div class="px-lg-5 mb-14 mb-md-17">
-          <div class="row gx-0 gx-md-8 gx-xl-12 gy-8 align-items-center">
-            <div class="col-4 col-md-2">
-              <figure class="px-5 px-md-0 px-lg-2 px-xl-3 px-xxl-4"><img src="img/brands/c1.png" alt="" /></figure>
+        <section class="wrapper bg-light wrapper-border">
+            <div class="container py-14 py-md-16">
+                <h2 class="display-4 mb-5 text-center">PREGUNTAS FRECUENTES</h2>
+                    <div class="row gx-md-8 gx-xl-12 gy-10">
+                        <div class="col-lg-6">
+                          <div class="d-flex flex-row">
+                            <div>
+                              <span class="icon btn btn-sm btn-circle btn-primary disabled me-5"><i class="uil uil-comment-exclamation"></i></span>
+                            </div>
+                            <div>
+                              <h4>¿CÓMO SE ELIGE A LOS GANADORES?</h4>
+                              <p class="mb-3">Todos nuestros sorteos se realizan en coordinación con los sorteos de la Lotería Nacional para la Asistencia Pública mexicana.</p>
+                              <p class="mb-0">El participante ganador de Rifas Junior será el participante cuyo número de boleto coincida con las últimas cuatro cifras del primer premio ganador de alguno de los sorteos de la Lotería Nacional.</p>
+                            </div>
+                          </div>
+                        </div>
+                        <!-- /column -->
+                        <div class="col-lg-6">
+                          <div class="d-flex flex-row">
+                            <div>
+                              <span class="icon btn btn-sm btn-circle btn-primary disabled me-5"><i class="uil uil-comment-exclamation"></i></span>
+                            </div>
+                            <div>
+                              <h4>¿QUÉ PROBABILIDADES TENGO DE GANAR?</h4>
+                              <p class="mb-3">En Rifas Junior solamente emitimos un máximo de 3,333 boletos por cada sorteo.</p>
+                            </div>
+                          </div>
+                        </div>
+                        <!-- /column -->
+                        <div class="col-lg-6">
+                          <div class="d-flex flex-row">
+                            <div>
+                              <span class="icon btn btn-sm btn-circle btn-primary disabled me-5"><i class="uil uil-comment-exclamation"></i></span>
+                            </div>
+                            <div>
+                              <h4>¿QUÉ SUCEDE CUANDO EL NÚMERO GANADOR ES UN BOLETO NO VENDIDO?</h4>
+                              <p class="mb-3">Se elige un nuevo ganador realizando la misma dinámica en otra fecha cercana (se anunciará la nueva fecha).</p>
+                              <p class="mb-3">Esto significa que, ¡Tendrías el doble de oportunidades de ganar con tu mismo boleto!</p>
+                            </div>
+                          </div>
+                        </div>
+                        <!-- /column -->
+                        <div class="col-lg-6">
+                          <div class="d-flex flex-row">
+                            <div>
+                              <span class="icon btn btn-sm btn-circle btn-primary disabled me-5"><i class="uil uil-comment-exclamation"></i></span>
+                            </div>
+                            <div>
+                              <h4>¿DÓNDE SE PUBLICA A LOS GANADORES?</h4>
+                              <p class="mb-3">Los números ganadores, así como la entrega de premios, se estarán publicando en ésta página y en nuestras redes sociales.</p>
+                              <p class="mb-3">¡Síguenos en redes sociales para estar al tanto de los ganadores y próximos sorteos!</p>
+                            </div>
+                          </div>
+                        </div>
+                        <!-- /column -->
+                      </div>
+                <!--/.row -->
             </div>
-            <!--/column -->
-            <div class="col-4 col-md-2">
-              <figure class="px-5 px-md-0 px-lg-2 px-xl-3 px-xxl-4"><img src="img/brands/c2.png" alt="" /></figure>
-            </div>
-            <!--/column -->
-            <div class="col-4 col-md-2">
-              <figure class="px-5 px-md-0 px-lg-2 px-xl-3 px-xxl-4"><img src="img/brands/c3.png" alt="" /></figure>
-            </div>
-            <!--/column -->
-            <div class="col-4 col-md-2">
-              <figure class="px-5 px-md-0 px-lg-2 px-xl-3 px-xxl-4"><img src="img/brands/c4.png" alt="" /></figure>
-            </div>
-            <!--/column -->
-            <div class="col-4 col-md-2">
-              <figure class="px-5 px-md-0 px-lg-2 px-xl-3 px-xxl-4"><img src="img/brands/c5.png" alt="" /></figure>
-            </div>
-            <!--/column -->
-            <div class="col-4 col-md-2">
-              <figure class="px-5 px-md-0 px-lg-2 px-xl-3 px-xxl-4"><img src="img/brands/c6.png" alt="" /></figure>
-            </div>
-            <!--/column -->
-          </div>
-          <!--/.row -->
-        </div>
+            <!-- /.container -->
+        </section>
         <!-- /div -->
         <div class="row">
           <div class="col-md-10 col-lg-8 col-xl-7 col-xxl-6 mx-auto text-center">
