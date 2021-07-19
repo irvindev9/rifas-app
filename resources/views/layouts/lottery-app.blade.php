@@ -17,7 +17,7 @@
     <div id="fb-root"></div>
     <script async defer crossorigin="anonymous" src="https://connect.facebook.net/es_LA/sdk.js#xfbml=1&version=v11.0&appId=3486713101388523&autoLogAppEvents=1" nonce="fcfPVicu"></script>
 
-    <div class="content-wrapper">
+    <div class="content-wrapper" id="app">
 
         @include("partials.navbar")
 
@@ -30,6 +30,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous"></script>
     <script src="{{asset('js/plugins.js')}}"></script>
     <script src="{{asset('js/theme.js')}}"></script>
+    <script src="{{asset('js/app.js')}}"></script>
 </body>
 
 </html>

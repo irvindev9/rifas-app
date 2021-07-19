@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('layouts.lottery-app');
+    return view('home.index');
 });
 
 Route::get('/dashboard', function () {
