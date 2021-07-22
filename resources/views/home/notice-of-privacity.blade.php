@@ -3,7 +3,7 @@
         <div class="row">
             <div class="col-md-10 offset-md-1 col-lg-8 offset-lg-2 mx-auto text-center">
                 <h2 class="fs-15 text-uppercase text-muted mb-3">
-                    <a href="#!">Aviso de privacidad</a>
+                    <a href="{{route('notice', ['privacidad'])}}">Aviso de privacidad</a>
                 </h2>
             </div>
         </div>
