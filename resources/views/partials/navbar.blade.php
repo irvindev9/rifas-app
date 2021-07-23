@@ -2,7 +2,7 @@
     <nav class="navbar center-nav transparent navbar-expand-lg navbar-light">
         <div class="container flex-lg-row flex-nowrap align-items-center">
             <div class="navbar-brand w-100">
-                <a href="index.html">
+                <a href="/">
                     <img class="img-fluid-50" src="{{asset("img/rifasJr.png")}}" alt="logo" />
                     {{-- <label for="title" class="dropdown-item">Rifas Junior</label> --}}
                 </a>

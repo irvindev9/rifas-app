@@ -24,4 +24,6 @@ Route::get('/dashboard', function () {
 
 Route::get('aviso/{notice}', [NoticeController::class, 'show'])->name('notice');
 
+Route::view('comprar/rifa/{contest}', 'buy-ticket.index');
+
 require __DIR__.'/auth.php';
