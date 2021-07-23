@@ -1,5 +1,5 @@
 <section class="wrapper bg-light wrapper-border">
-    <div class="container py-14 py-md-16">
+    <div class="container py-10 py-md-12">
         <h2 class="display-4 mb-5 text-center" id="preguntas">PREGUNTAS FRECUENTES</h2>
         <div class="row gx-md-8 gx-xl-12 gy-10">
             <div class="col-lg-6">

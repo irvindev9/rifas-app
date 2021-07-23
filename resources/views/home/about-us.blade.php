@@ -1,5 +1,5 @@
 <section class="wrapper bg-light wrapper-border">
-    <div class="container py-14 py-md-16">
+    <div class="container py-10 py-md-16">
         <div class="row gy-10 gy-sm-13 gx-lg-3 align-items-center">
             <div class="col-md-8 col-lg-6 position-relative">
                 <div class="shape bg-dot primary rellax w-17 h-21" data-rellax-speed="1"

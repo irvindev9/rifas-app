@@ -2,7 +2,7 @@
 
 @section('content')
 
-    @include('home.item-carousel')
+    <carousel-component></carousel-component>
 
     @include('home.faqs')
 

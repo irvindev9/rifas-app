@@ -1,13 +1,15 @@
 import { createApp } from 'vue';
-import ExampleComponent from  './components/example';
+import CarouselComponent from  './components/carouselComponent';
 
 require('./bootstrap');
 
 require('alpinejs');
 
 
-createApp({
+
+ const app = createApp({
     components: {
-		ExampleComponent,
+		CarouselComponent,
 	}
 }).mount('#app');
+
