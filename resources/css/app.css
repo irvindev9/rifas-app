@@ -6,3 +6,37 @@
     width: 50%;
     height: auto;
 }
+
+.align-center {
+    text-align: center;
+}
+
+.ticket {
+    background-color: white;
+    text-align: center;
+    width: 40px;
+    height: 25px;
+    line-height: 25px;
+    border-radius: 45%;
+    border: 1px solid #3D9BE9;
+    display: inline-block;
+    margin: 1px;
+    padding: 1px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.ticket.filled {
+    background-color: black;
+}
+
+.ticket a {
+    color: black;
+    font-style: normal;
+}
+
+@media (max-width: 550px){
+    .flipdown {
+        height: 70px;
+    }
+}
