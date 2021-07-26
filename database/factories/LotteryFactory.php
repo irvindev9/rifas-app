@@ -2,18 +2,18 @@
 
 namespace Database\Factories;
 
-use App\Models\User;
+use App\Models\Lottery;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
 
-class UserFactory extends Factory
+class LotteryFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      *
      * @var string
      */
-    protected $model = User::class;
+    protected $model = Lottery::class;
 
     /**
      * Define the model's default state.
@@ -23,11 +23,11 @@ class UserFactory extends Factory
     public function definition()
     {
         return [
-            'name' => $this->faker->name(),
-            'email' => $this->faker->unique()->safeEmail(),
-            'email_verified_at' => now(),
-            'password' => '123abc', // password
-            'remember_token' => Str::random(10),
+            'name' => "Mi prueba de Rifa",
+            'quantity_tickets' => 100,
+            'price_ticket' => 1000,
+            'lastday_lottery' => now(), 
+            'active' => 1,
         ];
     }
 
@@ -38,10 +38,6 @@ class UserFactory extends Factory
      */
     public function unverified()
     {
-        return $this->state(function (array $attributes) {
-            return [
-                'email_verified_at' => null,
-            ];
-        });
+    
     }
 }

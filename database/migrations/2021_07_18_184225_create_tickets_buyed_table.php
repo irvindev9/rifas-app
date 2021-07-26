@@ -13,14 +13,14 @@ class CreateTicketsBuyedTable extends Migration
      */
     public function up()
     {
-        Schema::create('tickets_buyed', function (Blueprint $table) {
+        Schema::create('ticket_buyeds', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger("lottery_id");
             $table->integer("ticket");
-            $table->string("name_client");
-            $table->string("lastname_client");
-            $table->string("whats_number");
-            $table->string("state");
+            $table->string("name_client")->nullable();
+            $table->string("lastname_client")->nullable();
+            $table->string("whats_number")->nullable();
+            $table->string("state")->nullable();
             $table->timestamps();
 
             $table->foreign('lottery_id')->references('id')->on('lotteries');

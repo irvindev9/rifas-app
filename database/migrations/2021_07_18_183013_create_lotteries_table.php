@@ -19,6 +19,7 @@ class CreateLotteriesTable extends Migration
             $table->integer("quantity_tickets");
             $table->float("price_ticket");
             $table->date("lastday_lottery");
+            $table->tinyInteger("active");
             $table->timestamps();
         });
     }
