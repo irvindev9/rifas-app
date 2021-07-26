@@ -25,15 +25,15 @@ class LotteryController extends Controller
                     ->select('prize', 'date_lottery_prize')
                     ->where('lottery_id', $lotteryId)
                     ->get();
-        
+
         $ticketsBuyed = DB::table('ticket_buyeds')
                     ->select('ticket')
                     ->where('lottery_id', $lotteryId)
                     ->get();
 
-        dd($ticketsBuyed);
+        // dd($ticketsBuyed);
 
-        return view('welcome', ['lottery' => $lottery, 'prizes', $prizes, 'ticketsBuyed', $ticketsBuyed]);
+        return view('home.index', ['lottery' => $lottery, 'prizes', $prizes, 'ticketsBuyed', $ticketsBuyed]);
 
     }
 
@@ -59,7 +59,7 @@ class LotteryController extends Controller
 
         $validated = $request->validate([
             'name' => 'required',
-            'quantity_tickets' => 'required|numeric',  
+            'quantity_tickets' => 'required|numeric',
             'price_ticket' => 'required|',
 
         ]);
