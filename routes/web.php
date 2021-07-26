@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\NoticeController;
+use App\Http\Controllers\LotteryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,10 +14,13 @@ use App\Http\Controllers\NoticeController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+/*
 Route::get('/', function () {
     return view('home.index');
 });
+*/
+Route::get('/', [LotteryController::class, 'index']);
+
 
 Route::get('/dashboard', function () {
     return view('dashboard');
