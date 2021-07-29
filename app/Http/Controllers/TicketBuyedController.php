@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\TicketBuyed;
+use App\Models\Lottery;
 use Illuminate\Http\Request;
 
 class TicketBuyedController extends Controller
@@ -12,9 +13,13 @@ class TicketBuyedController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Lottery $lottery)
     {
-        //
+        $ticketsBuyed = TicketBuyed::where('lottery_id', $lottery->id)->get();
+
+        //dd($lottery);
+
+        return view('panel-admin.tickets-buyed.index', ['ticketsBuyed' => $ticketsBuyed, 'lotteryName' => $lottery->name]);
     }
 
     /**
