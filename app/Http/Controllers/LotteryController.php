@@ -15,25 +15,12 @@ class LotteryController extends Controller
      */
     public function index()
     {
-        $lottery = DB::table('lotteries')
-                    ->select('name', 'quantity_tickets', 'price_ticket', 'lastday_lottery')
-                    ->where('active', 1)->first();
-        $lotteryId = DB::table('lotteries')->where('active', 1)->value('id');
+        //$lottery = Lottery::select('id', 'name', 'quantity_tickets', 'price_ticket', 'lastday_lottery')->get();
+        $lotteries = Lottery::paginate();
 
+        //dd($lottery);
 
-        $prizes = DB::table('prizes')
-                    ->select('prize', 'date_lottery_prize')
-                    ->where('lottery_id', $lotteryId)
-                    ->get();
-
-        $ticketsBuyed = DB::table('ticket_buyeds')
-                    ->select('ticket')
-                    ->where('lottery_id', $lotteryId)
-                    ->get();
-
-        // dd($ticketsBuyed);
-
-        return view('home.index', ['lottery' => $lottery, 'prizes', $prizes, 'ticketsBuyed', $ticketsBuyed]);
+        return view('panel-admin.lotteries.index', ['lotteries' => $lotteries]);
 
     }
 

@@ -2,18 +2,18 @@
 
 namespace Database\Factories;
 
-use App\Models\TicketBuyed;
+use App\Models\Setting;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
 
-class TicketBuyedFactory extends Factory
+class SettingFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      *
      * @var string
      */
-    protected $model = TicketBuyed::class;
+    protected $model = Setting::class;
 
     /**
      * Define the model's default state.
@@ -23,13 +23,8 @@ class TicketBuyedFactory extends Factory
     public function definition()
     {
         return [
-            'lottery_id' => 1,
-            'ticket' => 1,
-            'name_client' => "Juan",
-            'lastname_client' => "Pérez",
-            'whats_number' => "6562584893",
-            'state' => "Chihuahua",
-            'paid' => 0,
+            'code' => "contact",
+            'content' => "6561234567",
         ];
     }
 
@@ -40,6 +35,5 @@ class TicketBuyedFactory extends Factory
      */
     public function unverified()
     {
-    
     }
 }

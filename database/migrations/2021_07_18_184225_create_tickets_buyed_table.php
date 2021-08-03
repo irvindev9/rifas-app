@@ -21,6 +21,7 @@ class CreateTicketsBuyedTable extends Migration
             $table->string("lastname_client")->nullable();
             $table->string("whats_number")->nullable();
             $table->string("state")->nullable();
+            $table->tinyInteger("paid")->default(0);
             $table->timestamps();
 
             $table->foreign('lottery_id')->references('id')->on('lotteries');

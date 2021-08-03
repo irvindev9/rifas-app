@@ -2,7 +2,12 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\NoticeController;
+use App\Http\Controllers\LandingController;
 use App\Http\Controllers\LotteryController;
+use App\Http\Controllers\PrizeController;
+use App\Http\Controllers\TicketBuyedController;
+use App\Http\Controllers\SettingControler;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -19,12 +24,22 @@ Route::get('/', function () {
     return view('home.index');
 });
 */
-Route::get('/', [LotteryController::class, 'index']);
+Route::get('/', [LandingController::class, 'index']);
 
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
+Route::get('/rifas', [LotteryController::class, 'index'])->middleware(['auth'])->name('dashboard');
+
+
+Route::get('/premios/{lottery}', [PrizeController::class, 'index'])->middleware(['auth'])->name('prizes');
+
+
+Route::get('/boletos/{lottery}', [TicketBuyedController::class, 'index'])->middleware(['auth'])->name('ticketsBuyed');
+
+
+Route::get('/ajustes', [SettingControler::class, 'index'])->middleware(['auth'])->name('settings');
+
+
+
 
 Route::get('aviso/{notice}', [NoticeController::class, 'show'])->name('notice');
 

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Prize;
+use App\Models\Lottery;
 use Illuminate\Http\Request;
 
 class PrizeController extends Controller
@@ -12,9 +13,14 @@ class PrizeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+
+    public function index(Lottery $lottery)
     {
-        //
+        $prizes = Prize::where('lottery_id',  $lottery->id)->get();
+
+       //dd($prizes);
+
+        return view('panel-admin.prizes.index', ['prizes' => $prizes, 'lotteryName' => $lottery->name]);
     }
 
     /**
