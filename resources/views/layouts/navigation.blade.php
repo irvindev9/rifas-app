@@ -17,7 +17,7 @@
                         {{ __('Rifas') }}
                     </x-nav-link>
 
-                    <x-nav-link :href="route('settings')" :active="request()->routeIs('settings')">
+                    <x-nav-link :href="route('settings.index')" :active="request()->routeIs('settings.index')">
                         {{ __('Ajustes') }}
                     </x-nav-link>
                 </div>

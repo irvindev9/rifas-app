@@ -6,7 +6,7 @@ use App\Http\Controllers\LandingController;
 use App\Http\Controllers\LotteryController;
 use App\Http\Controllers\PrizeController;
 use App\Http\Controllers\TicketBuyedController;
-use App\Http\Controllers\SettingControler;
+use App\Http\Controllers\SettingController;
 
 
 /*
@@ -26,19 +26,31 @@ Route::get('/', function () {
 */
 Route::get('/', [LandingController::class, 'index']);
 
+Route::get('/rifas', [LotteryController::class, 'index'])->name('dashboard');
+Route::get('/crearRifa', [LotteryController::class, 'create'])->name('lotteries.create');
+Route::post('/guardarRifa', [LotteryController::class, 'store'])->name('lotteries.store');
+Route::get('/editarRifa/{lottery}', [LotteryController::class, 'edit'])->name('lotteries.edit');
+Route::post('/actualizarRifa/{lottery}', [LotteryController::class, 'update'])->name('lotteries.update');
+Route::post('/eliminarRifa/{lottery}', [LotteryController::class, 'destroy'])->name('lotteries.delete');
 
-Route::get('/rifas', [LotteryController::class, 'index'])->middleware(['auth'])->name('dashboard');
+Route::get('/premios/{lottery}', [PrizeController::class, 'index'])->name('prizes.index');
+Route::get('/crearPremio/{lottery}', [PrizeController::class, 'create'])->name('prizes.create');
+Route::post('/guardarPremio/{lottery}', [PrizeController::class, 'store'])->name('prizes.store');
+Route::get('/editarPremio/{prize}', [PrizeController::class, 'edit'])->name('prizes.edit');
+Route::post('/actualizarPremio/{prize}', [PrizeController::class, 'update'])->name('prizes.update');
+Route::post('/eliminarPremio/{prize}', [PrizeController::class, 'destroy'])->name('prizes.delete');
 
+Route::get('/boletos/{lottery}', [TicketBuyedController::class, 'index'])->name('ticketsBuyed.index');
+Route::get('/editarCompra/{ticketBuyed}', [TicketBuyedController::class, 'edit'])->name('ticketsBuyed.edit');
+Route::post('/actualizarCompra/{ticketBuyed}', [TicketBuyedController::class, 'update'])->name('ticketsBuyed.update');
+Route::post('/eliminarCompra/{ticketBuyed}', [TicketBuyedController::class, 'destroy'])->name('ticketsBuyed.delete');
 
-Route::get('/premios/{lottery}', [PrizeController::class, 'index'])->middleware(['auth'])->name('prizes');
-
-
-Route::get('/boletos/{lottery}', [TicketBuyedController::class, 'index'])->middleware(['auth'])->name('ticketsBuyed');
-
-
-Route::get('/ajustes', [SettingControler::class, 'index'])->middleware(['auth'])->name('settings');
-
-
+Route::get('/ajustes', [SettingController::class, 'index'])->name('settings.index');
+Route::get('/crearAjuste', [SettingController::class, 'create'])->name('settings.create');
+Route::post('/guardarAjuste', [SettingController::class, 'store'])->name('settings.store');
+Route::get('/editarAjuste/{setting}', [SettingController::class, 'edit'])->name('settings.edit');
+Route::post('/actualizarAjuste/{setting}', [SettingController::class, 'update'])->name('settings.update');
+Route::post('/eliminarAjuste/{setting}', [SettingController::class, 'destroy'])->name('settings.delete');
 
 
 Route::get('aviso/{notice}', [NoticeController::class, 'show'])->name('notice');

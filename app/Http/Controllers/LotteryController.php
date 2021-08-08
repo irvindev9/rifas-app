@@ -8,6 +8,12 @@ use Illuminate\Support\Facades\DB;
 
 class LotteryController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -15,13 +21,9 @@ class LotteryController extends Controller
      */
     public function index()
     {
-        //$lottery = Lottery::select('id', 'name', 'quantity_tickets', 'price_ticket', 'lastday_lottery')->get();
-        $lotteries = Lottery::paginate();
-
-        //dd($lottery);
+        $lotteries = Lottery::all();
 
         return view('panel-admin.lotteries.index', ['lotteries' => $lotteries]);
-
     }
 
     /**
@@ -31,7 +33,7 @@ class LotteryController extends Controller
      */
     public function create()
     {
-        //
+        return view('panel-admin.lotteries.create', ['lottery' => new Lottery]);
     }
 
     /**
@@ -46,17 +48,20 @@ class LotteryController extends Controller
 
         $validated = $request->validate([
             'name' => 'required',
-            'quantity_tickets' => 'required|numeric',
-            'price_ticket' => 'required|',
-
+            'qtyTickets' => 'required|numeric',
+            'priceTicket' => 'required',
+            'date' => 'required',
         ]);
 
-        $lottery->name = $validated->name;
-        $lottery->quantity_tickets = $validated->quantity_tickets;
-        $lottery->price_ticket = $validated->price_ticket;
-        $lottery->lastday_lottery = $validated->lastday_lottery;
+        $lottery->name = $validated['name'];
+        $lottery->quantity_tickets = $validated['qtyTickets'];
+        $lottery->price_ticket = $validated['priceTicket'];
+        $lottery->lastday_lottery = $request['date'];
+        $lottery->active = isset($request['active']) ? 1 : 0;
 
         $lottery->save();
+
+        return redirect()->route('dashboard')->with('status','La rifa se ha creado');
     }
 
     /**
@@ -76,9 +81,9 @@ class LotteryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Lottery $lottery)
     {
-        //
+        return view('panel-admin.lotteries.edit', ['lottery' => $lottery]);
     }
 
     /**
@@ -88,9 +93,24 @@ class LotteryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Lottery $lottery)
     {
-        //
+        $validated = $request->validate([
+            'name' => 'required',
+            'qtyTickets' => 'required|numeric',
+            'priceTicket' => 'required',
+            'date' => 'required',
+        ]);
+
+        $lottery->name = $validated['name'];
+        $lottery->quantity_tickets = $validated['qtyTickets'];
+        $lottery->price_ticket = $validated['priceTicket'];
+        $lottery->lastday_lottery = $request['date'];
+        $lottery->active = isset($request['active']) ? 1 : 0;
+
+        $lottery->save();
+
+        return redirect()->route('dashboard')->with('status','La rifa se ha actualizado');
     }
 
     /**
@@ -99,8 +119,10 @@ class LotteryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Lottery $lottery)
     {
-        //
+        $lottery->delete();
+
+        return redirect()->route('dashboard')->with('status','La rifa se ha eleminado correctamente');
     }
 }

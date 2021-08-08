@@ -5,6 +5,8 @@
         </h2>
     </x-slot>
 
+    @include('partials.session-status')
+
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
@@ -13,7 +15,7 @@
                         <div class="row justify-content-center">
                             <div class="col-md-12">
                                 <div class="d-grid gap-2 d-md-flex justify-content-md-end p-3">
-                                    <a class="btn btn-outline-primary btn-sm" href="#">Crear un nuevo ajuste</a>
+                                    <a class="btn btn-outline-primary btn-sm" href="{{ route('settings.create') }}">Crear un nuevo ajuste</a>
                                 </div>
 
                                 <table class="table">
@@ -32,9 +34,9 @@
                                                 <td>{{ $setting->code }}</td>
                                                 <td>{{ $setting->content }}</td>                                      
                                                 <td>
-                                                    <a class="btn btn-outline-secondary btn-sm btn-block mb-1" href="#" role="button">Editar</a>
-                                                    <form method="POST" action="" class="">
-                                                        @csrf @method('DELETE')
+                                                    <a class="btn btn-outline-secondary btn-sm btn-block mb-1" href="{{ route('settings.edit', $setting) }}" role="button">Editar</a>
+                                                    <form method="POST" action="{{ route('settings.delete', $setting) }}" class="">
+                                                        @csrf
                                                         <button class="btn btn-outline-danger btn-sm btn-block">Eliminar</button>
                                                     </form>
                                                 </td>

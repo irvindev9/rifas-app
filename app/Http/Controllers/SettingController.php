@@ -14,7 +14,9 @@ class SettingController extends Controller
      */
     public function index()
     {
-        //
+        $settings = Setting::all();
+
+        return view('panel-admin.admin-settings.index', ['settings' => $settings]);
     }
 
     /**
@@ -24,7 +26,7 @@ class SettingController extends Controller
      */
     public function create()
     {
-        //
+        return view('panel-admin.admin-settings.create', ['setting' => new Setting]);
     }
 
     /**
@@ -35,7 +37,19 @@ class SettingController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $setting = new Setting;
+
+        $validated = $request->validate([
+            'type' => 'required',
+            'content' => 'required',
+        ]);
+
+        $setting->code = $validated['type'];
+        $setting->content = $validated['content'];
+
+        $setting->save();
+
+        return redirect()->route('settings.index')->with('status','El ajuste se ha creado');
     }
 
     /**
@@ -55,9 +69,9 @@ class SettingController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Setting $setting)
     {
-        //
+        return view('panel-admin.admin-settings.edit', ['setting' => $setting]);
     }
 
     /**
@@ -67,9 +81,19 @@ class SettingController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Setting $setting)
     {
-        //
+        $validated = $request->validate([
+            'type' => 'required',
+            'content' => 'required',
+        ]);
+
+        $setting->code = $validated['type'];
+        $setting->content = $validated['content'];
+
+        $setting->save();
+
+        return redirect()->route('settings.index')->with('status','El ajuste se ha actualizado');
     }
 
     /**
@@ -78,8 +102,10 @@ class SettingController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Setting $setting)
     {
-        //
+        $setting->delete();
+
+        return redirect()->route('settings.index')->with('status','El ajuste se ha eliminado');
     }
 }

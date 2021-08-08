@@ -1,9 +1,11 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            <a href="{{ route('dashboard') }}" class="link-secondary">{{$lotteryName}}</a> / {{ __('Boletos Comprados') }}
+            <a href="{{ route('dashboard') }}" class="link-secondary">{{$lottery->name}}</a> / {{ __('Boletos Comprados') }}
         </h2>
     </x-slot>
+
+    @include('partials.session-status')
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
@@ -40,9 +42,9 @@
                                                     @endif
                                                 </td>                                      
                                                 <td>
-                                                    <a class="btn btn-outline-secondary btn-sm btn-block mb-1" href="#" role="button">Editar</a>
-                                                    <form method="POST" action="" class="">
-                                                        @csrf @method('DELETE')
+                                                    <a class="btn btn-outline-secondary btn-sm btn-block mb-1" href="{{ route('ticketsBuyed.edit', $ticketBuyed) }}" role="button">Editar</a>
+                                                    <form method="POST" action="{{ route('ticketsBuyed.delete', $ticketBuyed) }}" class="">
+                                                        @csrf
                                                         <button class="btn btn-outline-danger btn-sm btn-block">Eliminar</button>
                                                     </form>
                                                 </td>
