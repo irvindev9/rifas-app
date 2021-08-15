@@ -25,6 +25,7 @@ Route::get('/', function () {
 });
 */
 Route::get('/', [LandingController::class, 'index']);
+Route::get('/next', [LandingController::class, 'next']);
 
 Route::get('/rifas', [LotteryController::class, 'index'])->name('dashboard');
 Route::get('/crearRifa', [LotteryController::class, 'create'])->name('lotteries.create');
@@ -55,7 +56,7 @@ Route::post('/eliminarAjuste/{setting}', [SettingController::class, 'destroy'])-
 
 Route::get('aviso/{notice}', [NoticeController::class, 'show'])->name('notice');
 
-Route::view('comprar/rifa/{contest}', 'buy-ticket.index');
+Route::view('comprar/rifa/{contest}', 'buy-ticket.index')->name('contest.lotto');
 
 Route::view('ticket/{lottery}/{ticket}', 'ticket-buyed.index');
 

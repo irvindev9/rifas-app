@@ -14,4 +14,3 @@ require('alpinejs');
         TicketComponent
 	}
 }).mount('#app');
-

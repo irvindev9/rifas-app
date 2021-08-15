@@ -25,7 +25,7 @@
             <div class="navbar-other w-100 d-flex ms-auto">
                 <ul class="navbar-nav flex-row align-items-center ms-auto" data-sm-skip="true">
                     <li class="nav-item d-none d-md-block">
-                        <a href="/comprar/rifa/1" class="btn btn-green btn-sm btn-success rounded-pill">Comprar boletos</a>
+                        <a href="/next" class="btn btn-green btn-sm btn-success rounded-pill">Comprar boletos</a>
                     </li>
                     <li class="nav-item d-lg-none">
                         <div class="navbar-hamburger"><button class="hamburger animate plain"

@@ -11,8 +11,27 @@ class LandingController extends Controller
 {
     public function index()
     {
-        $lottery = Lottery::with(['prizes','ticketsBuyed'])->where('active', 1)->get();
+        return view('home.index');
+    }
 
-        return view('home.index', ['lottery' => $lottery]);
+    public function active(){
+        $lottery = Lottery::with(['prizes','ticketsBuyed'])
+            ->where('active', 1)
+            ->get()
+            ->toJson();
+
+        return response($lottery);
+    }
+
+    public function next() {
+        $lottery = Lottery::where('active', 1)->first();
+
+        if (isset($lottery)) {
+            return redirect()->route('contest.lotto', $lottery->id);
+        } else {
+            return redirect('/');
+        }
+
+
     }
 }

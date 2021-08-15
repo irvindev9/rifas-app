@@ -19,7 +19,7 @@
                             <div class="col-md-12">
                                 <h3>Editar rifa</h3>
 
-                                <form method="POST" action="{{ route('lotteries.update', $lottery) }}">
+                                <form method="POST" action="{{ route('lotteries.update', $lottery) }}" enctype="multipart/form-data">
                                     @csrf
                                     @include('panel-admin.lotteries._form',['btnText'=>'Actualizar'])
                                 </form>
