@@ -11,8 +11,8 @@
                     <h1 class="display-1 mb-5">{{item.title}}</h1>
                     <p class="lead fs-25 lh-sm mb-7 px-md-10 px-lg-0">{{item.description}}</p>
                     <div class="d-flex justify-content-center justify-content-lg-start" data-group="page-title-buttons" data-delay="900">
-                        <span><a href="#" class="btn btn-lg btn-primary rounded-pill me-2">Comprar boletos</a></span>
-                        <span><a href="#nosotros" class="btn btn-lg btn-outline-primary rounded-pill">Más información</a></span>
+                        <span><a href="#" class="btn btn-lg btn-success rounded-pill me-2">Comprar boletos</a></span>
+                        <span><a href="#nosotros" class="btn btn-lg btn-outline-success rounded-pill">Más información</a></span>
                     </div>
                 </div>
             </div>

@@ -37,7 +37,7 @@
                     <div class="col-lg-6">
                       <div class="d-flex flex-row">
                         <div>
-                          <span class="icon btn btn-sm btn-circle btn-primary disabled me-5"><i class="uil uil-comment-exclamation"></i></span>
+                          <span class="icon btn btn-sm btn-circle btn-success disabled me-5"><i class="uil uil-comment-exclamation"></i></span>
                         </div>
                         <div>
                           <h4>¿CÓMO SE ELIGE A LOS GANADORES?</h4>
@@ -50,7 +50,7 @@
                     <div class="col-lg-6">
                       <div class="d-flex flex-row">
                         <div>
-                          <span class="icon btn btn-sm btn-circle btn-primary disabled me-5"><i class="uil uil-comment-exclamation"></i></span>
+                          <span class="icon btn btn-sm btn-circle btn-success disabled me-5"><i class="uil uil-comment-exclamation"></i></span>
                         </div>
                         <div>
                           <h4>¿QUÉ PROBABILIDADES TENGO DE GANAR?</h4>
@@ -62,7 +62,7 @@
                     <div class="col-lg-6">
                       <div class="d-flex flex-row">
                         <div>
-                          <span class="icon btn btn-sm btn-circle btn-primary disabled me-5"><i class="uil uil-comment-exclamation"></i></span>
+                          <span class="icon btn btn-sm btn-circle btn-success disabled me-5"><i class="uil uil-comment-exclamation"></i></span>
                         </div>
                         <div>
                           <h4>¿QUÉ SUCEDE CUANDO EL NÚMERO GANADOR ES UN BOLETO NO VENDIDO?</h4>
@@ -75,7 +75,7 @@
                     <div class="col-lg-6">
                       <div class="d-flex flex-row">
                         <div>
-                          <span class="icon btn btn-sm btn-circle btn-primary disabled me-5"><i class="uil uil-comment-exclamation"></i></span>
+                          <span class="icon btn btn-sm btn-circle btn-success disabled me-5"><i class="uil uil-comment-exclamation"></i></span>
                         </div>
                         <div>
                           <h4>¿DÓNDE SE PUBLICA A LOS GANADORES?</h4>
