@@ -11,8 +11,8 @@
         </div>
         <div class="row">
             <div class="col-12 col-md-10 col-lg-8 mx-auto ticket-container">
-                <span class="ticket" v-for="item in 3333" :key="item" :class="{filled : (buyedTickets.includes(item))}" v-show="isFinded(item)">
-                    <a :href="'/ticket/1/' + fillZero(item)" v-if="!buyedTickets.includes(item)">{{fillZero(item)}}</a>
+                <span class="ticket" v-for="item in numberTickets" :key="item" :class="{filled : (buyedTickets.includes(item))}" v-show="isFinded(item)">
+                    <a :href="'/ticket/' + idLotto + '/' + fillZero(item)" v-if="!buyedTickets.includes(item)">{{fillZero(item)}}</a>
                     <label for="ticket" v-else>{{fillZero(item)}}</label>
                 </span>
             </div>
@@ -25,14 +25,10 @@
         name: 'ticket-component',
         data() {
             return {
-                buyedTickets : [
-                    1,
-                    2,
-                    3,
-                    200,
-                    1000
-                ],
-                searchNumber : 0
+                idLotto : 1,
+                buyedTickets : [],
+                searchNumber : 0,
+                numberTickets : 0
             }
         },
         methods: {
@@ -55,6 +51,10 @@
                     this.searchNumber = this.searchNumber.toString().slice(0,4)
                 }
             }
+        },
+        created(){
+            this.numberTickets = parseInt(this.$attrs.numbertickets);
+            this.idLotto = this.$attrs.idlotto;
         }
     }
 

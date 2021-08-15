@@ -6,9 +6,29 @@
     <div class="container pt-10 pt-md-14 pb-0 text-center">
         <div class="row">
             <div class="col-lg-8 mx-auto">
-                <h1 class="display-6 mb-3">SORTEO #2</h1>
-                <h2 class="display-7 mb-3">NISSAN SENTRA SR 2021</h2>
-                <h3 class="display-7 mb-3">17 DE SEPTIEMBRE 2021</h3>
+                <h1 class="display-6 mb-3">SORTEO #{{$lottery->id}}</h1>
+                <h2 class="display-7 mb-3">{{$lottery->name}}</h2>
+                @php
+                    $month = [
+                        '01' => 'ENERO',
+                        '02' => 'FEBRERO',
+                        '03' => 'MARZO',
+                        '04' => 'ABRIL',
+                        '05' => 'MAYO',
+                        '06' => 'JUNIO',
+                        '07' => 'JULIO',
+                        '08' => 'AGOSTO',
+                        '09' => 'SEPTIEMBRE',
+                        '10' => 'OCTUBRE',
+                        '11' => 'NOVIEMBRE',
+                        '12' => 'DICIEMBRE'
+                    ];
+
+                    $day = explode('-', $lottery->lastday_lottery);
+
+                    date_default_timezone_set('America/Tegucigalpa');
+                @endphp
+                <h3 class="display-7 mb-3">{{intval($day[2])}} DE {{$month[$day[1]]}} DE {{$day[0]}}</h3>
             </div>
         </div>
     </div>
@@ -41,7 +61,7 @@
                 document.addEventListener('DOMContentLoaded', () => {
 
                 // Unix timestamp (in seconds) to count down to
-                var twoDaysFromNow = (new Date().getTime() / 1000) + (86400 * 2) + 1;
+                var twoDaysFromNow = (new Date().getTime() / 1000) + ({{strtotime($lottery->lastday_lottery) - time()}}) + 1;
 
                 // Set up FlipDown
                 var flipdown = new FlipDown(twoDaysFromNow)
@@ -82,8 +102,8 @@
         <hr class="my-2">
         <div class="row">
             <div class="col-lg-8 mx-auto">
-                <h1 class="display-6 mb-3">COSTO DEL BOLETO $250</h1>
-                <h2 class="display-7 mb-3">EMISIÓN 3,333 BOLETOS</h2>
+                <h1 class="display-6 mb-3">COSTO DEL BOLETO ${{$lottery->price_ticket}}</h1>
+                <h2 class="display-7 mb-3">EMISIÓN {{$lottery->quantity_tickets}} BOLETOS</h2>
             </div>
         </div>
     </div>
@@ -95,14 +115,12 @@
             <div class="col-12 col-md-8 col-lg-6 mx-auto text-center">
                 <hr class="my-2">
                 <ul class="icon-list bullet-primary">
-                    <li><span><i class="uil uil-arrow-right"></i></span><span><b>NISSAN SENTRA SR 2021</b> - 17 SEPTIEMBRE</span></li>
-                    <li><span><i class="uil uil-arrow-right"></i></span><span><b>$10,000 MXN</b> - 7 SEPTIEMBRE</span></li>
-                    <li><span><i class="uil uil-arrow-right"></i></span><span><b>$5,000 MXN EN BOLETOS</b> - 31 AGOSTO</span></li>
-                    <li><span><i class="uil uil-arrow-right"></i></span><span><b>$5,000 MXN</b> - 24 AGOSTO</span></li>
-                    <li><span><i class="uil uil-arrow-right"></i></span><span><b>$5,000 MXN</b> - 17 AGOSTO</span></li>
-                    <li><span><i class="uil uil-arrow-right"></i></span><span><b>$5,000 MXN EN BOLETOS</b> - 10 AGOSTO</span></li>
-                    <li><span><i class="uil uil-arrow-right"></i></span><span><b>$5,000 MXN</b> - 27 JULIO</span></li>
-                    <li><span><i class="uil uil-arrow-right"></i></span><span><b>$5,000 MXN</b> - 20 JULIO</span></li>
+                    @foreach ($lottery->prizes as $prize)
+                        @php
+                            $day = explode('-', $prize->date_lottery_prize);
+                        @endphp
+                        <li><span><i class="uil uil-arrow-right"></i></span><span><b>{{$prize->prize}}</b> - {{intval($day[2])}} DE {{$month[$day[1]]}}</span></li>
+                    @endforeach
                 </ul>
                 <hr class="my-2">
             </div>
@@ -116,7 +134,7 @@
             <hr class="my-2">
         </div>
 
-        <ticket-component></ticket-component>
+        <ticket-component idLotto="@json($lottery->id)" numberTickets="@json($lottery->quantity_tickets)"></ticket-component>
     </div>
 </section>
 

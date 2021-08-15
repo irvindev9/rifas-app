@@ -34,4 +34,10 @@ class LandingController extends Controller
 
 
     }
+
+    public function buy_ticket($lottery){
+        $lottery = Lottery::with(['prizes'])->where('active', 1)->where('id', $lottery)->first();
+
+        return view('buy-ticket.index')->with(compact(['lottery']));
+    }
 }

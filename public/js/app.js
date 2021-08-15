@@ -19918,8 +19918,10 @@ __webpack_require__.r(__webpack_exports__);
   name: 'ticket-component',
   data: function data() {
     return {
-      buyedTickets: [1, 2, 3, 200, 1000],
-      searchNumber: 0
+      idLotto: 1,
+      buyedTickets: [],
+      searchNumber: 0,
+      numberTickets: 0
     };
   },
   methods: {
@@ -19946,6 +19948,10 @@ __webpack_require__.r(__webpack_exports__);
         this.searchNumber = this.searchNumber.toString().slice(0, 4);
       }
     }
+  },
+  created: function created() {
+    this.numberTickets = parseInt(this.$attrs.numbertickets);
+    this.idLotto = this.$attrs.idlotto;
   }
 });
 
@@ -20067,24 +20073,24 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   /* HYDRATE_EVENTS, NEED_PATCH */
   ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.searchNumber, void 0, {
     number: true
-  }]]), _hoisted_5])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_7, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)(3333, function (item) {
-    return (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", {
+  }]]), _hoisted_5])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_7, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($data.numberTickets, function (item) {
+    return (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)(((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("span", {
       "class": ["ticket", {
         filled: $data.buyedTickets.includes(item)
       }],
       key: item
     }, [!$data.buyedTickets.includes(item) ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("a", {
       key: 0,
-      href: '/ticket/1/' + $options.fillZero(item)
+      href: '/ticket/' + $data.idLotto + '/' + $options.fillZero(item)
     }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($options.fillZero(item)), 9
     /* TEXT, PROPS */
     , ["href"])) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("label", _hoisted_8, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($options.fillZero(item)), 1
     /* TEXT */
     ))], 2
     /* CLASS */
-    ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, $options.isFinded(item)]]);
-  }), 64
-  /* STABLE_FRAGMENT */
+    )), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, $options.isFinded(item)]]);
+  }), 128
+  /* KEYED_FRAGMENT */
   ))])])]);
 }
 
