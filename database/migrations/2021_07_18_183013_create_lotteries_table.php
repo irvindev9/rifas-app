@@ -20,6 +20,7 @@ class CreateLotteriesTable extends Migration
             $table->float("price_ticket");
             $table->date("lastday_lottery");
             $table->tinyInteger("active");
+            $table->string("image_lottery")->nullable();
             $table->timestamps();
         });
     }
