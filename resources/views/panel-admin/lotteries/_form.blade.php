@@ -15,6 +15,10 @@
     <label for="date">Último día de la rifa</label>
     <input type="date" class="form-control" name="date" value="{{ old('date', $lottery->lastday_lottery) }}" required>
 </div>
+<div class="form-group p-1">
+    <label for="image">Imágen de la rifa</label>
+    <input type="file" class="form-control" name="image" value="{{ old('image', $lottery->image_lottery) }}" accept="image/*" required>
+</div>
 <div class="form-group m-1 form-check ">
     <label class="form-check-label" for="lotteryActive">Rifa activa</label>
     @if ($lottery->active == 1)

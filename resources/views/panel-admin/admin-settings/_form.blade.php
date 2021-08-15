@@ -1,7 +1,13 @@
 @csrf
 <div class="form-group p-1">
     <label for="type">Tipo</label>
-    <input type="text" class="form-control" name="type" value="{{ old('type', $setting->code) }}" required>
+    <input 
+        type="text" 
+        class="form-control" name="type" 
+        value="{{ old('type', $setting->code) }}"  
+        {{ \Request::is('editarAjuste/*') ? "disabled" : "" }}
+        required
+    >
 </div>
 <div class="form-group p-1">
     <label for="content">Contenido</label>
