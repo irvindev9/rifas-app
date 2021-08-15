@@ -44,6 +44,19 @@ class LotteryController extends Controller
      */
     public function store(Request $request)
     {
+        if ($request->hasFile('image')) 
+        {
+            $filenameWithExt = $request->file('image')->getClientOriginalName ();
+            $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+            $extension = $request->file('image')->getClientOriginalExtension();
+            $fileNameToStore = $filename.'_'. time().'.'.$extension;
+
+            $path = $request->image->move(public_path('img/prizes'), $fileNameToStore);
+        } else 
+        {
+            $fileNameToStore = 'noimage.jpg';
+        }
+
         $lottery = new Lottery;
 
         $validated = $request->validate([
@@ -57,6 +70,7 @@ class LotteryController extends Controller
         $lottery->quantity_tickets = $validated['qtyTickets'];
         $lottery->price_ticket = $validated['priceTicket'];
         $lottery->lastday_lottery = $request['date'];
+        $lottery->image_lottery = $fileNameToStore;
         $lottery->active = isset($request['active']) ? 1 : 0;
 
         $lottery->save();

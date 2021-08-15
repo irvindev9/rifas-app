@@ -19,7 +19,7 @@
                             <div class="col-md-12">
                                 <h3>Crear nueva rifa</h3>
 
-                                <form method="POST" action="{{ route('lotteries.store') }}">
+                                <form method="POST" action="{{ route('lotteries.store') }}" enctype="multipart/form-data">
                                     @csrf
                                     @include('panel-admin.lotteries._form',['btnText'=>'Guardar'])
                                 </form>
