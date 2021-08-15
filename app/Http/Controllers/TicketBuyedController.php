@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\TicketBuyed;
+use App\Models\OtherTicketBuyed;
 use App\Models\Lottery;
 use Illuminate\Http\Request;
 
@@ -20,7 +21,7 @@ class TicketBuyedController extends Controller
      */
     public function index(Lottery $lottery)
     {
-        $ticketsBuyed = TicketBuyed::where('lottery_id', $lottery->id)->get();
+        $ticketsBuyed = TicketBuyed::with(['otherTicketsBuyed'])->where('lottery_id', $lottery->id)->get();
 
         return view('panel-admin.tickets-buyed.index', ['ticketsBuyed' => $ticketsBuyed, 'lottery' => $lottery]);
     }
@@ -70,9 +71,20 @@ class TicketBuyedController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($contest, Request $request)
     {
-        //
+        $ticketBuyed = TicketBuyed::with(['otherTicketsBuyed'])->where('lottery_id', $contest)->where('ticket', $request['ticket'])->first();
+        
+        if(!isset($ticketBuyed)){
+            $idTicketBuyed = OtherTicketBuyed::select('ticket_buyed_id')->where('lottery_id', $contest)->where('ticket', $request['ticket'])->first();
+            if(isset($idTicketBuyed)){
+                $ticketBuyed = TicketBuyed::with(['otherTicketsBuyed'])->where('lottery_id', $contest)->where('ticket', $idTicketBuyed->ticket_buyed_id)->first();
+            }
+        }
+
+        $lottery = Lottery::find($contest);
+
+        return view('buy-ticket.verificator', ['lottery' => $lottery, "showTableVerificator" => true, "ticketBuyed" => $ticketBuyed]);
     }
 
     /**
@@ -132,5 +144,12 @@ class TicketBuyedController extends Controller
         $lottery = Lottery::find($ticketBuyed->lottery_id);
 
         return redirect()->route('ticketsBuyed.index', $lottery)->with('status','El premio se ha eleminado correctamente');
+    }
+
+    public function verificator($contest)
+    {
+        $lottery = Lottery::find($contest);
+
+        return view('buy-ticket.verificator', ['lottery' => $lottery, "showTableVerificator" => false, "ticketBuyed" => new TicketBuyed]);
     }
 }

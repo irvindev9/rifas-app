@@ -18,6 +18,7 @@
                                     <thead>
                                         <tr>
                                             <th scope="col">No. Boleto</th>
+                                            <th scope="col">Boletos extra</th>
                                             <th scope="col">Nombre</th>
                                             <th scope="col">Apellido</th>
                                             <th scope="col">No. Whats</th>
@@ -30,6 +31,11 @@
                                         @foreach ($ticketsBuyed as $ticketBuyed)
                                             <tr>
                                                 <th scope="row">{{ $ticketBuyed->ticket }}</th>
+                                                <th>
+                                                    @foreach ($ticketBuyed->otherTicketsBuyed as $item)
+                                                        {{ $item->ticket }}
+                                                    @endforeach                  
+                                                </th>
                                                 <td>{{ $ticketBuyed->name_client }}</td>      
                                                 <td>{{ $ticketBuyed->lastname_client }}</td>                                      
                                                 <td>{{ $ticketBuyed->whats_number }}</td>                                      

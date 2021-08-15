@@ -5,7 +5,7 @@
         type="text" 
         class="form-control" name="type" 
         value="{{ old('type', $setting->code) }}"  
-        {{ \Request::is('editarAjuste/*') ? "disabled" : "" }}
+        {{ \Request::is('editarAjuste/*') ? "readonly" : "" }}
         required
     >
 </div>

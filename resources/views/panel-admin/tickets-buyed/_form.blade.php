@@ -1,7 +1,15 @@
 @csrf
 <div class="form-group p-1">
     <label for="ticket">No. Boleto</label>
-    <input type="number" class="form-control" name="ticket" value="{{ old('ticket', $ticketBuyed->ticket) }}" required>
+    <input type="number" class="form-control" name="ticket" value="{{ old('ticket', $ticketBuyed->ticket) }}" readonly required>
+</div>
+<div class="form-group p-1">
+    <label for="otherTickets">Boletos extras</label>
+    <div class="form-control" name="otherTickets" id="otherTickets" readonly>
+        @foreach ($ticketBuyed->otherTicketsBuyed as $item)
+            {{ $item->ticket }}
+        @endforeach  
+    </div>
 </div>
 <div class="form-group p-1">
     <label for="name">Nombre</label>

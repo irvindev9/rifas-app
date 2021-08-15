@@ -55,6 +55,10 @@ Route::post('/eliminarAjuste/{setting}', [SettingController::class, 'destroy'])-
 
 Route::get('aviso/{notice}', [NoticeController::class, 'show'])->name('notice');
 
+Route::get('comprar/rifa/{contest}/verificador', [TicketBuyedController::class, 'verificator'])->name('verificator');
+Route::post('comprar/rifa/{contest}/verificador}', [TicketBuyedController::class, 'show'])->name('verificator.show');
+
+
 Route::view('comprar/rifa/{contest}', 'buy-ticket.index');
 
 Route::view('ticket/{lottery}/{ticket}', 'ticket-buyed.index');
