@@ -39,7 +39,9 @@
         <hr class="my-2">
         <div class="col-12 col-md-8 col-lg-4 mx-auto">
             <figure>
-                <img class="img-fluid lg-image" src="{{asset('img/corvette.jpg')}}" alt="prize">
+                @isset ($lottery->image_lottery)
+                    <img class="img-fluid lg-image" src="{{asset('img/prizes/').'/'.$lottery->image_lottery}}" alt="prize">
+                @endif
             </figure>
         </div>
     </div>
