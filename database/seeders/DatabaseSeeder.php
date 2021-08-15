@@ -18,6 +18,7 @@ class DatabaseSeeder extends Seeder
         \App\Models\Prize::factory(5)->create();
         \App\Models\TicketBuyed::factory(1)->create();
         \App\Models\Setting::factory(1)->create();
+        \App\Models\OtherTicketBuyed::factory(1)->create();
 
     }
 }
