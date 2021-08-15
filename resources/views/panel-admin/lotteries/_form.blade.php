@@ -5,7 +5,16 @@
 </div>
 <div class="form-group p-1">
     <label for="qtyTickets">Cantidad de boletos</label>
-    <input type="number" class="form-control" name="qtyTickets" value="{{ old('qtyTickets', $lottery->quantity_tickets) }}" required>
+
+    <select class="form-select" aria-label="Default select example" name="qtyTickets">
+        <option {{($lottery->quantity_tickets == 100) ? 'selected' : '' }} value="100">100</option>
+        <option {{($lottery->quantity_tickets == 500) ? 'selected' : '' }} value="500">500</option>
+        <option {{($lottery->quantity_tickets == 1000) ? 'selected' : '' }} value="1000">1000</option>
+        <option {{($lottery->quantity_tickets == 2000) ? 'selected' : '' }} value="2000">2000</option>
+        <option {{($lottery->quantity_tickets == 2500) ? 'selected' : '' }} value="2500">2500</option>
+        <option {{($lottery->quantity_tickets == 5000) ? 'selected' : '' }} value="5000">5000</option>
+        <option {{($lottery->quantity_tickets == 10000) ? 'selected' : '' }} value="10000">10000</option>
+    </select>
 </div>
 <div class="form-group p-1">
     <label for="priceTicket">Precio del boleto</label>
@@ -17,7 +26,7 @@
 </div>
 <div class="form-group p-1">
     <label for="image">Imágen de la rifa</label>
-    <input type="file" class="form-control" name="image" value="{{ old('image', $lottery->image_lottery) }}" accept="image/*" required>
+    <input type="file" class="form-control" name="image" value="{{ old('image', $lottery->image_lottery) }}" accept="image/*">
 </div>
 <div class="form-group m-1 form-check ">
     <label class="form-check-label" for="lotteryActive">Rifa activa</label>
