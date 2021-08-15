@@ -3,8 +3,8 @@
 @import 'tailwindcss/utilities';
 
 .img-fluid-50 {
-    width: 50%;
-    height: auto;
+    width: auto;
+    height: 100px;
 }
 
 .align-center {

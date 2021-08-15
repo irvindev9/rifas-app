@@ -1,9 +1,9 @@
 <header class="wrapper bg-light">
-    <nav class="navbar center-nav transparent navbar-expand-lg navbar-light">
+    <nav class="navbar center-nav transparent navbar-expand-lg navbar-light" style="padding: 1rem;">
         <div class="container flex-lg-row flex-nowrap align-items-center">
             <div class="navbar-brand w-100">
                 <a href="/">
-                    <img class="img-fluid-50" src="{{asset("img/rifasJr.png")}}" alt="logo" />
+                    <img class="img-fluid-50" src="{{asset("img/rifasjuniorlogo.png")}}" alt="logo" />
                     {{-- <label for="title" class="dropdown-item">Rifas Junior</label> --}}
                 </a>
             </div>
