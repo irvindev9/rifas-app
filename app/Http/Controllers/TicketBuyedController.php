@@ -11,7 +11,7 @@ class TicketBuyedController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('auth')->except(['verificator','show','generator','getTicket']);
     }
 
     /**
@@ -151,5 +151,28 @@ class TicketBuyedController extends Controller
         $lottery = Lottery::find($contest);
 
         return view('buy-ticket.verificator', ['lottery' => $lottery, "showTableVerificator" => false, "ticketBuyed" => new TicketBuyed]);
+    }
+
+    public function generator($contest)
+    {
+        $lottery = Lottery::find($contest);
+
+        return view('buy-ticket.ticket-generator', ['lottery' => $lottery, "showTicket" => false, "ticketBuyed" => new TicketBuyed]);
+    }
+
+    public function getTicket($contest, Request $request)
+    {
+        $ticketBuyed = TicketBuyed::with(['otherTicketsBuyed'])->where('lottery_id', $contest)->where('ticket', $request['ticket'])->first();
+        
+        if(!isset($ticketBuyed)){
+            $idTicketBuyed = OtherTicketBuyed::select('ticket_buyed_id')->where('lottery_id', $contest)->where('ticket', $request['ticket'])->first();
+            if(isset($idTicketBuyed)){
+                $ticketBuyed = TicketBuyed::with(['otherTicketsBuyed'])->where('lottery_id', $contest)->where('ticket', $idTicketBuyed->ticket_buyed_id)->first();
+            }
+        }
+
+        $lottery = Lottery::find($contest);
+
+        return view('buy-ticket.ticket-generator', ['lottery' => $lottery, "showTicket" => true, "ticketBuyed" => $ticketBuyed]);
     }
 }
