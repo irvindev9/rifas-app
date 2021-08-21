@@ -46,7 +46,6 @@
                 return (this.searchNumber+'').includes(number.toString());
             },
             checkValue(){
-                console.log(this.searchNumber.toString().length)
                 if(this.searchNumber.toString().length > 4){
                     this.searchNumber = this.searchNumber.toString().slice(0,4)
                 }

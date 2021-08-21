@@ -35,6 +35,7 @@
                                                 <td>{!! $setting->content !!}</td>
                                                 <td>
                                                     <a class="btn btn-outline-secondary btn-sm btn-block mb-1" href="{{ route('settings.edit', $setting) }}" role="button">Editar</a>
+                                                    <a class="btn btn-outline-primary btn-sm btn-block mb-1" href="{{ route('notice', $setting->code) }}" role="button">Ver</a>
                                                     <form method="POST" action="{{ route('settings.delete', $setting) }}" class="">
                                                         @csrf
                                                         <button class="btn btn-outline-danger btn-sm btn-block">Eliminar</button>

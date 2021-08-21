@@ -19957,6 +19957,100 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/buyTicketComponent.vue?vue&type=script&lang=js":
+/*!************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/buyTicketComponent.vue?vue&type=script&lang=js ***!
+  \************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  name: "BuyTicket",
+  data: function data() {
+    return {
+      ticket: 0,
+      extra_tickets: [],
+      other_tickets: [],
+      other_extra_tickets: [],
+      whatsapp: '',
+      estado: 'Estado',
+      nombre: '',
+      apellido: '',
+      lottery: null,
+      message: ''
+    };
+  },
+  methods: {
+    checkValueWhats: function checkValueWhats() {
+      if (this.whatsapp.toString().length > 10) {
+        this.whatsapp = this.whatsapp.toString().slice(0, 10);
+      }
+
+      if (this.whatsapp.toString().length > 10) {
+        this.whatsapp = this.whatsapp.toString().slice(0, 10);
+      }
+    },
+    submit: function submit() {
+      var _this = this;
+
+      this.message = "";
+
+      if (this.whatsapp.toString().length == 10) {
+        if (this.nombre.toString().length > 3) {
+          if (this.apellido.toString().length > 3) {
+            if (this.estado != "Estado") {
+              axios.post('/save/ticket', {
+                idLottery: this.lottery,
+                ticket: this.ticket,
+                extra_tickets: this.extra_tickets,
+                whatsapp: this.whatsapp,
+                nombre: this.nombre,
+                apellido: this.apellido,
+                estado: this.estado
+              }).then(function (response) {
+                _this.message = "Enviado con exito!"; // Redirect
+
+                setTimeout(function () {
+                  window.location.replace(response.data);
+                }, 3000);
+              })["catch"](function (err) {
+                _this.message = err.response.data;
+              });
+            } else {
+              this.message = "Ingrese su estado";
+            }
+          } else {
+            this.message = "Ingrese su apellido";
+          }
+        } else {
+          this.message = "Ingrese su nombre";
+        }
+      } else {
+        this.message = "Revise el formato del teléfono";
+      }
+    }
+  },
+  created: function created() {
+    var _this2 = this;
+
+    this.lottery = this.$attrs.lottery;
+    this.ticket = this.$attrs.ticket;
+    axios.get('/ticket/random', {
+      id: this.lottery
+    }).then(function (response) {
+      _this2.extra_tickets = response.data;
+    })["catch"](function (error) {
+      alert("Tenemos problemas tecnicos, consulte al administrador.");
+    });
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/carouselComponent.vue?vue&type=script&lang=js":
 /*!***********************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/carouselComponent.vue?vue&type=script&lang=js ***!
@@ -20096,6 +20190,224 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/buyTicketComponent.vue?vue&type=template&id=13376bf6":
+/*!****************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/buyTicketComponent.vue?vue&type=template&id=13376bf6 ***!
+  \****************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* binding */ render)
+/* harmony export */ });
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
+
+var _hoisted_1 = {
+  "class": "wrapper bg-light"
+};
+var _hoisted_2 = {
+  "class": "container pt-10 pt-md-14 pb-0 text-center"
+};
+var _hoisted_3 = {
+  "class": "row"
+};
+var _hoisted_4 = {
+  "class": "col-lg-8 mx-auto"
+};
+var _hoisted_5 = {
+  "class": "display-6 mb-3"
+};
+
+var _hoisted_6 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("h2", {
+  "class": "display-7 mb-3"
+}, "INCLUYE:", -1
+/* HOISTED */
+);
+
+var _hoisted_7 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("hr", {
+  "class": "my-3"
+}, null, -1
+/* HOISTED */
+);
+
+var _hoisted_8 = {
+  "class": "wrapper bg-light"
+};
+var _hoisted_9 = {
+  "class": "container pt-3 text-center"
+};
+
+var _hoisted_10 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
+  "class": "row"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
+  "class": "col-lg-8 mx-auto"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("h2", {
+  "class": "display-7 mb-3"
+}, "LLENA TUS DATOS Y DA CLICK EN APARTAR")])], -1
+/* HOISTED */
+);
+
+var _hoisted_11 = {
+  "class": "row"
+};
+var _hoisted_12 = {
+  "class": "col-12 col-md-6"
+};
+var _hoisted_13 = {
+  "class": "form-label-group mb-4"
+};
+
+var _hoisted_14 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", {
+  "for": "textInputExample"
+}, "NÚMERO WHATSAPP (10 dígitos)", -1
+/* HOISTED */
+);
+
+var _hoisted_15 = {
+  "class": "col-12 col-md-6"
+};
+var _hoisted_16 = {
+  "class": "form-select-wrapper"
+};
+
+var _hoisted_17 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<option selected=\"\">Estado</option><option>Estados Unidos</option><option>Aguascalientes</option><option>Baja California</option><option>Baja California Sur</option><option>Campeche</option><option>Ciudad de México</option><option>Coahuila</option><option>Colima</option><option>Chiapas</option><option>Chihuahua</option><option>Durango</option><option>Estado de México</option><option>Guanajuato</option><option>Guerrero</option><option>Hidalgo</option><option>Jalisco</option><option>Michoacán</option><option>Morelos</option><option>Nayarit</option><option>Nuevo León</option><option>Oaxaca</option><option>Puebla</option><option>Querétaro</option><option>Quintana Roo</option><option>San Luis Potosí</option><option>Sinaloa</option><option>Sonora</option><option>Tabasco</option><option>Tamaulipas</option><option>Tlaxcala</option><option>Veracruz</option><option>Yucatán</option><option>Zacatecas</option>", 34);
+
+var _hoisted_51 = {
+  "class": "row"
+};
+var _hoisted_52 = {
+  "class": "col-12 col-md-6"
+};
+var _hoisted_53 = {
+  "class": "form-label-group mb-4"
+};
+
+var _hoisted_54 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", {
+  "for": "textInputExample2"
+}, "Nombre(s)", -1
+/* HOISTED */
+);
+
+var _hoisted_55 = {
+  "class": "col-12 col-md-6"
+};
+var _hoisted_56 = {
+  "class": "form-label-group mb-4"
+};
+
+var _hoisted_57 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", {
+  "for": "textInputExample3"
+}, "Apellidos", -1
+/* HOISTED */
+);
+
+var _hoisted_58 = {
+  "class": "row"
+};
+var _hoisted_59 = {
+  "class": "col-12 mx-auto text-center text-red"
+};
+
+var _hoisted_60 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
+  "class": "row"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
+  "class": "col-12 mx-auto text-center text-blue"
+}, " Al enviar confirmo que he leído y acepto las BASES DEL SORTEO "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
+  "class": "col-12 mx-auto text-center text-green"
+}, " ¡Al finalizar serás redirigido a whatsapp para enviar la información de tu boleto! ")], -1
+/* HOISTED */
+);
+
+var _hoisted_61 = {
+  "class": "row mt-3"
+};
+var _hoisted_62 = {
+  "class": "col-12 mx-auto text-center"
+};
+
+var _hoisted_63 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
+  "class": "row"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
+  "class": "col-12 mx-auto text-center text-red"
+}, " El boleto queda apartado por 72 hrs. ")], -1
+/* HOISTED */
+);
+
+var _hoisted_64 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("hr", {
+  "class": "my-3"
+}, null, -1
+/* HOISTED */
+);
+
+function render(_ctx, _cache, $props, $setup, $data, $options) {
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("section", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("h1", _hoisted_5, "BOLETO " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.ticket), 1
+  /* TEXT */
+  ), _hoisted_6, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("p", null, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($data.extra_tickets, function (extra_ticket, index) {
+    return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("span", {
+      "class": "ticket",
+      key: index
+    }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(extra_ticket), 1
+    /* TEXT */
+    );
+  }), 128
+  /* KEYED_FRAGMENT */
+  ))])])]), _hoisted_7])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("section", _hoisted_8, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_9, [_hoisted_10, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_11, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_12, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_13, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
+    id: "textInputExample",
+    onKeyup: _cache[1] || (_cache[1] = function () {
+      return $options.checkValueWhats && $options.checkValueWhats.apply($options, arguments);
+    }),
+    type: "number",
+    "class": "form-control",
+    placeholder: "NÚMERO WHATSAPP (10 dígitos)",
+    "onUpdate:modelValue": _cache[2] || (_cache[2] = function ($event) {
+      return $data.whatsapp = $event;
+    })
+  }, null, 544
+  /* HYDRATE_EVENTS, NEED_PATCH */
+  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.whatsapp, void 0, {
+    number: true
+  }]]), _hoisted_14])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_15, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_16, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("select", {
+    "class": "form-select",
+    "aria-label": "Default select example",
+    "onUpdate:modelValue": _cache[3] || (_cache[3] = function ($event) {
+      return $data.estado = $event;
+    })
+  }, [_hoisted_17], 512
+  /* NEED_PATCH */
+  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelSelect, $data.estado]])])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_51, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_52, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_53, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
+    id: "textInputExample2",
+    type: "text",
+    "class": "form-control",
+    placeholder: "Nombre(s)",
+    "onUpdate:modelValue": _cache[4] || (_cache[4] = function ($event) {
+      return $data.nombre = $event;
+    })
+  }, null, 512
+  /* NEED_PATCH */
+  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.nombre]]), _hoisted_54])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_55, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_56, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
+    id: "textInputExample3",
+    type: "text",
+    "class": "form-control",
+    placeholder: "Apellidos",
+    "onUpdate:modelValue": _cache[5] || (_cache[5] = function ($event) {
+      return $data.apellido = $event;
+    })
+  }, null, 512
+  /* NEED_PATCH */
+  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.apellido]]), _hoisted_57])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_58, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_59, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.message), 1
+  /* TEXT */
+  )]), _hoisted_60, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_61, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_62, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <a href=\"#\" class=\"btn btn-blue rounded-pill mb-2 me-1\">ESCOGER MÁS BOLETOS</a> "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("a", {
+    onClick: _cache[6] || (_cache[6] = function () {
+      return $options.submit && $options.submit.apply($options, arguments);
+    }),
+    href: "#",
+    "class": "btn btn-green rounded-pill mb-2 me-1"
+  }, "FINALIZAR Y APARTAR")])]), _hoisted_63, _hoisted_64])])]);
+}
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/carouselComponent.vue?vue&type=template&id=6fddde42":
 /*!***************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/carouselComponent.vue?vue&type=template&id=6fddde42 ***!
@@ -20215,6 +20527,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 /* harmony import */ var _components_carouselComponent__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/carouselComponent */ "./resources/js/components/carouselComponent.vue");
 /* harmony import */ var _components_TicketComponent__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/TicketComponent */ "./resources/js/components/TicketComponent.vue");
+/* harmony import */ var _components_buyTicketComponent__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/buyTicketComponent */ "./resources/js/components/buyTicketComponent.vue");
+
 
 
 
@@ -20226,9 +20540,11 @@ __webpack_require__(/*! alpinejs */ "./node_modules/alpinejs/dist/alpine.js");
 var app = (0,vue__WEBPACK_IMPORTED_MODULE_0__.createApp)({
   components: {
     CarouselComponent: _components_carouselComponent__WEBPACK_IMPORTED_MODULE_1__.default,
-    TicketComponent: _components_TicketComponent__WEBPACK_IMPORTED_MODULE_2__.default
+    TicketComponent: _components_TicketComponent__WEBPACK_IMPORTED_MODULE_2__.default,
+    buyTicketComponent: _components_buyTicketComponent__WEBPACK_IMPORTED_MODULE_3__.default
   }
-}).mount('#app');
+});
+app.mount('#app');
 
 /***/ }),
 
@@ -38117,6 +38433,32 @@ _TicketComponent_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__.defaul
 
 /***/ }),
 
+/***/ "./resources/js/components/buyTicketComponent.vue":
+/*!********************************************************!*\
+  !*** ./resources/js/components/buyTicketComponent.vue ***!
+  \********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _buyTicketComponent_vue_vue_type_template_id_13376bf6__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./buyTicketComponent.vue?vue&type=template&id=13376bf6 */ "./resources/js/components/buyTicketComponent.vue?vue&type=template&id=13376bf6");
+/* harmony import */ var _buyTicketComponent_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./buyTicketComponent.vue?vue&type=script&lang=js */ "./resources/js/components/buyTicketComponent.vue?vue&type=script&lang=js");
+
+
+
+_buyTicketComponent_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__.default.render = _buyTicketComponent_vue_vue_type_template_id_13376bf6__WEBPACK_IMPORTED_MODULE_0__.render
+/* hot reload */
+if (false) {}
+
+_buyTicketComponent_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__.default.__file = "resources/js/components/buyTicketComponent.vue"
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_buyTicketComponent_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__.default);
+
+/***/ }),
+
 /***/ "./resources/js/components/carouselComponent.vue":
 /*!*******************************************************!*\
   !*** ./resources/js/components/carouselComponent.vue ***!
@@ -38162,6 +38504,22 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/components/buyTicketComponent.vue?vue&type=script&lang=js":
+/*!********************************************************************************!*\
+  !*** ./resources/js/components/buyTicketComponent.vue?vue&type=script&lang=js ***!
+  \********************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_buyTicketComponent_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__.default)
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_buyTicketComponent_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./buyTicketComponent.vue?vue&type=script&lang=js */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/buyTicketComponent.vue?vue&type=script&lang=js");
+ 
+
+/***/ }),
+
 /***/ "./resources/js/components/carouselComponent.vue?vue&type=script&lang=js":
 /*!*******************************************************************************!*\
   !*** ./resources/js/components/carouselComponent.vue?vue&type=script&lang=js ***!
@@ -38190,6 +38548,22 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "render": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_TicketComponent_vue_vue_type_template_id_5b8c7b36__WEBPACK_IMPORTED_MODULE_0__.render)
 /* harmony export */ });
 /* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_TicketComponent_vue_vue_type_template_id_5b8c7b36__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./TicketComponent.vue?vue&type=template&id=5b8c7b36 */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/TicketComponent.vue?vue&type=template&id=5b8c7b36");
+
+
+/***/ }),
+
+/***/ "./resources/js/components/buyTicketComponent.vue?vue&type=template&id=13376bf6":
+/*!**************************************************************************************!*\
+  !*** ./resources/js/components/buyTicketComponent.vue?vue&type=template&id=13376bf6 ***!
+  \**************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_buyTicketComponent_vue_vue_type_template_id_13376bf6__WEBPACK_IMPORTED_MODULE_0__.render)
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_buyTicketComponent_vue_vue_type_template_id_13376bf6__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./buyTicketComponent.vue?vue&type=template&id=13376bf6 */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/buyTicketComponent.vue?vue&type=template&id=13376bf6");
 
 
 /***/ }),

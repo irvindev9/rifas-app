@@ -65,6 +65,9 @@ Route::post('comprar/rifa/{contest}/generar-boleto', [TicketBuyedController::cla
 
 Route::get('comprar/rifa/{contest}', [LandingController::class, 'buy_ticket'])->name('contest.lotto');
 
-Route::view('ticket/{lottery}/{ticket}', 'ticket-buyed.index');
+// Route::view('ticket/{lottery}/{ticket}', 'ticket-buyed.index');
+Route::get('ticket/{lottery}/{ticket}', [LandingController::class, 'buy_ticket_form'])->name('contest.lotto.ticket');
+Route::get('ticket/random', [LandingController::class, 'generate_other_tickets']);
+Route::post('save/ticket', [LandingController::class, 'save_ticket']);
 
 require __DIR__.'/auth.php';

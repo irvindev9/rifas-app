@@ -1,0 +1,197 @@
+<template>
+    <div>
+        <section class="wrapper bg-light">
+            <div class="container pt-10 pt-md-14 pb-0 text-center">
+                <div class="row">
+                    <div class="col-lg-8 mx-auto">
+                        <h1 class="display-6 mb-3">BOLETO {{ticket}}</h1>
+                        <h2 class="display-7 mb-3">INCLUYE:</h2>
+                        <p>
+                            <span class="ticket" v-for="(extra_ticket, index) in extra_tickets" :key="index">
+                                {{extra_ticket}}
+                            </span>
+                        </p>
+                    </div>
+                </div>
+                <hr class="my-3">
+            </div>
+        </section>
+
+        <section class="wrapper bg-light">
+            <div class="container pt-3 text-center">
+                <div class="row">
+                    <div class="col-lg-8 mx-auto">
+                        <h2 class="display-7 mb-3">LLENA TUS DATOS Y DA CLICK EN APARTAR</h2>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 col-md-6">
+                        <div class="form-label-group mb-4">
+                        <input id="textInputExample" v-on:keyup="checkValueWhats" type="number" class="form-control" placeholder="NÚMERO WHATSAPP (10 dígitos)" v-model.number="whatsapp">
+                        <label for="textInputExample">NÚMERO WHATSAPP (10 dígitos)</label>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6">
+                        <div class="form-select-wrapper">
+                        <select class="form-select" aria-label="Default select example" v-model="estado">
+                            <option selected="">Estado</option>
+                            <option>Estados Unidos</option>
+                            <option>Aguascalientes</option>
+                            <option>Baja California</option>
+                            <option>Baja California Sur</option>
+                            <option>Campeche</option>
+                            <option>Ciudad de México</option>
+                            <option>Coahuila</option>
+                            <option>Colima</option>
+                            <option>Chiapas</option>
+                            <option>Chihuahua</option>
+                            <option>Durango</option>
+                            <option>Estado de México</option>
+                            <option>Guanajuato</option>
+                            <option>Guerrero</option>
+                            <option>Hidalgo</option>
+                            <option>Jalisco</option>
+                            <option>Michoacán</option>
+                            <option>Morelos</option>
+                            <option>Nayarit</option>
+                            <option>Nuevo León</option>
+                            <option>Oaxaca</option>
+                            <option>Puebla</option>
+                            <option>Querétaro</option>
+                            <option>Quintana Roo</option>
+                            <option>San Luis Potosí</option>
+                            <option>Sinaloa</option>
+                            <option>Sonora</option>
+                            <option>Tabasco</option>
+                            <option>Tamaulipas</option>
+                            <option>Tlaxcala</option>
+                            <option>Veracruz</option>
+                            <option>Yucatán</option>
+                            <option>Zacatecas</option>
+                        </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 col-md-6">
+                        <div class="form-label-group mb-4">
+                        <input id="textInputExample2" type="text" class="form-control" placeholder="Nombre(s)" v-model="nombre">
+                        <label for="textInputExample2">Nombre(s)</label>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6">
+                        <div class="form-label-group mb-4">
+                        <input id="textInputExample3" type="text" class="form-control" placeholder="Apellidos" v-model="apellido">
+                        <label for="textInputExample3">Apellidos</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 mx-auto text-center text-red">
+                        {{message}}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 mx-auto text-center text-blue">
+                        Al enviar confirmo que he leído y acepto las BASES DEL SORTEO
+                    </div>
+                    <div class="col-12 mx-auto text-center text-green">
+                        ¡Al finalizar serás redirigido a whatsapp para enviar la información de tu boleto!
+                    </div>
+                </div>
+                <div class="row mt-3">
+                    <div class="col-12 mx-auto text-center">
+                        <!-- <a href="#" class="btn btn-blue rounded-pill mb-2 me-1">ESCOGER MÁS BOLETOS</a> -->
+                        <a v-on:click="submit" href="#" class="btn btn-green rounded-pill mb-2 me-1">FINALIZAR Y APARTAR</a>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 mx-auto text-center text-red">
+                        El boleto queda apartado por 72 hrs.
+                    </div>
+                </div>
+                <hr class="my-3">
+            </div>
+        </section>
+    </div>
+
+</template>
+
+<script>
+export default {
+    name: "BuyTicket",
+    data() {
+        return {
+            ticket : 0,
+            extra_tickets: [],
+            other_tickets : [],
+            other_extra_tickets: [],
+            whatsapp: '',
+            estado: 'Estado',
+            nombre: '',
+            apellido: '',
+            lottery: null,
+            message: ''
+        }
+    },
+    methods: {
+        checkValueWhats(){
+            if(this.whatsapp.toString().length > 10){
+                this.whatsapp = this.whatsapp.toString().slice(0,10)
+            }
+
+            if(this.whatsapp.toString().length > 10){
+                this.whatsapp = this.whatsapp.toString().slice(0,10)
+            }
+        },
+        submit(){
+            this.message = "";
+
+            if(this.whatsapp.toString().length == 10){
+                if(this.nombre.toString().length > 3){
+                    if(this.apellido.toString().length > 3){
+                        if(this.estado != "Estado"){
+                            axios.post('/save/ticket', {
+                                idLottery: this.lottery,
+                                ticket: this.ticket,
+                                extra_tickets: this.extra_tickets,
+                                whatsapp: this.whatsapp,
+                                nombre: this.nombre,
+                                apellido: this.apellido,
+                                estado: this.estado,
+                            }).then(response => {
+                                this.message = "Enviado con exito!";
+                                // Redirect
+                                setTimeout(() => {
+                                    window.location.replace(response.data);
+                                }, 3000);
+                            }).catch(err => {
+                                this.message = err.response.data;
+                            })
+                        }else{
+                            this.message = "Ingrese su estado";
+                        }
+                    }else{
+                        this.message = "Ingrese su apellido";
+                    }
+                }else{
+                    this.message = "Ingrese su nombre";
+                }
+            }else{
+                this.message = "Revise el formato del teléfono";
+            }
+        }
+    },
+    created(){
+        this.lottery = this.$attrs.lottery;
+        this.ticket = this.$attrs.ticket;
+
+        axios.get('/ticket/random', {id : this.lottery}).
+            then(response => {
+                this.extra_tickets = response.data
+            }).catch(error => {
+                alert("Tenemos problemas tecnicos, consulte al administrador.")
+            })
+    }
+}
+</script>
