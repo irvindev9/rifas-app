@@ -56,8 +56,8 @@ Route::post('/eliminarAjuste/{setting}', [SettingController::class, 'destroy'])-
 
 Route::get('aviso/{notice}', [NoticeController::class, 'show'])->name('notice');
 
-Route::get('comprar/rifa/{contest}/verificador', [TicketBuyedController::class, 'verificator'])->name('verificator');
-Route::post('comprar/rifa/{contest}/verificador', [TicketBuyedController::class, 'show'])->name('verificator.show');
+Route::get('comprar/rifa/{contest}/verificador', [LandingController::class, 'verificator'])->name('verificator');
+Route::post('comprar/rifa/{contest}/verificador', [LandingController::class, 'show'])->name('verificator.show');
 
 Route::get('comprar/rifa/{contest}/generar-boleto', [TicketBuyedController::class, 'generator'])->name('generator');
 Route::post('comprar/rifa/{contest}/generar-boleto', [TicketBuyedController::class, 'getTicket'])->name('generator.show');

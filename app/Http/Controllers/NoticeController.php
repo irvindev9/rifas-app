@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Setting;
 
 class NoticeController extends Controller
 {
@@ -43,9 +44,10 @@ class NoticeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($advice)
     {
         $notice = '<b>Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam ut veritatis quisquam alias illum blanditiis enim exercitationem explicabo voluptatibus laborum tempora maiores, praesentium incidunt quam tenetur dolor quidem rem assumenda? </b>';
+        $notice = Setting::where('code',$advice)->first()->content ?? '<p style="text-align:center">Ups! Algo esta mal, deberias <a href="/"> regresar </a></p>';
         return view('information-pages.notice')->with(compact(['notice']));
     }
 

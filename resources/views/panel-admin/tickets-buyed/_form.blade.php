@@ -8,7 +8,7 @@
     <div class="form-control" name="otherTickets" id="otherTickets" readonly>
         @foreach ($ticketBuyed->otherTicketsBuyed as $item)
             {{ $item->ticket }}
-        @endforeach  
+        @endforeach
     </div>
 </div>
 <div class="form-group p-1">
@@ -28,7 +28,7 @@
     <input type="text" class="form-control" name="state" value="{{ old('state', $ticketBuyed->state) }}" required>
 </div>
 <div class="form-group m-1 form-check ">
-    <label class="form-check-label" for="paid">Boleto Pagado</label>
+    <label class="form-check-label" for="ticketPaid">Boleto Pagado</label>
     @if ($ticketBuyed->paid == 1)
         <input type="checkbox" class="form-check-input" checked id="ticketPaid" name="paid">
     @else

@@ -9,7 +9,7 @@
             </div>
             <div class="navbar-collapse offcanvas-nav">
                 <div class="offcanvas-header d-lg-none d-xl-none">
-                    <a href="index.html"><img class="img-fluid-50" src="{{asset("img/rifasJr.png")}}" alt="logo" /></a>
+                    <a href="index.html"><img class="img-fluid-50" src="{{asset("img/rifasjuniorlogo.png")}}" alt="logo" /></a>
                     <button type="button" class="btn-close btn-close-white offcanvas-close offcanvas-nav-close"
                         aria-label="Close"></button>
                 </div>

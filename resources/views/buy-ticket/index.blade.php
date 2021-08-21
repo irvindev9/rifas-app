@@ -140,6 +140,17 @@
     </div>
 </section>
 
+<section class="wrapper bg-light">
+    <div class="container pt-2 pb-0 text-center">
+        <hr class="my-2">
+        <div class="row">
+            <div class="col-lg-8 mx-auto">
+                <a href="{{route('verificator', $lottery->id)}}" class="display-6 mb-3">CONSULTA DE BOLETOS COMPRADOS</a>
+            </div>
+        </div>
+    </div>
+</section>
+
 @include('home.contact-us')
 
 @include('home.notice-of-privacity')

@@ -2,7 +2,7 @@
     <x-auth-card>
         <x-slot name="logo">
             <a href="/">
-                <img class="w-50 h-20"  src="{{asset("img/rifasJr.png")}}" alt="logo" />
+                <img class="w-50 h-20"  src="{{asset("img/rifasjuniorlogo.png")}}" alt="logo" />
                 {{-- <label for="title" class="dropdown-item">Rifas Junior</label> --}}
             </a>
         </x-slot>

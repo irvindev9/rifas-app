@@ -20160,18 +20160,16 @@ var _hoisted_9 = {
 var _hoisted_10 = {
   "class": "lead fs-25 lh-sm mb-7 px-md-10 px-lg-0"
 };
-
-var _hoisted_11 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
+var _hoisted_11 = {
   "class": "d-flex justify-content-center justify-content-lg-start",
   "data-group": "page-title-buttons",
   "data-delay": "900"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("a", {
-  href: "/comprar/rifa/1",
-  "class": "btn btn-lg btn-success rounded-pill me-2"
-}, "Comprar boletos")]), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("a", {
+};
+
+var _hoisted_12 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("a", {
   href: "#preguntas",
   "class": "btn btn-lg btn-outline-success rounded-pill"
-}, "Más información")])], -1
+}, "Más información")], -1
 /* HOISTED */
 );
 
@@ -20191,7 +20189,12 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     /* TEXT */
     ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("p", _hoisted_10, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.lottery[index].prizes[0].prize), 1
     /* TEXT */
-    ), _hoisted_11])])], 512
+    ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_11, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("a", {
+      href: '/comprar/rifa/' + $data.lottery[index].id,
+      "class": "btn btn-lg btn-success rounded-pill me-2"
+    }, "Comprar boletos", 8
+    /* PROPS */
+    , ["href"])]), _hoisted_12])])])], 512
     /* NEED_PATCH */
     ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, index == $data.visible]])]);
   }), 128
