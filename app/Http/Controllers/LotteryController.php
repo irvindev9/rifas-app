@@ -54,7 +54,7 @@ class LotteryController extends Controller
             $path = $request->image->move(public_path('img/prizes'), $fileNameToStore);
         } else
         {
-            $fileNameToStore = 'noimage.jpg';
+            $fileNameToStore = 'noimage';
         }
 
         $lottery = new Lottery;
