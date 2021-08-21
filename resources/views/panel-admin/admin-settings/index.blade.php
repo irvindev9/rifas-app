@@ -32,7 +32,7 @@
                                             <tr>
                                                 <th scope="row">{{  $setting->id }}</th>
                                                 <td>{{ $setting->code }}</td>
-                                                <td>{{ $setting->content }}</td>                                      
+                                                <td>{!! $setting->content !!}</td>
                                                 <td>
                                                     <a class="btn btn-outline-secondary btn-sm btn-block mb-1" href="{{ route('settings.edit', $setting) }}" role="button">Editar</a>
                                                     <form method="POST" action="{{ route('settings.delete', $setting) }}" class="">
@@ -42,11 +42,11 @@
                                                 </td>
                                             </tr>
                                         @endforeach
-                                    </tbody>            
-                                </table>       
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
-                    </div>   
+                    </div>
                 </div>
             </div>
         </div>
