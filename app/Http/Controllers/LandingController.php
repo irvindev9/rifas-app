@@ -13,7 +13,11 @@ class LandingController extends Controller
 {
     public function index()
     {
-        return view('home.index');
+        $image = Lottery::where('active', 1)->first();
+
+        $image = isset($image) ? 'img/prizes/'.$image->image_lottery : 'img/silverado.jpg';
+
+        return view('home.index')->with(compact(['image']));
     }
 
     public function active(){

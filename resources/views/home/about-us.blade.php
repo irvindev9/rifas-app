@@ -6,7 +6,7 @@
                     style="top: -2rem; left: -1.9rem;"></div>
                 <div class="shape rounded bg-soft-primary rellax d-md-block" data-rellax-speed="0"
                     style="bottom: -1.8rem; right: -1.5rem; width: 85%; height: 90%; "></div>
-                <figure class="rounded"><img src="{{asset("img/corvette2.jpg")}}" alt="" /></figure>
+                <figure class="rounded"><img src="{{asset($image)}}" alt="" /></figure>
             </div>
             <div class="col-lg-5 col-xl-4 offset-lg-1 text-center">
                 <h2 class="h1 mb-3" id="nosotros">Nosotros</h2>
