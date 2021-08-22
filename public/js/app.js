@@ -19914,6 +19914,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
+
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: 'ticket-component',
   data: function data() {
@@ -19942,16 +19945,24 @@ __webpack_require__.r(__webpack_exports__);
       return (this.searchNumber + '').includes(number.toString());
     },
     checkValue: function checkValue() {
-      console.log(this.searchNumber.toString().length);
-
       if (this.searchNumber.toString().length > 4) {
         this.searchNumber = this.searchNumber.toString().slice(0, 4);
       }
     }
   },
   created: function created() {
+    var _this = this;
+
     this.numberTickets = parseInt(this.$attrs.numbertickets);
     this.idLotto = this.$attrs.idlotto;
+    console.log("ookok");
+    axios__WEBPACK_IMPORTED_MODULE_0___default().post('/get_ticket_buyed', {
+      lottery_id: this.idLotto
+    }).then(function (response) {
+      _this.buyedTickets = response.data;
+    })["catch"](function (err) {
+      console.log(err);
+    });
   }
 });
 

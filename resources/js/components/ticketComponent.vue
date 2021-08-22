@@ -21,6 +21,8 @@
 </template>
 
 <script>
+    import axios from 'axios';
+
     export default {
         name: 'ticket-component',
         data() {
@@ -54,6 +56,17 @@
         created(){
             this.numberTickets = parseInt(this.$attrs.numbertickets);
             this.idLotto = this.$attrs.idlotto;
+
+
+            console.log("ookok")
+
+            axios.post('/get_ticket_buyed', {
+                lottery_id : this.idLotto
+            }).then(response => {
+                this.buyedTickets = response.data
+            }).catch(err => {
+                console.log(err)
+            })
         }
     }
 

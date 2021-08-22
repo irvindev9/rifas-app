@@ -43,6 +43,14 @@ class LandingController extends Controller
         return view('buy-ticket.index')->with(compact(['lottery']));
     }
 
+    public function buyed_tickets(Request $request){
+        $get_ticket_buyed = TicketBuyed::where('lottery_id', $request->lottery_id)->get()->map(function($q){
+            return $q->ticket;
+        });
+
+        return Response($get_ticket_buyed);
+    }
+
     public function show($contest, Request $request)
     {
         $ticketBuyed = TicketBuyed::with(['otherTicketsBuyed'])->where('lottery_id', $contest)->where('ticket', $request['ticket'])->first();

@@ -70,4 +70,6 @@ Route::get('ticket/{lottery}/{ticket}', [LandingController::class, 'buy_ticket_f
 Route::get('ticket/random', [LandingController::class, 'generate_other_tickets']);
 Route::post('save/ticket', [LandingController::class, 'save_ticket']);
 
+Route::post('/get_ticket_buyed', [LandingController::class, 'buyed_tickets']);
+
 require __DIR__.'/auth.php';
