@@ -158,15 +158,15 @@ class LandingController extends Controller
 
         $whats = "https://wa.me/526561280886?text=";
 
-        $whats .= rawurlencode("Hola, aparte un boleto para la rifa:")."%21%21";
-        $whats .= rawurlencode($lottery->name)."%21%21";
-        $whats .= rawurlencode("_________________________________")."%21%21";
-        $whats .= rawurlencode("*Boleto*: ".$request->ticket." (".$tickets_extra_plain.")")."%21%21";
-        $whats .= rawurlencode("*Nombre*: ".$request->nombre." ".$request->apellido)."%21%21";
-        $whats .= rawurlencode("*Costo del boleto*: $".$lottery->price_ticket)."%21%21";
-        $whats .= rawurlencode("_________________________________")."%21%21";
-        $whats .= rawurlencode("Click aqui para ver formas de pago: www.rifasjunior.com/avisos/pagos")."%21%21";
-        $whats .= rawurlencode("El siguiente paso es enviar foto del comprobante de pago por aquí")."%21%21";
+        $whats .= rawurlencode("Hola, aparte un boleto para la rifa:\r\n");
+        $whats .= rawurlencode($lottery->name."\r\n");
+        $whats .= rawurlencode("_________________________________\r\n");
+        $whats .= rawurlencode("*Boleto*: ".$request->ticket." (".$tickets_extra_plain.")\r\n");
+        $whats .= rawurlencode("*Nombre*: ".$request->nombre." ".$request->apellido."\r\n");
+        $whats .= rawurlencode("*Costo del boleto*: $".$lottery->price_ticket."\r\n");
+        $whats .= rawurlencode("_________________________________\r\n");
+        $whats .= rawurlencode("Click aqui para ver formas de pago: www.rifasjunior.com/avisos/pagos\r\n");
+        $whats .= rawurlencode("El siguiente paso es enviar foto del comprobante de pago por aquí\r\n");
 
         return Response($whats);
 
