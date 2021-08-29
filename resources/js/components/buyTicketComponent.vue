@@ -194,7 +194,7 @@ export default {
                                 // Redirect
                                 setTimeout(() => {
                                     window.location.replace(response.data);
-                                }, 3000);
+                                }, 1000);
                             }).catch(err => {
                                 this.message = err.response.data;
                             })

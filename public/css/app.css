@@ -31376,6 +31376,7 @@ a.display-6{
 
 .ticket.filled {
   background-color: black;
+  color:grey;
 }
 
 .ticket a {
