@@ -1,7 +1,7 @@
 @isset ($ticketBuyed)
 <div class="row justify-content-center">
     <div class="col-12 col-md-6 col-lg-4">
-        <div class="rounded-0 border border-dark border-2">
+        <div class="rounded-0 border border-white border-2">
             <div class="text-center mt-2" style="border-bottom: dashed">
                 <img src="{{asset("img/rifasjuniorlogo.png")}}" class="w-11" alt="logo">
                 <h5>Rifas Jr</h5>

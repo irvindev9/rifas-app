@@ -2,6 +2,31 @@
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
 
+.content-wrapper, .navbar{
+    background-color: #000 !important;
+}
+
+.bg-light{
+    background-color: #000 !important;
+    color: #FFF !important;
+}
+
+li .nav-link{
+    color:#FFF !important;
+}
+
+a.display-6{
+    text-decoration: underline !important;
+}
+
+.display-1, .display-4, h4, h2, a p, p a, h2 a, a.display-8, h5 {
+    color: #60a943 !important;
+}
+
+.display-6, h3.display-7, h3 {
+    color: #FFF !important;
+}
+
 .img-fluid-50 {
     width: auto;
     height: 100px;
@@ -59,7 +84,7 @@
 }
 
 .bg-soft-primary {
-    background-color: #f1fdf4!important;
+    background-color: #222221!important;
 }
 
 .bg-dot.primary {

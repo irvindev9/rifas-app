@@ -1,5 +1,6 @@
 @isset ($ticketBuyed)
-    <table class="table table-striped">
+<div class="table-responsive">
+    <table class="table table-dark table-striped">
         <thead>
             <tr>
                 <th scope="col">No. Boleto</th>
@@ -33,6 +34,7 @@
             </tr>
         </tbody>
     </table>
+</div>
 @else
     <strong class="text-danger">Boleto no comprado</strong>
 @endif
