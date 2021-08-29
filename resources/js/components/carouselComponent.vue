@@ -12,7 +12,7 @@
                         <h1 class="display-1 mb-5">{{lottery[index].name}}</h1>
                         <p class="lead fs-25 lh-sm mb-7 px-md-10 px-lg-0">{{lottery[index].prizes[0].prize}}</p>
                         <div class="d-flex justify-content-center justify-content-lg-start" data-group="page-title-buttons" data-delay="900">
-                            <span><a :href="'/comprar/rifa/' + lottery[index].id" class="btn btn-lg btn-success rounded-pill me-2">Comprar boletos</a></span>
+                            <span><a :href="'/sorteo/' + lottery[index].id" class="btn btn-lg btn-success rounded-pill me-2">Comprar boletos</a></span>
                             <span><a href="#preguntas" class="btn btn-lg btn-outline-success rounded-pill">Más información</a></span>
                         </div>
                     </div>

@@ -12,6 +12,7 @@
         <option {{($lottery->quantity_tickets == 1000) ? 'selected' : '' }} value="1000">1000</option>
         <option {{($lottery->quantity_tickets == 2000) ? 'selected' : '' }} value="2000">2000</option>
         <option {{($lottery->quantity_tickets == 2500) ? 'selected' : '' }} value="2500">2500</option>
+        <option {{($lottery->quantity_tickets == 3333) ? 'selected' : '' }} value="3333">3333</option>
         <option {{($lottery->quantity_tickets == 5000) ? 'selected' : '' }} value="5000">5000</option>
         <option {{($lottery->quantity_tickets == 10000) ? 'selected' : '' }} value="10000">10000</option>
     </select>

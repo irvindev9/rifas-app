@@ -7,7 +7,7 @@
                         <h1 class="display-6 mb-3">BOLETO {{ticket}}</h1>
                         <h2 class="display-7 mb-3">INCLUYE:</h2>
                         <p>
-                            <span class="ticket" v-for="(extra_ticket, index) in extra_tickets" :key="index">
+                            <span class="ticket-extra" v-for="(extra_ticket, index) in extra_tickets" :key="index">
                                 {{extra_ticket}}
                             </span>
                         </p>

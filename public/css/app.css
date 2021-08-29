@@ -31422,6 +31422,18 @@ a.display-6{
   display: none!important;
 }
 
+.flipdown.flipdown__theme-dark .rotor-group-heading:before {
+  color: #FFF!important;
+}
+
+.ticket-extra {
+  color: white;
+  font-size: 20px;
+  font-weight: 400;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
 @media (min-width: 640px){
   .sm\:sr-only{
     position: absolute;
