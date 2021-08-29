@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Setting;
+use App\Models\Lottery;
 
 class NoticeController extends Controller
 {
@@ -46,9 +47,15 @@ class NoticeController extends Controller
      */
     public function show($advice)
     {
-        $notice = '<b>Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam ut veritatis quisquam alias illum blanditiis enim exercitationem explicabo voluptatibus laborum tempora maiores, praesentium incidunt quam tenetur dolor quidem rem assumenda? </b>';
         $notice = Setting::where('code',$advice)->first()->content ?? '<p style="text-align:center">Ups! Algo esta mal, deberias <a href="/"> regresar </a></p>';
         return view('information-pages.notice')->with(compact(['notice']));
+    }
+
+    public function show_lottery($id){
+
+        $notice = Lottery::find($id)->info ?? '<p style="text-align:center">Ups! Algo esta mal, deberias <a href="/"> regresar </a></p>';
+        return view('information-pages.notice')->with(compact(['notice']));
+
     }
 
     /**

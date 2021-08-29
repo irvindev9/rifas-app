@@ -106,6 +106,7 @@
             <div class="col-lg-8 mx-auto">
                 <h1 class="display-6 mb-3">COSTO DEL BOLETO ${{$lottery->price_ticket}}</h1>
                 <h2 class="display-7 mb-3">EMISIÓN {{$lottery->quantity_tickets}} BOLETOS</h2>
+                <a href="{{route("notice.lottery", $lottery->id)}}" class="display-8 mb-3">VER BASES DEL SORTEO</a>
             </div>
         </div>
     </div>

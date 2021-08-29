@@ -36,5 +36,9 @@
         <input type="checkbox" class="form-check-input" id="lotteryActive" name="active">
     @endif
 </div>
+<div class="form-group p-1">
+    <label for="info">Bases del sorteo</label>
+    <textarea class="form-control textarea" name="info" cols="30" rows="10" required>{{ old('info', $lottery->info) }}</textarea>
+</div>
 
 <button class="btn btn-outline-success float-right">{{ $btnText }}</button>

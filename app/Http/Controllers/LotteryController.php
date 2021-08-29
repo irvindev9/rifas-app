@@ -71,6 +71,7 @@ class LotteryController extends Controller
         $lottery->price_ticket = $validated['priceTicket'];
         $lottery->lastday_lottery = $request['date'];
         $lottery->image_lottery = $fileNameToStore;
+        $lottery->info = $request['info'];
         $lottery->active = isset($request['active']) ? 1 : 0;
 
         $lottery->save();
@@ -135,6 +136,7 @@ class LotteryController extends Controller
         $lottery->price_ticket = $validated['priceTicket'];
         $lottery->lastday_lottery = $request['date'];
         $lottery->image_lottery = $fileNameToStore;
+        $lottery->info = $request['info'];
         $lottery->active = isset($request['active']) ? 1 : 0;
 
         $lottery->save();

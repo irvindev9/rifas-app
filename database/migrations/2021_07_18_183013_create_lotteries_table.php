@@ -21,6 +21,7 @@ class CreateLotteriesTable extends Migration
             $table->date("lastday_lottery");
             $table->tinyInteger("active");
             $table->string("image_lottery")->nullable();
+            $table->longText("info")->nullable();
             $table->timestamps();
         });
     }

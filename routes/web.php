@@ -55,6 +55,7 @@ Route::post('/eliminarAjuste/{setting}', [SettingController::class, 'destroy'])-
 
 
 Route::get('aviso/{notice}', [NoticeController::class, 'show'])->name('notice');
+Route::get('bases/{notice}', [NoticeController::class, 'show_lottery'])->name('notice.lottery');
 
 Route::get('comprar/rifa/{contest}/verificador', [LandingController::class, 'verificator'])->name('verificator');
 Route::post('comprar/rifa/{contest}/verificador', [LandingController::class, 'show'])->name('verificator.show');

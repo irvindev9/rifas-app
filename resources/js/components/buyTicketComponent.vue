@@ -11,6 +11,7 @@
                                 {{extra_ticket}}
                             </span>
                         </p>
+                        <a :href="'/bases/' + lottery" class="display-8 mb-3">Bases del sorteo</a>
                     </div>
                 </div>
                 <hr class="my-3">
@@ -35,6 +36,7 @@
                         <div class="form-select-wrapper">
                         <select class="form-select" aria-label="Default select example" v-model="estado">
                             <option selected="">Estado</option>
+                            <option>Chihuahua</option>
                             <option>Estados Unidos</option>
                             <option>Aguascalientes</option>
                             <option>Baja California</option>
@@ -44,7 +46,6 @@
                             <option>Coahuila</option>
                             <option>Colima</option>
                             <option>Chiapas</option>
-                            <option>Chihuahua</option>
                             <option>Durango</option>
                             <option>Estado de México</option>
                             <option>Guanajuato</option>
@@ -73,16 +74,22 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-12 col-md-6">
+                    <div class="col-12 col-md-4">
                         <div class="form-label-group mb-4">
-                        <input id="textInputExample2" type="text" class="form-control" placeholder="Nombre(s)" v-model="nombre">
+                        <input id="textInputExample2" type="text" class="form-control" placeholder="Nombre(s)" v-model="nombre" v-on:keyup="upperCaseN()">
                         <label for="textInputExample2">Nombre(s)</label>
                         </div>
                     </div>
-                    <div class="col-12 col-md-6">
+                    <div class="col-12 col-md-4">
                         <div class="form-label-group mb-4">
-                        <input id="textInputExample3" type="text" class="form-control" placeholder="Apellidos" v-model="apellido">
-                        <label for="textInputExample3">Apellidos</label>
+                        <input id="textInputExample3" type="text" class="form-control" placeholder="Apellido Paterno" v-model="apellido" v-on:keyup="upperCaseA()">
+                        <label for="textInputExample3">Apellido Paterno</label>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-4">
+                        <div class="form-label-group mb-4">
+                        <input id="textInputExample4" type="text" class="form-control" placeholder="Apellido Materno" v-model="apellidoM" v-on:keyup="upperCaseAM()">
+                        <label for="textInputExample4">Apellido Materno</label>
                         </div>
                     </div>
                 </div>
@@ -130,6 +137,7 @@ export default {
             estado: 'Estado',
             nombre: '',
             apellido: '',
+            apellidoM: '',
             lottery: null,
             message: ''
         }
@@ -139,13 +147,34 @@ export default {
             if(this.whatsapp.toString().length > 10){
                 this.whatsapp = this.whatsapp.toString().slice(0,10)
             }
+        },
+        upperCaseN(){
+            this.nombre = this.nombre.toUpperCase()
 
-            if(this.whatsapp.toString().length > 10){
-                this.whatsapp = this.whatsapp.toString().slice(0,10)
+            if (/^[a-zA-Z]+$/.test(this.nombre)) {
+            } else {
+                this.nombre = this.nombre.toString().slice(0,(this.nombre.toString().length - 1))
+            }
+        },
+        upperCaseA(){
+            this.apellido = this.apellido.toUpperCase()
+
+            if (/^[a-zA-Z]+$/.test(this.apellido)) {
+            } else {
+                this.apellido = this.apellido.toString().slice(0,(this.apellido.toString().length - 1))
+            }
+        },
+        upperCaseAM(){
+            this.apellidoM = this.apellidoM.toUpperCase()
+
+            if (/^[a-zA-Z]+$/.test(this.apellidoM)) {
+            } else {
+                this.apellidoM = this.apellidoM.toString().slice(0,(this.apellidoM.toString().length - 1))
             }
         },
         submit(){
             this.message = "";
+            this.upperCaseN
 
             if(this.whatsapp.toString().length == 10){
                 if(this.nombre.toString().length > 3){
