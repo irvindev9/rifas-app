@@ -16,4 +16,5 @@ mix.js('resources/js/app.js', 'public/js').postCss('resources/css/app.css', 'pub
     require('tailwindcss'),
     require('autoprefixer'),
 ])
-.vue();
+.vue()
+.version();
