@@ -187,6 +187,7 @@ export default {
                                 whatsapp: this.whatsapp,
                                 nombre: this.nombre,
                                 apellido: this.apellido,
+                                apellidoM: this.apellidoM,
                                 estado: this.estado,
                             }).then(response => {
                                 this.message = "Enviado con exito!";

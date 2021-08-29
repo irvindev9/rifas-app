@@ -19,6 +19,7 @@ class CreateTicketsBuyedTable extends Migration
             $table->integer("ticket");
             $table->string("name_client")->nullable();
             $table->string("lastname_client")->nullable();
+            $table->string("lastname_M_client")->nullable();
             $table->string("whats_number")->nullable();
             $table->string("state")->nullable();
             $table->tinyInteger("paid")->default(0);

@@ -31392,6 +31392,10 @@
   color: #60a943 !important;
 }
 
+.banner--clonex {
+  display: none!important;
+}
+
 @media (min-width: 640px) {
   .sm\:sr-only {
     position: absolute;

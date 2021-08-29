@@ -16,8 +16,12 @@
     <input type="text" class="form-control" name="name" value="{{ old('name', $ticketBuyed->name_client) }}" required>
 </div>
 <div class="form-group p-1">
-    <label for="lastname">Apellido</label>
+    <label for="lastname">Apellido P</label>
     <input type="text" class="form-control" name="lastname" value="{{ old('lastname', $ticketBuyed->lastname_client) }}" required>
+</div>
+<div class="form-group p-1">
+    <label for="lastnameM">Apellido M</label>
+    <input type="text" class="form-control" name="lastnameM" value="{{ old('lastname', $ticketBuyed->lastname_M_client) }}" required>
 </div>
 <div class="form-group p-1">
     <label for="whats">Número de Whats</label>

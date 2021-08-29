@@ -20,7 +20,8 @@
                                             <th scope="col">No. Boleto</th>
                                             <th scope="col">Boletos extra</th>
                                             <th scope="col">Nombre</th>
-                                            <th scope="col">Apellido</th>
+                                            <th scope="col">Apellido P</th>
+                                            <th scope="col">Apellido M</th>
                                             <th scope="col">No. Whats</th>
                                             <th scope="col">Estado</th>
                                             <th scope="col">Estatus</th>
@@ -34,19 +35,20 @@
                                                 <th>
                                                     @foreach ($ticketBuyed->otherTicketsBuyed as $item)
                                                         {{ $item->ticket }}
-                                                    @endforeach                  
+                                                    @endforeach
                                                 </th>
-                                                <td>{{ $ticketBuyed->name_client }}</td>      
-                                                <td>{{ $ticketBuyed->lastname_client }}</td>                                      
-                                                <td>{{ $ticketBuyed->whats_number }}</td>                                      
-                                                <td>{{ $ticketBuyed->state }}</td>                                      
+                                                <td>{{ $ticketBuyed->name_client }}</td>
+                                                <td>{{ $ticketBuyed->lastname_client }}</td>
+                                                <td>{{ $ticketBuyed->lastname_M_client }}</td>
+                                                <td>{{ $ticketBuyed->whats_number }}</td>
+                                                <td>{{ $ticketBuyed->state }}</td>
                                                 <td>
                                                     @if($ticketBuyed->paid == 1)
-                                                        <strong class="text-success">Pagado</strong> 
+                                                        <strong class="text-success">Pagado</strong>
                                                     @else
-                                                        <strong class="text-danger">No pagado</strong>     
+                                                        <strong class="text-danger">No pagado</strong>
                                                     @endif
-                                                </td>                                      
+                                                </td>
                                                 <td>
                                                     <a class="btn btn-outline-secondary btn-sm btn-block mb-1" href="{{ route('ticketsBuyed.edit', $ticketBuyed) }}" role="button">Editar</a>
                                                     <form method="POST" action="{{ route('ticketsBuyed.delete', $ticketBuyed) }}" class="">
@@ -56,11 +58,11 @@
                                                 </td>
                                             </tr>
                                         @endforeach
-                                    </tbody>            
-                                </table>       
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
-                    </div>   
+                    </div>
                 </div>
             </div>
         </div>

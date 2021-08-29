@@ -98,6 +98,7 @@ class TicketBuyedController extends Controller
         $ticketBuyed->ticket = $validated['ticket'];
         $ticketBuyed->name_client = $validated['name'];
         $ticketBuyed->lastname_client = $validated['lastname'];
+        $ticketBuyed->lastname_M_client = $validated['lastnameM'];
         $ticketBuyed->whats_number = $validated['whats'];
         $ticketBuyed->state = $request['state'];
         $ticketBuyed->paid = isset($request['paid']) ? 1 : 0;

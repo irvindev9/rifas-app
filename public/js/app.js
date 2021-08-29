@@ -20040,6 +20040,7 @@ __webpack_require__.r(__webpack_exports__);
                 whatsapp: this.whatsapp,
                 nombre: this.nombre,
                 apellido: this.apellido,
+                apellidoM: this.apellidoM,
                 estado: this.estado
               }).then(function (response) {
                 _this.message = "Enviado con exito!"; // Redirect

@@ -69,3 +69,7 @@
 .icon-list.bullet-primary i {
     color: #60a943 !important;
 }
+
+.banner--clonex {
+    display: none!important;
+}

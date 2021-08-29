@@ -27,6 +27,7 @@ class TicketBuyedFactory extends Factory
             'ticket' => 1,
             'name_client' => "Juan",
             'lastname_client' => "Pérez",
+            'lastname_M_client' => "López",
             'whats_number' => "6562584893",
             'state' => "Chihuahua",
             'paid' => 0,
@@ -40,6 +41,6 @@ class TicketBuyedFactory extends Factory
      */
     public function unverified()
     {
-    
+
     }
 }

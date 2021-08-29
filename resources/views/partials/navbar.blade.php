@@ -1,5 +1,5 @@
 <header class="wrapper bg-light">
-    <nav class="navbar center-nav transparent navbar-expand-lg navbar-light" style="padding: 1rem;">
+    <nav class="navbar center-nav navbar-expand-lg navbar-light" style="padding: 1rem;">
         <div class="container flex-lg-row flex-nowrap align-items-center">
             <div class="navbar-brand w-100">
                 <a href="/">

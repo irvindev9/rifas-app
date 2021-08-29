@@ -141,6 +141,7 @@ class LandingController extends Controller
         $ticket->whats_number = $request->whatsapp;
         $ticket->name_client = $request->nombre;
         $ticket->lastname_client = $request->apellido;
+        $ticket->lastname_M_client = $request->apellidoM;
         $ticket->state = $request->estado;
         $ticket->paid = 0;
 
