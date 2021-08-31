@@ -66,6 +66,11 @@ a.display-6{
     }
 }
 
+.buy-ticket{
+    border-color: #60a943 !important;
+    font-size: large;
+}
+
 .btn-success {
     background-color: #60a943 !important;
     border-color: #222221 !important;
