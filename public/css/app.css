@@ -31445,6 +31445,11 @@ a.display-6{
   padding-right: 10px;
 }
 
+.titles {
+  background-color: #60a943;
+  color:black !important;
+}
+
 @media (min-width: 640px){
   .sm\:sr-only{
     position: absolute;
