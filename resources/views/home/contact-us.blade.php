@@ -1,8 +1,8 @@
 <section class="wrapper bg-light wrapper-border">
-    <div class="container py-14 py-md-16">
-        <div class="row">
+    <div class="container">
+        <h2 class="display-4 mb-5 text-center titles" id="contacto">CONTÁCTANOS</h2>
+        <div class="row py-7 py-md-8">
             <div class="col-lg-4">
-                <h2 class="fs-15 text-uppercase mb-3" id="contacto">CONTÁCTANOS</h2>
                 <h3 class="display-4 mb-9 pe-xl-15">Whatsapp: <br> (656) 128 0886</h3>
             </div>
             <div class="col-lg-8">
