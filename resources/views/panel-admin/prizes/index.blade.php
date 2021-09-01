@@ -17,33 +17,34 @@
                                 <div class="d-grid gap-2 d-md-flex justify-content-md-end p-3">
                                     <a class="btn btn-outline-primary btn-sm" href="{{ route('prizes.create', $lottery) }}">Crear nuevo Premio</a>
                                 </div>
-
-                                <table class="table">
-                                    <thead>
-                                        <tr>
-                                            <th scope="col">Id</th>
-                                            <th scope="col">Premio</th>
-                                            <th scope="col">Día de la rifa</th>
-                                            <th scope="col"></th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        @foreach ($prizes as $prize)
+                                <div class="table-responsive">
+                                    <table class="table">
+                                        <thead>
                                             <tr>
-                                                <th scope="row">{{  $prize->id }}</th>
-                                                <td>{{ $prize->prize }}</td>
-                                                <td>{{ $prize->date_lottery_prize }}</td>                                      
-                                                <td>
-                                                    <a class="btn btn-outline-secondary btn-sm btn-block mb-1" href="{{ route('prizes.edit', $prize) }}" role="button">Editar</a>
-                                                    <form method="POST" action="{{ route('prizes.delete', $prize ) }}" class="">
-                                                        @csrf
-                                                        <button class="btn btn-outline-danger btn-sm btn-block">Eliminar</button>
-                                                    </form>
-                                                </td>
+                                                <th scope="col">Id</th>
+                                                <th scope="col">Premio</th>
+                                                <th scope="col">Día de la rifa</th>
+                                                <th scope="col"></th>
                                             </tr>
-                                        @endforeach
-                                    </tbody>            
-                                </table>       
+                                        </thead>
+                                        <tbody>
+                                            @foreach ($prizes as $prize)
+                                                <tr>
+                                                    <th scope="row">{{  $prize->id }}</th>
+                                                    <td>{{ $prize->prize }}</td>
+                                                    <td>{{ $prize->date_lottery_prize }}</td>                                      
+                                                    <td>
+                                                        <a class="btn btn-outline-secondary btn-sm btn-block mb-1" href="{{ route('prizes.edit', $prize) }}" role="button">Editar</a>
+                                                        <form method="POST" action="{{ route('prizes.delete', $prize ) }}" class="">
+                                                            @csrf
+                                                            <button class="btn btn-outline-danger btn-sm btn-block">Eliminar</button>
+                                                        </form>
+                                                    </td>
+                                                </tr>
+                                            @endforeach
+                                        </tbody>            
+                                    </table>  
+                                </div>     
                             </div>
                         </div>
                     </div>   

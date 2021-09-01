@@ -1,11 +1,11 @@
 @isset ($ticketBuyed)
-    <div class="row justify-content-center">
-        <div class="col-12 col-md-6 col-lg-4">
-            <div class="rounded-0 border buyed-ticket border-2">
-                <div class="text-center mt-2" style="border-bottom: dashed">
-                    <img src="{{asset("img/rifasjuniorlogo.png")}}" class="w-11" alt="logo">
-                    <h5>Rifas Jr</h5>
-                </div>
+<div class="row justify-content-center">
+    <div class="col-12 col-md-6 col-lg-4">
+        <div class="rounded-0 border buy-ticket border-2">
+            <div class="text-center mt-2" style="border-bottom: dashed">
+                <img src="{{asset("img/rifasjuniorlogo.png")}}" class="w-11" alt="logo">
+                <h5>Rifas Jr</h5>
+            </div>
 
                 <div class="px-4 py-2 text-left text-uppercas" style="border-bottom: dashed">
                     <div>
