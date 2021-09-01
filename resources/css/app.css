@@ -121,3 +121,9 @@ a.display-6{
     padding-left: 10px;
     padding-right: 10px;
 }
+
+
+.titles {
+    background-color: #60a943;
+    color:black !important;
+}
