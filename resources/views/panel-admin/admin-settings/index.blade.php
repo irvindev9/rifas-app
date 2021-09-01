@@ -17,34 +17,35 @@
                                 <div class="d-grid gap-2 d-md-flex justify-content-md-end p-3">
                                     <a class="btn btn-outline-primary btn-sm" href="{{ route('settings.create') }}">Crear un nuevo ajuste</a>
                                 </div>
-
-                                <table class="table">
-                                    <thead>
-                                        <tr>
-                                            <th scope="col">Id</th>
-                                            <th scope="col">Tipo</th>
-                                            <th scope="col">Contenido</th>
-                                            <th scope="col"></th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        @foreach ($settings as $setting)
+                                <div class="table-responsive">
+                                    <table class="table">
+                                        <thead>
                                             <tr>
-                                                <th scope="row">{{  $setting->id }}</th>
-                                                <td>{{ $setting->code }}</td>
-                                                <td>{!! $setting->content !!}</td>
-                                                <td>
-                                                    <a class="btn btn-outline-secondary btn-sm btn-block mb-1" href="{{ route('settings.edit', $setting) }}" role="button">Editar</a>
-                                                    <a class="btn btn-outline-primary btn-sm btn-block mb-1" href="{{ route('notice', $setting->code) }}" role="button">Ver</a>
-                                                    <form method="POST" action="{{ route('settings.delete', $setting) }}" class="">
-                                                        @csrf
-                                                        <button class="btn btn-outline-danger btn-sm btn-block">Eliminar</button>
-                                                    </form>
-                                                </td>
+                                                <th scope="col">Id</th>
+                                                <th scope="col">Tipo</th>
+                                                <th scope="col">Contenido</th>
+                                                <th scope="col"></th>
                                             </tr>
-                                        @endforeach
-                                    </tbody>
-                                </table>
+                                        </thead>
+                                        <tbody>
+                                            @foreach ($settings as $setting)
+                                                <tr>
+                                                    <th scope="row">{{  $setting->id }}</th>
+                                                    <td>{{ $setting->code }}</td>
+                                                    <td>{!! $setting->content !!}</td>
+                                                    <td>
+                                                        <a class="btn btn-outline-secondary btn-sm btn-block mb-1" href="{{ route('settings.edit', $setting) }}" role="button">Editar</a>
+                                                        <a class="btn btn-outline-primary btn-sm btn-block mb-1" href="{{ route('notice', $setting->code) }}" role="button">Ver</a>
+                                                        <form method="POST" action="{{ route('settings.delete', $setting) }}" class="">
+                                                            @csrf
+                                                            <button class="btn btn-outline-danger btn-sm btn-block">Eliminar</button>
+                                                        </form>
+                                                    </td>
+                                                </tr>
+                                            @endforeach
+                                        </tbody>
+                                    </table>
+                                </div>
                             </div>
                         </div>
                     </div>

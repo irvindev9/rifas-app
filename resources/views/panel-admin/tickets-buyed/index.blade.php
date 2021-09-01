@@ -24,6 +24,7 @@
                                             <th scope="col">Apellido M</th>
                                             <th scope="col">No. Whats</th>
                                             <th scope="col">Estado</th>
+                                            <th scope="col">Fecha pagado</th>
                                             <th scope="col">Estatus</th>
                                             <th scope="col"></th>
                                         </tr>
@@ -31,10 +32,10 @@
                                     <tbody>
                                         @foreach ($ticketsBuyed as $ticketBuyed)
                                             <tr>
-                                                <th scope="row">{{ $ticketBuyed->ticket }}</th>
+                                                <th scope="row">{{ str_pad($ticketBuyed->ticket, 4, "0", STR_PAD_LEFT) }}</th>
                                                 <th>
                                                     @foreach ($ticketBuyed->otherTicketsBuyed as $item)
-                                                        {{ $item->ticket }}
+                                                        {{ str_pad($item->ticket, 4, "0", STR_PAD_LEFT) }}
                                                     @endforeach
                                                 </th>
                                                 <td>{{ $ticketBuyed->name_client }}</td>
@@ -42,6 +43,7 @@
                                                 <td>{{ $ticketBuyed->lastname_M_client }}</td>
                                                 <td>{{ $ticketBuyed->whats_number }}</td>
                                                 <td>{{ $ticketBuyed->state }}</td>
+                                                <td>{{ $ticketBuyed->date_buyed }}</td>
                                                 <td>
                                                     @if($ticketBuyed->paid == 1)
                                                         <strong class="text-success">Pagado</strong>

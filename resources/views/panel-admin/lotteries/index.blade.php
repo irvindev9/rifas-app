@@ -17,57 +17,58 @@
                                 <div class="d-grid gap-2 d-md-flex justify-content-md-end p-3">
                                     <a class="btn btn-outline-primary btn-sm" href="{{ route('lotteries.create') }}">Crear nueva rifa</a>
                                 </div>
-
-                                <table class="table">
-                                    <thead>
-                                        <tr>
-                                            <th scope="col">Id</th>
-                                            <th scope="col">Nombre de la rifa</th>
-                                            <th scope="col">Cantidad de boletos</th>
-                                            <th scope="col">Precio del boleto</th>
-                                            <th scope="col">Último día de la rifa</th>
-                                            <th scope="col">Rifa activa</th>
-                                            <th scope="col"></th>
-                                            <th scope="col"></th>
-                                            <th scope="col"></th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        @foreach ($lotteries as $lottery)
+                                <div class="table-responsive">
+                                    <table class="table">
+                                        <thead>
                                             <tr>
-                                                <th scope="row">{{  $lottery->id }}</th>
-                                                <td>{{ $lottery->name }}</td>
-                                                <td>{{ $lottery->quantity_tickets }}</td>
-                                                <td>{{ $lottery->price_ticket }}</td>
-                                                <td>{{ $lottery->lastday_lottery }}</td>
-                                                <td>
-                                                    @if($lottery->active == 1)
-                                                        <strong class="text-success">Activa</strong> 
-                                                    @else
-                                                        <strong class="text-danger">Desactivada</strong>     
-                                                    @endif
-                                                </td>                                         
-                                                <td>
-                                                    <a href="{{ route('prizes.index', $lottery) }}" class="link-info">Premios</a>
-                                                </td>
-                                                <td>
-                                                    <a href="{{ route('ticketsBuyed.index', $lottery) }}" class="link-info">
-                                                        Boletos <br>
-                                                        Comprados
-                                                    </a>
-                                                </td>
-                                                <td>
-                                                    <a class="btn btn-outline-secondary btn-sm btn-block mb-1" href="{{ route('lotteries.edit', $lottery) }}" role="button">Editar</a>
-
-                                                    <form method="POST" action="{{ route('lotteries.delete', $lottery ) }}" class="">
-                                                        @csrf
-                                                        <button class="btn btn-outline-danger btn-sm btn-block">Eliminar</button>
-                                                    </form>
-                                                </td>
+                                                <th scope="col">Id</th>
+                                                <th scope="col">Nombre de la rifa</th>
+                                                <th scope="col">Cantidad de boletos</th>
+                                                <th scope="col">Precio del boleto</th>
+                                                <th scope="col">Último día de la rifa</th>
+                                                <th scope="col">Rifa activa</th>
+                                                <th scope="col"></th>
+                                                <th scope="col"></th>
+                                                <th scope="col"></th>
                                             </tr>
-                                        @endforeach
-                                    </tbody>            
-                                </table>       
+                                        </thead>
+                                        <tbody>
+                                            @foreach ($lotteries as $lottery)
+                                                <tr>
+                                                    <th scope="row">{{  $lottery->id }}</th>
+                                                    <td>{{ $lottery->name }}</td>
+                                                    <td>{{ $lottery->quantity_tickets }}</td>
+                                                    <td>{{ $lottery->price_ticket }}</td>
+                                                    <td>{{ $lottery->lastday_lottery }}</td>
+                                                    <td>
+                                                        @if($lottery->active == 1)
+                                                            <strong class="text-success">Activa</strong> 
+                                                        @else
+                                                            <strong class="text-danger">Desactivada</strong>     
+                                                        @endif
+                                                    </td>                                         
+                                                    <td>
+                                                        <a href="{{ route('prizes.index', $lottery) }}" class="link-info">Premios</a>
+                                                    </td>
+                                                    <td>
+                                                        <a href="{{ route('ticketsBuyed.index', $lottery) }}" class="link-info">
+                                                            Boletos <br>
+                                                            Comprados
+                                                        </a>
+                                                    </td>
+                                                    <td>
+                                                        <a class="btn btn-outline-secondary btn-sm btn-block mb-1" href="{{ route('lotteries.edit', $lottery) }}" role="button">Editar</a>
+
+                                                        <form method="POST" action="{{ route('lotteries.delete', $lottery ) }}" class="">
+                                                            @csrf
+                                                            <button class="btn btn-outline-danger btn-sm btn-block">Eliminar</button>
+                                                        </form>
+                                                    </td>
+                                                </tr>
+                                            @endforeach
+                                        </tbody>            
+                                    </table>     
+                                </div>  
                             </div>
                         </div>
                     </div>   
