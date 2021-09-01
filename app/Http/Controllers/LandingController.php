@@ -98,7 +98,7 @@ class LandingController extends Controller
             $ok = true;
 
             while($ok){
-                $number = rand(($lottery->quantity_tickets + 1),10000);
+                $number = rand(($lottery->quantity_tickets + 1),9999);
 
                 if(!in_array($number, $otherTickets) && !in_array($number, $results)){
                     $results[$key] = $number;
@@ -167,11 +167,11 @@ class LandingController extends Controller
         $whats .= rawurlencode($lottery->name."\r\n");
         $whats .= rawurlencode("_________________________________\r\n");
         $whats .= rawurlencode("*Boleto*: ".$request->ticket." (".$tickets_extra_plain.")\r\n");
-        $whats .= rawurlencode("*Nombre*: ".$request->nombre." ".$request->apellido."\r\n");
+        $whats .= rawurlencode("*Nombre*: ".$request->nombre." ".$request->apellido." ".$request->apellidoM."\r\n");
         $whats .= rawurlencode("*Costo del boleto*: $".$lottery->price_ticket."\r\n");
         $whats .= rawurlencode("_________________________________\r\n");
         $whats .= rawurlencode("Click aqui para ver formas de pago: www.rifasjunior.com/avisos/pagos\r\n");
-        $whats .= rawurlencode("El siguiente paso es enviar foto del comprobante de pago por aquí\r\n");
+        $whats .= rawurlencode("El siguiente paso es enviar foto del comprobante de pago por este medio (whatsapp)\r\n");
 
         return Response($whats);
 

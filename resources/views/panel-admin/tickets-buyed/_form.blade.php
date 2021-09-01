@@ -39,5 +39,9 @@
         <input type="checkbox" class="form-check-input" id="ticketPaid" name="paid">
     @endif
 </div>
+<div class="form-group p-1">
+    <label for="date_buyed">Fecha y hora del pago</label>
+    <input type="datetime-local" class="form-control" name="date_buyed" value="{{ old('date_buyed', date('Y-m-d\TH:i', strtotime($ticketBuyed->date_buyed))) }}" required>
+</div>
 
 <button class="btn btn-outline-success float-right">{{ $btnText }}</button>
