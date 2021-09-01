@@ -153,6 +153,6 @@ class TicketBuyedController extends Controller
 
         $lottery = Lottery::find($contest);
 
-        return view('buy-ticket.ticket-generator', ['lottery' => $lottery, "showTicket" => true, "ticketBuyed" => $ticketBuyed]);
+        return view('buy-ticket.ticket-generator', ['lottery' => $lottery, "showTicket" => true, "ticketBuyed" => $ticketBuyed, "ticketAvailable" => $request['ticket'] ]);
     }
 }

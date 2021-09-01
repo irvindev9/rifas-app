@@ -31389,6 +31389,16 @@ a.display-6{
   }
 }
 
+.buyed-ticket{
+  border-color: #60a943 !important;
+  font-size: large !important;
+}
+
+.available-ticket{
+  color: #60a943 !important;
+  text-decoration: underline !important;
+}
+
 .btn-success {
   background-color: #60a943 !important;
   border-color: #222221 !important;

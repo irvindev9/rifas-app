@@ -68,7 +68,7 @@ class LandingController extends Controller
 
         $lottery = Lottery::find($contest);
 
-        return view('buy-ticket.verificator', ['lottery' => $lottery, "showTableVerificator" => true, "ticketBuyed" => $ticketBuyed]);
+        return view('buy-ticket.verificator', ['lottery' => $lottery, "showTableVerificator" => true, "ticketBuyed" => $ticketBuyed, "ticketAvailable" => $request['ticket'] ]);
     }
 
     public function verificator($contest)

@@ -36,5 +36,7 @@
     </table>
 </div>
 @else
-    <strong class="text-danger">Boleto no comprado</strong>
+    @isset ($ticketAvailable)
+        <a href="{{ route("contest.lotto.ticket", [$lottery, $ticketAvailable]) }}" class="available-ticket">Boleto {{ $ticketAvailable }} disponible</a>
+    @endif
 @endif
