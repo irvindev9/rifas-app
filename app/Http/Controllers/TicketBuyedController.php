@@ -119,6 +119,8 @@ class TicketBuyedController extends Controller
      */
     public function destroy(TicketBuyed $ticketBuyed)
     {
+
+        OtherTicketBuyed::where('ticket_buyed_id', $ticketBuyed->id)->delete();
         $ticketBuyed->delete();
 
         $lottery = Lottery::find($ticketBuyed->lottery_id);
