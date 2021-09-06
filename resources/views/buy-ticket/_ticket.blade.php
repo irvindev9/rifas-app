@@ -1,7 +1,7 @@
 @isset ($ticketBuyed)
-<div class="row justify-content-center">
+<div class="row justify-content-center mb-4">
     <div class="col-12 col-md-6 col-lg-4">
-        <div class="rounded-0 border buy-ticket border-2">
+        <div class="rounded-0 border border-green buy-ticket border-2">
             <div class="text-center mt-2" style="border-bottom: dashed">
                 <img src="{{asset("img/rifasjuniorlogo.png")}}" class="w-11" alt="logo">
                 <h5>Rifas Jr</h5>
@@ -55,7 +55,7 @@
                     </div>
                     <div>
                         <strong class="d-inline">Fecha compra: </strong>
-                        <p class="d-inline">{{ $ticketBuyed->created_at->format('d-m-Y') }}</p>
+                        <p class="d-inline">{!! $ticketBuyed->date_buyed ? date('Y-m-d H:i', strtotime($ticketBuyed->date_buyed)) : '<strong class="text-danger">No pagado</strong>' !!}</p>
                     </div>
                 </div>
                 @isset($lottery->image_lottery)

@@ -14,13 +14,20 @@
                     <div class="container">
                         <div class="row text-right my-2">
                             <div class="col-12 col-md-4">
-                                <a class="text-success" href="#!">Ver todos los boletos</a>
+                                <a class="text-success" href="/boletos/{{$lottery->id}}">Ver todos los boletos</a>
                             </div>
-                            <div class="col-12 col-4">
-                                <a class="text-danger" href="#!">Eliminar boletos no pagados</a>
+                            <div class="col-12 col-md-4">
+                                <a class="text-danger" href="#!" onclick="myFunction()">Eliminar boletos no pagados</a>
                             </div>
-                            <div class=" col-12 col-md-4">
-                                <a href="#!">Ver boletos NO pagados</a>
+                            <script>
+                                function myFunction() {
+                                    if (confirm("Seguro que desea eliminar todos los boletos no pagados?")) {
+                                        window.location.replace("/boletos/{{$lottery->id}}/delete");
+                                    }
+                                }
+                            </script>
+                            <div class="col-12 col-md-4">
+                                <a href="/boletos/{{$lottery->id}}?no_paid">Ver boletos NO pagados</a>
                             </div>
                         </div>
                         <div class="row justify-content-center">
@@ -64,6 +71,7 @@
                                                 </td>
                                                 <td>
                                                     <a class="btn btn-outline-secondary btn-sm btn-block mb-1" href="{{ route('ticketsBuyed.edit', $ticketBuyed) }}" role="button">Editar</a>
+                                                    <a class="btn btn-outline-info btn-sm btn-block mb-1" href="/comprar/rifa/{{$lottery->id}}/generar-boleto?ticket={{$ticketBuyed->ticket}}" role="button">Ticket</a>
                                                     <form method="POST" action="{{ route('ticketsBuyed.delete', $ticketBuyed) }}" class="">
                                                         @csrf
                                                         <button class="btn btn-outline-danger btn-sm btn-block">Eliminar</button>

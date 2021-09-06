@@ -31456,6 +31456,10 @@ a.display-6{
           text-decoration-line: underline!important;
 }
 
+.border-green {
+  border-color: #60a943!important;
+}
+
 @media (min-width: 640px){
   .sm\:sr-only{
     position: absolute;

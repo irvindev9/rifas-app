@@ -42,6 +42,7 @@ Route::post('/actualizarPremio/{prize}', [PrizeController::class, 'update'])->na
 Route::post('/eliminarPremio/{prize}', [PrizeController::class, 'destroy'])->name('prizes.delete');
 
 Route::get('/boletos/{lottery}', [TicketBuyedController::class, 'index'])->name('ticketsBuyed.index');
+Route::get('/boletos/{id}/delete', [TicketBuyedController::class, 'deleteAll'])->name('ticketsBuyed.delete');
 Route::get('/editarCompra/{ticketBuyed}', [TicketBuyedController::class, 'edit'])->name('ticketsBuyed.edit');
 Route::post('/actualizarCompra/{ticketBuyed}', [TicketBuyedController::class, 'update'])->name('ticketsBuyed.update');
 Route::post('/eliminarCompra/{ticketBuyed}', [TicketBuyedController::class, 'destroy'])->name('ticketsBuyed.delete');
@@ -60,8 +61,8 @@ Route::get('bases/{notice}', [NoticeController::class, 'show_lottery'])->name('n
 Route::get('comprar/rifa/{contest}/verificador', [LandingController::class, 'verificator'])->name('verificator');
 Route::post('comprar/rifa/{contest}/verificador', [LandingController::class, 'show'])->name('verificator.show');
 
-Route::get('comprar/rifa/{contest}/generar-boleto', [TicketBuyedController::class, 'generator'])->name('generator');
-Route::post('comprar/rifa/{contest}/generar-boleto', [TicketBuyedController::class, 'getTicket'])->name('generator.show');
+// Route::get('comprar/rifa/{contest}/generar-boleto', [TicketBuyedController::class, 'generator'])->name('generator');
+Route::get('comprar/rifa/{contest}/generar-boleto', [TicketBuyedController::class, 'getTicket'])->name('generator.show');
 
 
 Route::get('sorteo/{contest}', [LandingController::class, 'buy_ticket'])->name('contest.lotto');

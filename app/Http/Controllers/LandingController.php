@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Lottery;
+use App\Models\Setting;
 use App\Models\TicketBuyed;
 use App\Models\OtherTicketBuyed;
 use Illuminate\Support\Facades\DB;
@@ -11,6 +12,7 @@ use Illuminate\Support\Facades\DB;
 
 class LandingController extends Controller
 {
+
     public function index()
     {
         $image = Lottery::where('active', 1)->first();
@@ -86,7 +88,17 @@ class LandingController extends Controller
 
         $lottery = Lottery::find(1);
 
-        $number_of_tickets = 10000 / $lottery->quantity_tickets;
+        $number_of_tickets = 10000;
+
+        if($lottery->quantity_tickets == 100){
+            $number_of_tickets = 100;
+        }
+
+        if($lottery->quantity_tickets == 500){
+            $number_of_tickets = 1000;
+        }
+
+        $number_of_tickets = $number_of_tickets / $lottery->quantity_tickets;
 
         $results = array_fill(0, ($number_of_tickets - 1), 0);
 
@@ -98,7 +110,7 @@ class LandingController extends Controller
             $ok = true;
 
             while($ok){
-                $number = rand(($lottery->quantity_tickets + 1),9999);
+                $number = rand(($lottery->quantity_tickets + 1),($number_of_tickets-1));
 
                 if(!in_array($number, $otherTickets) && !in_array($number, $results)){
                     $results[$key] = $number;
@@ -161,7 +173,9 @@ class LandingController extends Controller
             $tickets_extra_plain .= $ticket_xtra.' ';
         }
 
-        $whats = "https://wa.me/526561280886?text=";
+        $whats_number = Setting::where('code', 'whatsapp_config')->first();
+
+        $whats = "https://wa.me/".strip_tags($whats_number->content)."?text=";
 
         $whats .= rawurlencode("Hola, aparte un boleto para la rifa:\r\n");
         $whats .= rawurlencode($lottery->name."\r\n");

@@ -21,7 +21,11 @@ class TicketBuyedController extends Controller
      */
     public function index(Lottery $lottery)
     {
-        $ticketsBuyed = TicketBuyed::with(['otherTicketsBuyed'])->where('lottery_id', $lottery->id)->get();
+        if(isset($_GET['no_paid'])){
+            $ticketsBuyed = TicketBuyed::with(['otherTicketsBuyed'])->where('lottery_id', $lottery->id)->where('paid', 0)->get(); 
+        }else{
+            $ticketsBuyed = TicketBuyed::with(['otherTicketsBuyed'])->where('lottery_id', $lottery->id)->get();
+        }
 
         return view('panel-admin.tickets-buyed.index', ['ticketsBuyed' => $ticketsBuyed, 'lottery' => $lottery]);
     }
@@ -73,7 +77,6 @@ class TicketBuyedController extends Controller
      */
     public function edit(TicketBuyed $ticketBuyed)
     {
-        //dd($ticketBuyed);
         $lottery = Lottery::find($ticketBuyed->lottery_id);
 
         return view('panel-admin.tickets-buyed.edit', ['ticketBuyed' => $ticketBuyed,'lottery' => $lottery]);
@@ -144,6 +147,7 @@ class TicketBuyedController extends Controller
 
     public function getTicket($contest, Request $request)
     {
+        // dd($request);
         $ticketBuyed = TicketBuyed::with(['otherTicketsBuyed'])->where('lottery_id', $contest)->where('ticket', $request['ticket'])->first();
 
         if(!isset($ticketBuyed)){
@@ -156,5 +160,19 @@ class TicketBuyedController extends Controller
         $lottery = Lottery::find($contest);
 
         return view('buy-ticket.ticket-generator', ['lottery' => $lottery, "showTicket" => true, "ticketBuyed" => $ticketBuyed, "ticketAvailable" => $request['ticket'] ]);
+    }
+
+    public function deleteAll($id){
+        $lottery = Lottery::with(['ticketsBuyed'])->find($id);
+
+        foreach($lottery->ticketsBuyed as $ticket){
+            if($ticket->paid == 0){
+                $get_other_tickets = OtherTicketBuyed::where('ticket_buyed_id',$ticket->id)->delete();
+
+                TicketBuyed::where('id', $ticket->id)->delete();
+            }
+        }
+
+        return redirect()->route('ticketsBuyed.index', $id);
     }
 }

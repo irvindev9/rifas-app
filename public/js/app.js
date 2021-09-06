@@ -20005,7 +20005,7 @@ __webpack_require__.r(__webpack_exports__);
     upperCaseN: function upperCaseN() {
       this.nombre = this.nombre.toUpperCase();
 
-      if (/^[a-zA-Z]+$/.test(this.nombre)) {} else {
+      if (/^[a-zA-Z\s]+$/.test(this.nombre)) {} else {
         this.nombre = this.nombre.toString().slice(0, this.nombre.toString().length - 1);
       }
     },

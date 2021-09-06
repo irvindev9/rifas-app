@@ -133,3 +133,7 @@ a.display-6{
 .underline {
     text-decoration-line: underline!important;
 }
+
+.border-green {
+    border-color: #60a943!important;
+}
