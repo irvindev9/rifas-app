@@ -31,6 +31,6 @@ class AppServiceProvider extends ServiceProvider
 
         View::share('whatsapp_number', $whatsapp_number);
         View::share('whatsapp', $whatsapp);
-        View::share('facebook', $facebook);
+        // View::share('facebook', $facebook);
     }
 }
