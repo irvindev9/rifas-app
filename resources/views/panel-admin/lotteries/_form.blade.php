@@ -23,7 +23,7 @@
 </div>
 <div class="form-group p-1">
     <label for="date">Último día de la rifa</label>
-    <input type="date" class="form-control" name="date" value="{{ old('date', $lottery->lastday_lottery) }}" required>
+    <input type="datetime-local" class="form-control" name="date" value="{{ old('date', date('Y-m-d\TH:i', strtotime($lottery->lastday_lottery))) }}" required>
 </div>
 <div class="form-group p-1">
     <label for="image">Imágen de la rifa</label>

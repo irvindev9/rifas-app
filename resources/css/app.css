@@ -39,15 +39,15 @@ a.display-6{
 .ticket {
     background-color: white;
     text-align: center;
-    width: 40px;
-    height: 25px;
+    width: 59px;
+    height: 32px;
     line-height: 25px;
     border-radius: 45%;
     border: 1px solid #60a943;
     display: inline-block;
     margin: 1px;
     padding: 1px;
-    font-size: 12px;
+    font-size: 16px;
     color:black;
     font-weight: bold;
 }
@@ -116,15 +116,20 @@ a.display-6{
 }
 
 .ticket-extra {
-    color: white;
+    color: white!important;
     font-size: 20px;
     font-weight: 400;
     padding-left: 10px;
     padding-right: 10px;
+    display: inline-block;
 }
 
 
 .titles {
     background-color: #60a943;
     color:black !important;
+}
+
+.underline {
+    text-decoration-line: underline!important;
 }

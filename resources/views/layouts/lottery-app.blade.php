@@ -28,7 +28,6 @@
     <link rel="preload" href="{{asset('css/font/dm.css')}}" as="style" onload="this.rel='stylesheet'">
     <link href="{{asset('css/flipdown.min.css')}}" rel="stylesheet">
     <link rel="stylesheet" href="{{mix('css/app.css')}}">
-
 </head>
 
 <body>
@@ -46,10 +45,19 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
     </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous"></script>
+    <script>
+        // Doing this in a loaded JS file is better, I put this here for simplicity
+        $().ready(function(){
+            $('.nav-link').click(function(){
+                $('.btn-close').click();
+            })
+        });
+    </script>
     <script src="{{asset('js/plugins.js')}}"></script>
     <script src="{{asset('js/theme.js')}}"></script>
 
     <script src="{{asset('js/flipdown.min.js')}}"></script>
+    
 </body>
 
 </html>

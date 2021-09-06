@@ -12,6 +12,17 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
                     <div class="container">
+                        <div class="row text-right my-2">
+                            <div class="col-12 col-md-4">
+                                <a class="text-success" href="#!">Ver todos los boletos</a>
+                            </div>
+                            <div class="col-12 col-4">
+                                <a class="text-danger" href="#!">Eliminar boletos no pagados</a>
+                            </div>
+                            <div class=" col-12 col-md-4">
+                                <a href="#!">Ver boletos NO pagados</a>
+                            </div>
+                        </div>
                         <div class="row justify-content-center">
                             <div class="col-md-12">
                                 <table class="table">

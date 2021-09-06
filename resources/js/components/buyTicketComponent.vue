@@ -7,11 +7,10 @@
                         <h1 class="display-6 mb-3">BOLETO {{ticket}}</h1>
                         <h2 class="display-7 mb-3">INCLUYE:</h2>
                         <p>
-                            <span class="ticket-extra" v-for="(extra_ticket, index) in extra_tickets" :key="index">
+                            <a class="ticket-extra" v-for="(extra_ticket, index) in extra_tickets" :key="index">
                                 {{extra_ticket}}
-                            </span>
+                            </a>
                         </p>
-                        <a :href="'/bases/' + lottery" class="display-8 mb-3">Bases del sorteo</a>
                     </div>
                 </div>
                 <hr class="my-3">
@@ -100,7 +99,7 @@
                 </div>
                 <div class="row">
                     <div class="col-12 mx-auto text-center text-blue">
-                        Al enviar confirmo que he leído y acepto las BASES DEL SORTEO
+                        Al enviar confirmo que he leído y acepto las <a class="underline" :href="'/bases/' + lottery">BASES DEL SORTEO</a>
                     </div>
                     <div class="col-12 mx-auto text-center text-green">
                         ¡Al finalizar serás redirigido a whatsapp para enviar la información de tu boleto!
