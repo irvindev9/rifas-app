@@ -20,10 +20,31 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
         <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
         <script src="{{asset('js/trumbowyg.min.js')}}"></script>
+        <script src="{{asset('js/trumbowyg.base64.js')}}"></script>
+        <script src="{{asset('js/trumbowyg.colors.js')}}"></script>
+        {{-- <script src="{{asset('js/trumbowyg.emoji.js')}}"></script> --}}
         <script>
             // Doing this in a loaded JS file is better, I put this here for simplicity
             $().ready(function(){
-                $('.textarea').trumbowyg();
+                $('.textarea').trumbowyg({
+                    btns: [
+                        ['viewHTML'],
+                        ['undo', 'redo'], // Only supported in Blink browsers
+                        ['formatting'],
+                        ['strong', 'em', 'del'],
+                        ['superscript', 'subscript'],
+                        ['link'],
+                        ['insertImage'],
+                        ['justifyLeft', 'justifyCenter', 'justifyRight', 'justifyFull'],
+                        ['unorderedList', 'orderedList'],
+                        ['horizontalRule'],
+                        ['removeformat'],
+                        ['fullscreen'],
+                        // ['emoji'],
+                        ['foreColor', 'backColor'],
+                        ['base64'],
+                    ]
+                });
             });
         </script>
     </head>
