@@ -27,8 +27,10 @@ class AppServiceProvider extends ServiceProvider
     {
         $whatsapp_number = strip_tags(Setting::where('code', 'whatsapp')->first()->content);
         $whatsapp = strip_tags(Setting::where('code', 'whatsapp_config')->first()->content);
+        $facebook = strip_tags(Setting::where('code', 'facebook')->first()->content);
 
         View::share('whatsapp_number', $whatsapp_number);
         View::share('whatsapp', $whatsapp);
+        View::share('facebook', $facebook);
     }
 }

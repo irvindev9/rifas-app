@@ -138,7 +138,7 @@
                 <!--/column -->
                 <div class="col-md-6">
                     <div class="fb-page"
-                        data-href="https://www.facebook.com/facebook"
+                        data-href="{{$facebook}}"
                         data-width="380"
                         data-hide-cover="false"
                         data-show-facepile="false">

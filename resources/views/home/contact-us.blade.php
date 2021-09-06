@@ -7,7 +7,7 @@
             </div>
             <div class="col-lg-8">
                 <div class="row align-items-center counter-wrapper gy-6 text-center">
-                    <a href="https://www.facebook.com/Rifas-Junior-101616582225867/" class="col-md-3">
+                    <a href="{{$facebook}}" class="col-md-3">
                         <img src="{{asset('img/facebookico.png')}}" class="svg-inject icon-svg icon-svg-lg text-primary mb-3" alt="" />
                         <p>Facebook</p>
                     </a>
@@ -16,7 +16,7 @@
                         <p>Whatsapp</p>
                     </a>
                     <div class="col-md-6">
-                        <div class="fb-page" data-href="https://www.facebook.com/Rifas-Junior-101616582225867/" data-width="300" data-hide-cover="false"  data-show-facepile="false">
+                        <div class="fb-page" data-href="{{$facebook}}" data-width="300" data-hide-cover="false"  data-show-facepile="false">
                         </div>
                     </div>
                 </div>
