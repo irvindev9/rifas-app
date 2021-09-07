@@ -6,6 +6,9 @@ use App\Models\TicketBuyed;
 use App\Models\OtherTicketBuyed;
 use App\Models\Lottery;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
+use Maatwebsite\Excel\Concerns\FromQuery;
+use App\Exports\TicketBuyedExport;
 
 class TicketBuyedController extends Controller
 {
@@ -154,5 +157,10 @@ class TicketBuyedController extends Controller
         $lottery = Lottery::find($contest);
 
         return view('buy-ticket.ticket-generator', ['lottery' => $lottery, "showTicket" => true, "ticketBuyed" => $ticketBuyed, "ticketAvailable" => $request['ticket'] ]);
+    }
+
+    public function fileExport($lotteryId)
+    {
+        return Excel::download(new TicketBuyedExport($lotteryId), 'boletos-comprados.xlsx');
     }
 }
