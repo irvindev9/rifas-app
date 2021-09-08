@@ -30,6 +30,9 @@
                                 <a href="/boletos/{{$lottery->id}}?no_paid">Ver boletos NO pagados</a>
                             </div>
                         </div>
+                        <div class="d-grid gap-2 d-md-flex justify-content-md-end p-3">
+                            <a class="btn btn-outline-success btn-sm" href="{{ route('ticketsBuyed.fileExport', $lottery->id) }}">Boletos Excel</a>
+                        </div>
                         <div class="row justify-content-center">
                             <div class="col-md-12">
                                 <table class="table">
