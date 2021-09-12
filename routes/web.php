@@ -54,6 +54,8 @@ Route::get('/editarAjuste/{setting}', [SettingController::class, 'edit'])->name(
 Route::post('/actualizarAjuste/{setting}', [SettingController::class, 'update'])->name('settings.update');
 Route::post('/eliminarAjuste/{setting}', [SettingController::class, 'destroy'])->name('settings.delete');
 
+Route::get('/boletos/file-export/{lotteryId}', [TicketBuyedController::class, 'fileExport'])->name('ticketsBuyed.fileExport');
+
 
 Route::get('aviso/{notice}', [NoticeController::class, 'show'])->name('notice');
 Route::get('bases/{notice}', [NoticeController::class, 'show_lottery'])->name('notice.lottery');

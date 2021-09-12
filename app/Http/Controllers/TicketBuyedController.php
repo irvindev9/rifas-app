@@ -6,6 +6,9 @@ use App\Models\TicketBuyed;
 use App\Models\OtherTicketBuyed;
 use App\Models\Lottery;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
+use Maatwebsite\Excel\Concerns\FromQuery;
+use App\Exports\TicketBuyedExport;
 
 class TicketBuyedController extends Controller
 {
@@ -22,7 +25,7 @@ class TicketBuyedController extends Controller
     public function index(Lottery $lottery)
     {
         if(isset($_GET['no_paid'])){
-            $ticketsBuyed = TicketBuyed::with(['otherTicketsBuyed'])->where('lottery_id', $lottery->id)->where('paid', 0)->get(); 
+            $ticketsBuyed = TicketBuyed::with(['otherTicketsBuyed'])->where('lottery_id', $lottery->id)->where('paid', 0)->get();
         }else{
             $ticketsBuyed = TicketBuyed::with(['otherTicketsBuyed'])->where('lottery_id', $lottery->id)->get();
         }
@@ -174,5 +177,10 @@ class TicketBuyedController extends Controller
         }
 
         return redirect()->route('ticketsBuyed.index', $id);
+    }
+
+    public function fileExport($lotteryId)
+    {
+        return Excel::download(new TicketBuyedExport($lotteryId), 'boletos-comprados.xlsx');
     }
 }
