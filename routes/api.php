@@ -20,3 +20,4 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::get("active/lotto", [LandingController::class, 'active']);
+Route::post("checkTicket", [LandingController::class, 'checkAvailability']);

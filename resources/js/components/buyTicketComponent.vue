@@ -107,9 +107,33 @@
                 </div>
                 <div class="row mt-3">
                     <div class="col-12 mx-auto text-center">
-                        <!-- <a href="#" class="btn btn-blue rounded-pill mb-2 me-1">ESCOGER MÁS BOLETOS</a> -->
+                        <button :disabled="!validateForm" @click="extraTicket = !extraTicket" class="btn btn-blue rounded-pill mb-2 me-1">ESCOGER MÁS BOLETOS</button>
                         <a v-on:click="submit" href="#" class="btn btn-green rounded-pill mb-2 me-1">FINALIZAR Y APARTAR</a>
                     </div>
+                </div>
+                <hr class="my-3">
+                <div class="row justify-content-center my-5" v-if="extraTicket">
+                    <div class="col-12 col-md-4">
+                        <div class="form-label-group mb-4">
+                            <input id="textInputExample5" class="form-control" placeholder="Buscar" v-model="searchTicket" type="number">
+                            <label for="textInputExample5">Buscar</label>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-2">
+                        <a v-on:click="checkTicket" href="#!" class="btn btn-blue rounded-pill mb-2 me-1">{{buscandoText}}</a>
+                    </div>
+                    <div class="col-12 mt-2" v-if="standBy.length > 0">
+                        <a v-on:click="addextraTickets" href="#!" class="btn btn-green rounded-pill mb-2 me-1">Boleto disponible, click para agregar!</a>
+                    </div>
+                    <div class="col-12 mt-2" v-if="available">
+                        <a href="#!" class="text-red mb-2 me-1 mx-auto text-center">No disponible, intenta con otro!</a>
+                    </div>
+                </div>
+                <div class="row" v-if="other_tickets.length > 0">
+                    <p>Mis otras oportunidades:</p>
+                    <p v-for="(otherT, index) in other_tickets" :key="index">
+                        {{otherT}} (<a style="margin-left:3px;margin-right:3px;" v-for="(tiket, index) in other_extra_tickets[otherT]" :key="index">{{tiket}}</a>)
+                    </p>
                 </div>
                 <div class="row">
                     <div class="col-12 mx-auto text-center text-red">
@@ -131,17 +155,60 @@ export default {
             ticket : 0,
             extra_tickets: [],
             other_tickets : [],
-            other_extra_tickets: [],
+            other_extra_tickets: {},
             whatsapp: '',
             estado: 'Estado',
             nombre: '',
             apellido: '',
             apellidoM: '',
             lottery: null,
-            message: ''
+            message: '',
+            extraTicket: false,
+            searchTicket: null,
+            buscandoText: 'BUSCAR',
+            standBy: [],
+            available: false
+        }
+    },
+    computed: {
+        validateForm(){
+            if(this.whatsapp.toString().length == 10){
+                if(this.nombre.toString().length > 3){
+                    if(this.apellido.toString().length > 3){
+                        if(this.estado != "Estado"){
+                            return true
+                        }
+                    }
+                }
+            }
+
+            return false
         }
     },
     methods: {
+        checkTicket(){
+            if(this.ticket != this.searchTicket && !this.other_tickets.includes(this.searchTicket))
+                axios.post('/api/checkTicket',{
+                    idLottery: this.lottery,
+                    ticket: this.searchTicket
+                })
+                .then(res => {
+                    this.standBy = res.data
+                    this.available = false
+                })
+                .catch(err => {
+                    console.log(err)
+                    this.standBy = []
+                    this.available = true
+                })
+        },
+        addextraTickets(){
+            this.other_tickets.push(this.searchTicket)
+            this.other_extra_tickets[this.searchTicket] = this.standBy;
+
+            this.standBy = []
+            this.searchTicket = null
+        },
         checkValueWhats(){
             if(this.whatsapp.toString().length > 10){
                 this.whatsapp = this.whatsapp.toString().slice(0,10)
@@ -188,6 +255,8 @@ export default {
                                 apellido: this.apellido,
                                 apellidoM: this.apellidoM,
                                 estado: this.estado,
+                                other_tickets: this.other_tickets,
+                                other_extra_tickets: this.other_extra_tickets,
                             }).then(response => {
                                 this.message = "Enviado con exito!";
                                 // Redirect
@@ -215,7 +284,7 @@ export default {
         this.lottery = this.$attrs.lottery;
         this.ticket = this.$attrs.ticket;
 
-        axios.get('/ticket/random', {id : this.lottery}).
+        axios.get('/ticket/random/'+this.$attrs.lottery).
             then(response => {
                 this.extra_tickets = response.data
             }).catch(error => {

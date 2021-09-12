@@ -19986,17 +19986,58 @@ __webpack_require__.r(__webpack_exports__);
       ticket: 0,
       extra_tickets: [],
       other_tickets: [],
-      other_extra_tickets: [],
+      other_extra_tickets: {},
       whatsapp: '',
       estado: 'Estado',
       nombre: '',
       apellido: '',
       apellidoM: '',
       lottery: null,
-      message: ''
+      message: '',
+      extraTicket: false,
+      searchTicket: null,
+      buscandoText: 'BUSCAR',
+      standBy: [],
+      available: false
     };
   },
+  computed: {
+    validateForm: function validateForm() {
+      if (this.whatsapp.toString().length == 10) {
+        if (this.nombre.toString().length > 3) {
+          if (this.apellido.toString().length > 3) {
+            if (this.estado != "Estado") {
+              return true;
+            }
+          }
+        }
+      }
+
+      return false;
+    }
+  },
   methods: {
+    checkTicket: function checkTicket() {
+      var _this = this;
+
+      if (this.ticket != this.searchTicket && !this.other_tickets.includes(this.searchTicket)) axios.post('/api/checkTicket', {
+        idLottery: this.lottery,
+        ticket: this.searchTicket
+      }).then(function (res) {
+        _this.standBy = res.data;
+        _this.available = false;
+      })["catch"](function (err) {
+        console.log(err);
+        _this.standBy = [];
+        _this.available = true;
+      });
+    },
+    addextraTickets: function addextraTickets() {
+      this.other_tickets.push(this.searchTicket);
+      this.other_extra_tickets[this.searchTicket] = this.standBy;
+      this.standBy = [];
+      this.searchTicket = null;
+    },
     checkValueWhats: function checkValueWhats() {
       if (this.whatsapp.toString().length > 10) {
         this.whatsapp = this.whatsapp.toString().slice(0, 10);
@@ -20024,7 +20065,7 @@ __webpack_require__.r(__webpack_exports__);
       }
     },
     submit: function submit() {
-      var _this = this;
+      var _this2 = this;
 
       this.message = "";
       this.upperCaseN;
@@ -20041,15 +20082,17 @@ __webpack_require__.r(__webpack_exports__);
                 nombre: this.nombre,
                 apellido: this.apellido,
                 apellidoM: this.apellidoM,
-                estado: this.estado
+                estado: this.estado,
+                other_tickets: this.other_tickets,
+                other_extra_tickets: this.other_extra_tickets
               }).then(function (response) {
-                _this.message = "Enviado con exito!"; // Redirect
+                _this2.message = "Enviado con exito!"; // Redirect
 
                 setTimeout(function () {
                   window.location.replace(response.data);
                 }, 1000);
               })["catch"](function (err) {
-                _this.message = err.response.data;
+                _this2.message = err.response.data;
               });
             } else {
               this.message = "Ingrese su estado";
@@ -20066,14 +20109,12 @@ __webpack_require__.r(__webpack_exports__);
     }
   },
   created: function created() {
-    var _this2 = this;
+    var _this3 = this;
 
     this.lottery = this.$attrs.lottery;
     this.ticket = this.$attrs.ticket;
-    axios.get('/ticket/random', {
-      id: this.lottery
-    }).then(function (response) {
-      _this2.extra_tickets = response.data;
+    axios.get('/ticket/random/' + this.$attrs.lottery).then(function (response) {
+      _this3.extra_tickets = response.data;
     })["catch"](function (error) {
       alert("Tenemos problemas tecnicos, consulte al administrador.");
     });
@@ -20374,7 +20415,60 @@ var _hoisted_68 = {
   "class": "col-12 mx-auto text-center"
 };
 
-var _hoisted_69 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
+var _hoisted_69 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("hr", {
+  "class": "my-3"
+}, null, -1
+/* HOISTED */
+);
+
+var _hoisted_70 = {
+  key: 0,
+  "class": "row justify-content-center my-5"
+};
+var _hoisted_71 = {
+  "class": "col-12 col-md-4"
+};
+var _hoisted_72 = {
+  "class": "form-label-group mb-4"
+};
+
+var _hoisted_73 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", {
+  "for": "textInputExample5"
+}, "Buscar", -1
+/* HOISTED */
+);
+
+var _hoisted_74 = {
+  "class": "col-12 col-md-2"
+};
+var _hoisted_75 = {
+  key: 0,
+  "class": "col-12 mt-2"
+};
+var _hoisted_76 = {
+  key: 1,
+  "class": "col-12 mt-2"
+};
+
+var _hoisted_77 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("a", {
+  href: "#!",
+  "class": "text-red mb-2 me-1 mx-auto text-center"
+}, "No disponible, intenta con otro!", -1
+/* HOISTED */
+);
+
+var _hoisted_78 = {
+  key: 1,
+  "class": "row"
+};
+
+var _hoisted_79 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("p", null, "Mis otras oportunidades:", -1
+/* HOISTED */
+);
+
+var _hoisted_80 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(") ");
+
+var _hoisted_81 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
   "class": "row"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
   "class": "col-12 mx-auto text-center text-red"
@@ -20382,7 +20476,7 @@ var _hoisted_69 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(
 /* HOISTED */
 );
 
-var _hoisted_70 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("hr", {
+var _hoisted_82 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("hr", {
   "class": "my-3"
 }, null, -1
 /* HOISTED */
@@ -20469,13 +20563,65 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     href: '/bases/' + $data.lottery
   }, "BASES DEL SORTEO", 8
   /* PROPS */
-  , ["href"])]), _hoisted_66]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_67, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_68, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <a href=\"#\" class=\"btn btn-blue rounded-pill mb-2 me-1\">ESCOGER MÁS BOLETOS</a> "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("a", {
-    onClick: _cache[10] || (_cache[10] = function () {
+  , ["href"])]), _hoisted_66]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_67, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_68, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("button", {
+    disabled: !$options.validateForm,
+    onClick: _cache[10] || (_cache[10] = function ($event) {
+      return $data.extraTicket = !$data.extraTicket;
+    }),
+    "class": "btn btn-blue rounded-pill mb-2 me-1"
+  }, "ESCOGER MÁS BOLETOS", 8
+  /* PROPS */
+  , ["disabled"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("a", {
+    onClick: _cache[11] || (_cache[11] = function () {
       return $options.submit && $options.submit.apply($options, arguments);
     }),
     href: "#",
     "class": "btn btn-green rounded-pill mb-2 me-1"
-  }, "FINALIZAR Y APARTAR")])]), _hoisted_69, _hoisted_70])])]);
+  }, "FINALIZAR Y APARTAR")])]), _hoisted_69, $data.extraTicket ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", _hoisted_70, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_71, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_72, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
+    id: "textInputExample5",
+    "class": "form-control",
+    placeholder: "Buscar",
+    "onUpdate:modelValue": _cache[12] || (_cache[12] = function ($event) {
+      return $data.searchTicket = $event;
+    }),
+    type: "number"
+  }, null, 512
+  /* NEED_PATCH */
+  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.searchTicket]]), _hoisted_73])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_74, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("a", {
+    onClick: _cache[13] || (_cache[13] = function () {
+      return $options.checkTicket && $options.checkTicket.apply($options, arguments);
+    }),
+    href: "#!",
+    "class": "btn btn-blue rounded-pill mb-2 me-1"
+  }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.buscandoText), 1
+  /* TEXT */
+  )]), $data.standBy.length > 0 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", _hoisted_75, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("a", {
+    onClick: _cache[14] || (_cache[14] = function () {
+      return $options.addextraTickets && $options.addextraTickets.apply($options, arguments);
+    }),
+    href: "#!",
+    "class": "btn btn-green rounded-pill mb-2 me-1"
+  }, "Boleto disponible, click para agregar!")])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $data.available ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", _hoisted_76, [_hoisted_77])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $data.other_tickets.length > 0 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", _hoisted_78, [_hoisted_79, ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($data.other_tickets, function (otherT, index) {
+    return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("p", {
+      key: index
+    }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)((0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(otherT) + " (", 1
+    /* TEXT */
+    ), ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($data.other_extra_tickets[otherT], function (tiket, index) {
+      return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("a", {
+        style: {
+          "margin-left": "3px",
+          "margin-right": "3px"
+        },
+        key: index
+      }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(tiket), 1
+      /* TEXT */
+      );
+    }), 128
+    /* KEYED_FRAGMENT */
+    )), _hoisted_80]);
+  }), 128
+  /* KEYED_FRAGMENT */
+  ))])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), _hoisted_81, _hoisted_82])])]);
 }
 
 /***/ }),
