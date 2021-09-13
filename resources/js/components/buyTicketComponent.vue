@@ -165,6 +165,7 @@ export default {
             message: '',
             extraTicket: false,
             searchTicket: null,
+            info_lottery: null,
             buscandoText: 'BUSCAR',
             standBy: [],
             available: false
@@ -203,6 +204,11 @@ export default {
                 })
         },
         addextraTickets(){
+            if(this.standBy[0] <= this.info_lottery.quantity_tickets){
+                const tmp = this.standBy[0]
+                this.standBy[0] = this.searchTicket
+                this.searchTicket = tmp
+            }
             this.other_tickets.push(this.searchTicket)
             this.other_extra_tickets[this.searchTicket] = this.standBy;
 
@@ -284,9 +290,32 @@ export default {
         this.lottery = this.$attrs.lottery;
         this.ticket = this.$attrs.ticket;
 
-        axios.get('/ticket/random/'+this.$attrs.lottery).
+        
+
+        axios.get('/get/lottery/'+this.$attrs.lottery).
             then(response => {
-                this.extra_tickets = response.data
+                this.info_lottery = response.data
+
+                if(this.$attrs.ticket > this.info_lottery.quantity_tickets){
+                    axios.get('/ticket/random/'+this.$attrs.lottery+'/1').
+                        then(response => {
+                            const tmp = this.ticket
+                            this.extra_tickets = response.data
+                            this.ticket = this.extra_tickets[0]
+                            this.extra_tickets[0] = tmp
+                        }).catch(error => {
+                            alert("Tenemos problemas tecnicos, consulte al administrador.")
+                        })
+                }else{
+                    axios.get('/ticket/random/'+this.$attrs.lottery).
+                        then(response => {
+                            this.extra_tickets = response.data
+                        }).catch(error => {
+                            alert("Tenemos problemas tecnicos, consulte al administrador.")
+                        })
+                }
+
+                
             }).catch(error => {
                 alert("Tenemos problemas tecnicos, consulte al administrador.")
             })

@@ -32,6 +32,20 @@ class LandingController extends Controller
     }
 
     public function checkAvailability(Request $request){
+        $lottery = Lottery::find($request->idLottery);
+
+        if($lottery->quantity_tickets == 100){
+            $number_of_tickets = 100;
+        } else if($lottery->quantity_tickets == 500){
+            $number_of_tickets = 1000;
+        } else {
+            $number_of_tickets = 10000;
+        }
+
+        if($request->ticket > $number_of_tickets){
+            return Response("Fuera del limite!", 401);
+        }
+
         $exist = TicketBuyed::where('lottery_id', $request->idLottery)->where('ticket', $request->ticket)->first();
 
         if(isset($exist)){
@@ -42,6 +56,10 @@ class LandingController extends Controller
 
         if(isset($other)){
             return Response("Alguien tiene apartado el boleto, intenta con otro!", 401);
+        }
+
+        if($request->ticket > $lottery->quantity_tickets){
+            return $this->generate_other_tickets($request->idLottery, 1);
         }
 
         return $this->generate_other_tickets($request->idLottery);
@@ -100,20 +118,20 @@ class LandingController extends Controller
         return view('ticket-buyed.index')->with(compact(['lottery', 'ticket']));
     }
 
-    public function generate_other_tickets($id){
+    public function generate_other_tickets($id, $reserve_ticket = null){
         $lottery = Lottery::find($id);
 
-        $number_of_tickets = 10000;
+        $total_tickets = 10000;
 
         if($lottery->quantity_tickets == 100){
-            $number_of_tickets = 100;
+            $total_tickets = 100;
         }
 
         if($lottery->quantity_tickets == 500){
-            $number_of_tickets = 1000;
+            $total_tickets = 1000;
         }
 
-        $number_of_tickets = $number_of_tickets / $lottery->quantity_tickets;
+        $number_of_tickets = $total_tickets / $lottery->quantity_tickets;
 
         $results = array_fill(0, ($number_of_tickets - 1), 0);
 
@@ -125,7 +143,9 @@ class LandingController extends Controller
             $ok = true;
 
             while($ok){
-                $number = rand(($lottery->quantity_tickets + 1),($number_of_tickets-1));
+                $number = rand(($lottery->quantity_tickets + 1),($total_tickets-1));
+
+                // dd($total_tickets-1);
 
                 if(!in_array($number, $otherTickets) && !in_array($number, $results)){
                     $results[$key] = $number;
@@ -134,7 +154,38 @@ class LandingController extends Controller
             }
         }
 
+        if(isset($reserve_ticket)){
+
+            $buyedTickets = TicketBuyed::where("lottery_id", $lottery->id)->get()->map(function ($q) {
+                return $q->ticket;
+            })->toArray();
+
+            if(count($buyedTickets) >= $lottery->quantity_tickets){
+                return Response("Fuera del limite!", 401);
+            } else {
+                $ok = true;
+
+                while($ok){
+                    $number = rand(1, ($lottery->quantity_tickets));
+
+                    if(!in_array($number, $buyedTickets)){
+                        $ok = false;
+                    }
+                }
+            }
+
+            $existOther = TicketBuyed::where("lottery_id", $lottery->id)->where("ticket", $number)->first();
+
+            if(!isset($existOther)){
+                $results[0] = $number;
+            }
+        }
+
         return Response($results);
+    }
+
+    public function get_ticket_info($id){
+        return Response(Lottery::find($id));
     }
 
     public function save_ticket(Request $request){
