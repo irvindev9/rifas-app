@@ -32,6 +32,22 @@
 
       <section class="wrapper bg-light wrapper-border">
         <div class="container py-14 py-md-16">
+            <div class="row gy-10 gy-sm-13 gx-lg-3 align-items-center">
+
+                <!--/column -->
+                <div class="col-lg-5 col-xl-4  text-center">
+                    <h2 class="h1 mb-3" id="nosotros">Lista de Sorteos</h2>
+
+                </div>
+                <!--/column -->
+            </div>
+            <!--/.row -->
+        </div>
+        <!-- /.container -->
+      </section>
+
+      <section class="wrapper bg-light wrapper-border">
+        <div class="container py-14 py-md-16">
             <h2 class="display-4 mb-5 text-center" id="preguntas">PREGUNTAS FRECUENTES</h2>
                 <div class="row gx-md-8 gx-xl-12 gy-10">
                     <div class="col-lg-6">

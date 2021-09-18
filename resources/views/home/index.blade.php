@@ -4,6 +4,8 @@
 
     <carousel-component></carousel-component>
 
+    @include('home.awards')
+
     @include('home.faqs')
 
     @include('home.about-us')

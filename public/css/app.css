@@ -31460,6 +31460,21 @@ a.display-6{
   border-color: #60a943!important;
 }
 
+.card-award {
+  width: 18rem;
+  background-color: #000;
+  border: solid 1px #60a943!important;
+  border-radius: 55px;
+  padding: 0 !important;
+}
+
+.card-award-label {
+  background-color: #60a943;
+  color:black !important;
+  border-bottom-left-radius: 50px;
+  border-bottom-right-radius: 50px;
+}
+
 @media (min-width: 640px){
   .sm\:sr-only{
     position: absolute;
@@ -187404,4 +187419,3 @@ a.display-6{
     transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   }
 }
-
