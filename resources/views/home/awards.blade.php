@@ -12,9 +12,10 @@
                                     <p class="text-center m-0">¡PREMIO ENTREGADO!</p>
                                 </div>                               
                                 <img src="{{asset("img/prizes/2A-ENTREGA-AUTOS-3_1631490671.jpeg")}}" class="" alt="Premio entragado">                       
-                                <p class="card-award-label text-center fw-bold">SIERRA DENALI 2021</p>
+                                <p class="card-award-label text-center fw-bold">NISSAN SENTRA DEL AÑO</p>
                             </div>
                         </div>
+                        <p class="text-center m-0">MI PRUEBA DE RIFA</p>
                     </div>
                     <div class="item">
                         <div class="card card-award">
@@ -24,9 +25,10 @@
                                     <p class="text-center m-0">¡PREMIO ENTREGADO!</p>
                                 </div>                               
                                 <img src="{{asset("img/prizes/2A-ENTREGA-AUTOS-3_1631490671.jpeg")}}" class="" alt="Premio entragado">                       
-                                <p class="card-award-label text-center fw-bold">SIERRA DENALI 2021</p>
+                                <p class="card-award-label text-center fw-bold">NISSAN SENTRA DEL AÑO</p>
                             </div>
                         </div>
+                        <p class="text-center m-0">MI PRUEBA DE RIFA</p>
                     </div>
                     <div class="item">
                         <div class="card card-award">
@@ -36,9 +38,10 @@
                                     <p class="text-center m-0">¡PREMIO ENTREGADO!</p>
                                 </div>                               
                                 <img src="{{asset("img/prizes/2A-ENTREGA-AUTOS-3_1631490671.jpeg")}}" class="" alt="Premio entragado">                       
-                                <p class="card-award-label text-center fw-bold">SIERRA DENALI 2021</p>
+                                <p class="card-award-label text-center fw-bold">NISSAN SENTRA DEL AÑO</p>
                             </div>
                         </div>
+                        <p class="text-center m-0">MI PRUEBA DE RIFA</p>
                     </div>
                     <div class="item">
                         <div class="card card-award">
@@ -48,9 +51,10 @@
                                     <p class="text-center m-0">¡PREMIO ENTREGADO!</p>
                                 </div>                               
                                 <img src="{{asset("img/prizes/2A-ENTREGA-AUTOS-3_1631490671.jpeg")}}" class="" alt="Premio entragado">                       
-                                <p class="card-award-label text-center fw-bold">SIERRA DENALI 2021</p>
+                                <p class="card-award-label text-center fw-bold">NISSAN SENTRA DEL AÑO</p>
                             </div>
                         </div>
+                        <p class="text-center m-0">MI PRUEBA DE RIFA</p>
                     </div>
                     <div class="item">
                         <div class="card card-award">
@@ -60,9 +64,23 @@
                                     <p class="text-center m-0">¡PREMIO ENTREGADO!</p>
                                 </div>                               
                                 <img src="{{asset("img/prizes/2A-ENTREGA-AUTOS-3_1631490671.jpeg")}}" class="" alt="Premio entragado">                       
-                                <p class="card-award-label text-center fw-bold">SIERRA DENALI 2021</p>
+                                <p class="card-award-label text-center fw-bold">NISSAN SENTRA DEL AÑO</p>
                             </div>
                         </div>
+                        <p class="text-center m-0">MI PRUEBA DE RIFA</p>
+                    </div>
+                    <div class="item">
+                        <div class="card card-award">
+                            <div class="card-body p-0">
+                                <div class="row justify-content-center my-1">
+                                    <img src="{{asset("img/rifasjuniorlogo.png")}}" class="w-15" alt="logo">
+                                    <p class="text-center m-0">¡PREMIO ENTREGADO!</p>
+                                </div>                               
+                                <img src="{{asset("img/prizes/2A-ENTREGA-AUTOS-3_1631490671.jpeg")}}" class="" alt="Premio entragado">                       
+                                <p class="card-award-label text-center fw-bold">NISSAN SENTRA DEL AÑO</p>
+                            </div>
+                        </div>
+                        <p class="text-center m-0">MI PRUEBA DE RIFA</p>
                     </div>
                 </div>
             </div>
