@@ -15,7 +15,7 @@
                 >                                
                     @foreach ($awards as $award)
                         <div class="item">
-                            <div class="card card-award">
+                            <div class="card card-award mx-auto">
                                 <div class="card-body p-0">
                                     <div class="row justify-content-center my-1">
                                         <img src="{{asset("img/rifasjuniorlogo.png")}}" class="w-15" alt="logo">

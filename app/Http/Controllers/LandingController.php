@@ -33,7 +33,7 @@ class LandingController extends Controller
 
         $image = isset($image) ? 'img/prizes/'.$image->image_lottery : 'img/silverado.jpg';
 
-        return view('home.index', ['awards' => $awards])->with(compact(['image']));
+        return view('home.index')->with(compact(['image', 'awards']));
     }
 
     public function active(){
