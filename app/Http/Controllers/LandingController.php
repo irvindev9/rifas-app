@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Collection;
 use App\Models\Lottery;
+use App\Models\Prize;
 use App\Models\Setting;
 use App\Models\TicketBuyed;
 use App\Models\OtherTicketBuyed;
@@ -17,9 +19,21 @@ class LandingController extends Controller
     {
         $image = Lottery::where('active', 1)->first();
 
+        $lotteries = Lottery::where('active', 0)->where('award_img','<>', null)->get();
+        $awards = new Collection();
+        foreach($lotteries as $lottery){
+            $awards->push(
+                Lottery::select('prizes.prize', 'lotteries.name', 'lotteries.award_img')
+                ->join('prizes', 'lotteries.id', '=', 'prizes.lottery_id')
+                ->where('prizes.lottery_id', $lottery->id)
+                ->orderBy('prizes.id')
+                ->first()
+            );
+        }
+
         $image = isset($image) ? 'img/prizes/'.$image->image_lottery : 'img/silverado.jpg';
 
-        return view('home.index')->with(compact(['image']));
+        return view('home.index')->with(compact(['image', 'awards']));
     }
 
     public function active(){

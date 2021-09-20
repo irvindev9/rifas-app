@@ -34,7 +34,7 @@
                             <a class="btn btn-outline-success btn-sm" href="{{ route('ticketsBuyed.fileExport', $lottery->id) }}">Boletos Excel</a>
                         </div>
                         <div class="row justify-content-center">
-                            <div class="col-md-12">
+                            <div class="col-md-12 table-responsive">
                                 <table class="table">
                                     <thead>
                                         <tr>

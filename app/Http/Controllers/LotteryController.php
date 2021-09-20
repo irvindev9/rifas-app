@@ -57,6 +57,19 @@ class LotteryController extends Controller
             $fileNameToStore = 'noimage';
         }
 
+        if ($request->hasFile('awardImage'))
+        {
+            $filenameWithExt = $request->file('awardImage')->getClientOriginalName ();
+            $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+            $extension = $request->file('awardImage')->getClientOriginalExtension();
+            $fileNameAwardImage = $filename.'_'. time().'.'.$extension;
+
+            $path = $request->awardImage->move(public_path('img/prizes'), $fileNameAwardImage);
+        } else
+        {
+            $fileNameAwardImage = $lottery->award_img;
+        }
+
         $lottery = new Lottery;
 
         $validated = $request->validate([
@@ -72,6 +85,7 @@ class LotteryController extends Controller
         $lottery->lastday_lottery = $request['date'];
         $lottery->image_lottery = $fileNameToStore;
         $lottery->info = $request['info'];
+        $lottery->award_img = $fileNameAwardImage;
         $lottery->active = isset($request['active']) ? 1 : 0;
 
         $lottery->save();
@@ -110,7 +124,6 @@ class LotteryController extends Controller
      */
     public function update(Request $request, Lottery $lottery)
     {
-
         if ($request->hasFile('image'))
         {
             $filenameWithExt = $request->file('image')->getClientOriginalName ();
@@ -122,6 +135,19 @@ class LotteryController extends Controller
         } else
         {
             $fileNameToStore = $lottery->image_lottery;
+        }
+
+        if ($request->hasFile('awardImage'))
+        {
+            $filenameWithExt = $request->file('awardImage')->getClientOriginalName ();
+            $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+            $extension = $request->file('awardImage')->getClientOriginalExtension();
+            $fileNameAwardImage = $filename.'_'. time().'.'.$extension;
+
+            $path = $request->awardImage->move(public_path('img/prizes'), $fileNameAwardImage);
+        } else
+        {
+            $fileNameAwardImage = $lottery->award_img;
         }
 
         $validated = $request->validate([
@@ -137,6 +163,7 @@ class LotteryController extends Controller
         $lottery->lastday_lottery = $request['date'];
         $lottery->image_lottery = $fileNameToStore;
         $lottery->info = $request['info'];
+        $lottery->award_img = $fileNameAwardImage;
         $lottery->active = isset($request['active']) ? 1 : 0;
 
         $lottery->save();
