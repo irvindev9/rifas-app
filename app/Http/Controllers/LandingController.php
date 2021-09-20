@@ -240,8 +240,11 @@ class LandingController extends Controller
             $tickets_extra_plain .= $ticket_xtra.' ';
         }
 
-        $tickets_plain .= rawurlencode("*Boleto*: ".$ticket->id." (".$tickets_extra_plain.")\r\n");
-        
+        $tickets_plain .= rawurlencode("🏷️Boleto: ".$ticket->id."\r\n");
+        $tickets_plain .= rawurlencode("Oportunidades: ".$ticket->id." (".$tickets_extra_plain.")\r\n");
+        $tickets_plain .= rawurlencode("Costo por boleto: $".$lottery."\r\n");
+        $tickets_plain .= rawurlencode("----------------------------------------\r\n");
+
 
         foreach($request->other_tickets as $Oticket_xtra){
             $tickets_extra_plain = '';
@@ -260,13 +263,13 @@ class LandingController extends Controller
 
             foreach($request->other_extra_tickets[$Oticket_xtra] as $ticket_xxtra){
                 $ticket_extra = new OtherTicketBuyed();
-    
+
                 $ticket_extra->lottery_id = $request->idLottery;
                 $ticket_extra->ticket_buyed_id = $Oticket->id;
                 $ticket_extra->ticket = $ticket_xxtra;
-    
+
                 $ticket_extra->save();
-    
+
                 $tickets_extra_plain .= $ticket_xxtra.' ';
             }
 
@@ -279,13 +282,15 @@ class LandingController extends Controller
 
         $whats .= rawurlencode("Hola, aparte un boleto para la rifa:\r\n");
         $whats .= rawurlencode($lottery->name."\r\n");
-        $whats .= rawurlencode("_________________________________\r\n");
+        $whats .= rawurlencode("----------------------------------------\r\n");
         // $whats .= rawurlencode("*Boleto*: ".$request->ticket." (".$tickets_extra_plain.")\r\n");
         $whats .= $tickets_plain;
         $whats .= rawurlencode("*Nombre*: ".$request->nombre." ".$request->apellido." ".$request->apellidoM."\r\n");
         $whats .= rawurlencode("*Costo de cada boleto*: $".$lottery->price_ticket."\r\n");
-        $whats .= rawurlencode("_________________________________\r\n");
-        $whats .= rawurlencode("Click aqui para ver formas de pago: www.rifasjunior.com/aviso/pagos\r\n");
+        $whats .= rawurlencode("----------------------------------------\r\n");
+        $whats .= rawurlencode("Enlace de cuentas para pago:\r\n");
+        $whats .= rawurlencode("http://www.rifasjunior.com/aviso/pagos\r\n");
+        $whats .= rawurlencode("📌Me comprometo a enviarle mi comprobante de pago lo antes posible por este medio, de no ser así acepto que mi(s) boleto(s) sea(n) liberado(s) para su venta en 48 hrs.\r\n");
         $whats .= rawurlencode("El siguiente paso es enviar foto del comprobante de pago por este medio (whatsapp)\r\n");
 
         return Response($whats);
