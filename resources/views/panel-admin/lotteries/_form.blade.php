@@ -49,7 +49,7 @@
 </div>
 <div class="form-group p-1">
     <label for="info">Mensaje de venta total</label>
-    <textarea class="form-control textarea" name="full_lottery_message" cols="30" rows="10" required>{{ old('full_lottery_message', $lottery->full_lottery_message) }}</textarea>
+    <textarea class="form-control textarea" name="full_lottery_message" cols="30" rows="10">{{ old('full_lottery_message', $lottery->full_lottery_message) }}</textarea>
 </div>
 
 <button class="btn btn-outline-success float-right">{{ $btnText }}</button>

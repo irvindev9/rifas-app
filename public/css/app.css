@@ -31475,6 +31475,14 @@ a.display-6{
   border-bottom-right-radius: 50px;
 }
 
+#premios-entregados {
+  text-transform: uppercase;
+}
+
+.btn {
+  padding: .5rem 1rem!important;
+}
+
 @media (min-width: 640px){
   .sm\:sr-only{
     position: absolute;
@@ -187419,3 +187427,4 @@ a.display-6{
     transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   }
 }
+
