@@ -31483,6 +31483,15 @@ a.display-6{
   padding: .5rem 1rem!important;
 }
 
+#notices {
+  text-align: center;
+}
+
+#notices img{
+  width: 100%;
+  heigh: auto;
+}
+
 @media (min-width: 640px){
   .sm\:sr-only{
     position: absolute;

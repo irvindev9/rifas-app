@@ -1,7 +1,7 @@
 @if(count($awards) > 0)
 <section class="wrapper bg-light wrapper-border">
     <div class="container py-10 py-md-12">
-        <h2 class="display-4 mb-5 text-center titles" id="premios-entregados">Lista de Sorteos</h2>
+        <h2 class="display-4 mb-5 text-center titles" id="premios-entregados">Premiación Sorteos Anteriores</h2>
         <div class="row gx-md-8 gx-xl-12 gy-10 justify-content-center">
             <div class="col-lg-11">
                 <div

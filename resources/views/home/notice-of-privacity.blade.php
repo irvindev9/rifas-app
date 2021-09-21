@@ -5,6 +5,8 @@
                 <h2 class="fs-15 text-uppercase text-muted mb-3">
                     <a href="{{route('notice', ['privacidad'])}}">Aviso de privacidad</a>
                 </h2>
+                <br>
+                <b>© Copyright 2021 Sorteos Rifas Junior.</b>
             </div>
         </div>
     </div>

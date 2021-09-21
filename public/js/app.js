@@ -20558,15 +20558,21 @@ var _hoisted_81 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNo
 
 var _hoisted_82 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(")");
 
-var _hoisted_83 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
+var _hoisted_83 = {
   "class": "row"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
+};
+
+var _hoisted_84 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
   "class": "col-12 mx-auto text-center text-red"
-}, " El boleto queda apartado por 72 hrs. ")], -1
+}, " El boleto queda apartado por 72 hrs. ", -1
 /* HOISTED */
 );
 
-var _hoisted_84 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("hr", {
+var _hoisted_85 = {
+  "class": "col-12 mx-auto text-center mt-2"
+};
+
+var _hoisted_86 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("hr", {
   "class": "my-3"
 }, null, -1
 /* HOISTED */
@@ -20661,13 +20667,14 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     "class": "btn btn-blue rounded-pill mb-2 me-1"
   }, "ESCOGER MÁS BOLETOS", 8
   /* PROPS */
-  , ["disabled"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("a", {
+  , ["disabled"]), $data.other_tickets.length == 0 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("a", {
+    key: 0,
     onClick: _cache[11] || (_cache[11] = function () {
       return $options.submit && $options.submit.apply($options, arguments);
     }),
     href: "#",
     "class": "btn btn-green rounded-pill mb-2 me-1"
-  }, "FINALIZAR Y APARTAR")])]), _hoisted_69, $data.extraTicket ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", _hoisted_70, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_71, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_72, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
+  }, "FINALIZAR Y APARTAR")) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])]), _hoisted_69, $data.extraTicket ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", _hoisted_70, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_71, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_72, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
     id: "textInputExample5",
     "class": "form-control",
     placeholder: "Buscar",
@@ -20711,7 +20718,14 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     )), _hoisted_82])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]);
   }), 128
   /* KEYED_FRAGMENT */
-  ))])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), _hoisted_83, _hoisted_84])])]);
+  ))])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_83, [_hoisted_84, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_85, [$data.other_tickets.length > 0 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("a", {
+    key: 0,
+    onClick: _cache[15] || (_cache[15] = function () {
+      return $options.submit && $options.submit.apply($options, arguments);
+    }),
+    href: "#",
+    "class": "btn btn-green rounded-pill mb-2 me-1"
+  }, "FINALIZAR Y APARTAR")) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])]), _hoisted_86])])]);
 }
 
 /***/ }),

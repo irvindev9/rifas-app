@@ -160,3 +160,14 @@ a.display-6{
 .btn {
     padding: .5rem 1rem!important;
 }
+
+#notices {
+    text-align: center;
+
+
+}
+
+#notices img{
+    width: 100%;
+    heigh: auto;
+}

@@ -108,7 +108,7 @@
                 <div class="row mt-3">
                     <div class="col-12 mx-auto text-center">
                         <button :disabled="!validateForm" @click="extraTicket = !extraTicket" class="btn btn-blue rounded-pill mb-2 me-1">ESCOGER MÁS BOLETOS</button>
-                        <a v-on:click="submit" href="#" class="btn btn-green rounded-pill mb-2 me-1">FINALIZAR Y APARTAR</a>
+                        <a v-if="other_tickets.length == 0" v-on:click="submit" href="#" class="btn btn-green rounded-pill mb-2 me-1">FINALIZAR Y APARTAR</a>
                     </div>
                 </div>
                 <hr class="my-3">
@@ -138,6 +138,9 @@
                 <div class="row">
                     <div class="col-12 mx-auto text-center text-red">
                         El boleto queda apartado por 72 hrs.
+                    </div>
+                    <div class="col-12 mx-auto text-center mt-2">
+                        <a v-if="other_tickets.length > 0" v-on:click="submit" href="#" class="btn btn-green rounded-pill mb-2 me-1">FINALIZAR Y APARTAR</a>
                     </div>
                 </div>
                 <hr class="my-3">
