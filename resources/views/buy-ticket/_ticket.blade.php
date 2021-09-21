@@ -10,7 +10,7 @@
                 <div class="px-4 py-2 text-left text-uppercas" style="border-bottom: dashed">
                     <div>
                         <strong class="d-inline">Boleto: </strong>
-                        <p class="d-inline">{{ $ticketBuyed->ticket }}</p>
+                        <p class="d-inline">{{ str_pad($ticketBuyed->ticket, 4, "0", STR_PAD_LEFT) }}</p>
                     </div>
                     <div>
                         <strong class="d-inline">Boletos extras: </strong>
