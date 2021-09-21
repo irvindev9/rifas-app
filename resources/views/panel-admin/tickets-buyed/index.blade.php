@@ -77,8 +77,9 @@
                                                     <a class="btn btn-outline-info btn-sm btn-block mb-1" href="/comprar/rifa/{{$lottery->id}}/generar-boleto?ticket={{$ticketBuyed->ticket}}" role="button">Ticket</a>
                                                     <form method="POST" action="{{ route('ticketsBuyed.delete', $ticketBuyed) }}" class="">
                                                         @csrf
-                                                        <button class="btn btn-outline-danger btn-sm btn-block">Eliminar</button>
+                                                        <button id="btn-{{$ticketBuyed->id}}" class="d-none btn btn btn-outline-danger btn-sm btn-block">Eliminar</button>
                                                     </form>
+                                                    <button data-id="{{$ticketBuyed->id}}" class="btn-delete btn btn-outline-danger btn-sm btn-block">Eliminar</button>
                                                 </td>
                                             </tr>
                                         @endforeach
@@ -91,4 +92,14 @@
             </div>
         </div>
     </div>
+    <script>
+        $().ready(function(){
+            $('.btn-delete').click(function(){
+                let id = $(this).attr('data-id');
+                if (confirm("Seguro que desea eliminar todos los boletos no pagados?")) {
+                    $('#btn-' + id).click();
+                }
+            })
+        })
+    </script>
 </x-app-layout>

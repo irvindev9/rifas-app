@@ -122,7 +122,7 @@
                     <div class="col-12 col-md-2">
                         <a v-on:click="checkTicket" href="#!" class="btn btn-blue rounded-pill mb-2 me-1">{{buscandoText}}</a>
                     </div>
-                    <div class="col-12 mt-2" v-if="standBy.length > 0">
+                    <div class="col-12 mt-2" v-if="!available && start">
                         <a v-on:click="addextraTickets" href="#!" class="btn btn-green rounded-pill mb-2 me-1">Boleto disponible, click para agregar!</a>
                     </div>
                     <div class="col-12 mt-2" v-if="available">
@@ -132,7 +132,7 @@
                 <div class="row" v-if="other_tickets.length > 0">
                     <p>Mis otras oportunidades:</p>
                     <p v-for="(otherT, index) in other_tickets" :key="index">
-                        {{padLeft(otherT)}} (<a style="margin-left:3px;margin-right:3px;" v-for="(tiket, index) in other_extra_tickets[otherT]" :key="index">{{padLeft(tiket)}}</a>)
+                        {{padLeft(otherT)}} <label v-if="other_extra_tickets[otherT].length > 0">(<a style="margin-left:3px;margin-right:3px;" v-for="(tiket, index) in other_extra_tickets[otherT]" :key="index">{{padLeft(tiket)}}</a>)</label>
                     </p>
                 </div>
                 <div class="row">
@@ -168,7 +168,8 @@ export default {
             info_lottery: null,
             buscandoText: 'BUSCAR',
             standBy: [],
-            available: false
+            available: false,
+            start: false
         }
     },
     computed: {
@@ -194,19 +195,20 @@ export default {
             return s.substr(s.length-4);
         },
         checkTicket(){
-            if(this.ticket != this.searchTicket && !this.other_tickets.includes(this.searchTicket))
+            if(this.ticket != this.searchTicket && !this.other_tickets.includes(String(parseInt(this.searchTicket))))
                 axios.post('/api/checkTicket',{
                     idLottery: this.lottery,
-                    ticket: this.searchTicket
+                    ticket: parseInt(this.searchTicket)
                 })
                 .then(res => {
-                    this.standBy = res.data
                     this.available = false
+                    this.standBy = res.data
+                    this.start = true
                 })
                 .catch(err => {
                     console.log(err)
-                    this.standBy = []
                     this.available = true
+                    this.standBy = []
                 })
         },
         addextraTickets(){
@@ -220,6 +222,7 @@ export default {
 
             this.standBy = []
             this.searchTicket = null
+            this.start = false
         },
         checkValueWhats(){
             if(this.whatsapp.toString().length > 10){

@@ -32,24 +32,35 @@
                                                 <tr>
                                                     <th scope="row">{{  $prize->id }}</th>
                                                     <td>{{ $prize->prize }}</td>
-                                                    <td>{{ $prize->date_lottery_prize }}</td>                                      
+                                                    <td>{{ $prize->date_lottery_prize }}</td>
                                                     <td>
                                                         <a class="btn btn-outline-secondary btn-sm btn-block mb-1" href="{{ route('prizes.edit', $prize) }}" role="button">Editar</a>
                                                         <form method="POST" action="{{ route('prizes.delete', $prize ) }}" class="">
                                                             @csrf
-                                                            <button class="btn btn-outline-danger btn-sm btn-block">Eliminar</button>
+                                                            <button id="btn-{{$prize->id}}"  class="d-none btn btn-outline-danger btn-sm btn-block">Eliminar</button>
                                                         </form>
+                                                        <button data-id="{{$prize->id}}" class="btn-delete btn btn-outline-danger btn-sm btn-block">Eliminar</button>
                                                     </td>
                                                 </tr>
                                             @endforeach
-                                        </tbody>            
-                                    </table>  
-                                </div>     
+                                        </tbody>
+                                    </table>
+                                </div>
                             </div>
                         </div>
-                    </div>   
+                    </div>
                 </div>
             </div>
         </div>
     </div>
+    <script>
+        $().ready(function(){
+            $('.btn-delete').click(function(){
+                let id = $(this).attr('data-id');
+                if (confirm("Seguro que desea eliminar todos los boletos no pagados?")) {
+                    $('#btn-' + id).click();
+                }
+            })
+        })
+    </script>
 </x-app-layout>

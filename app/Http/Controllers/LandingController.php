@@ -96,6 +96,12 @@ class LandingController extends Controller
     public function buy_ticket($lottery){
         $lottery = Lottery::with(['prizes'])->where('active', 1)->where('id', $lottery)->first();
 
+        $tickets = TicketBuyed::where('lottery_id', $lottery->id)->count();
+
+        if($tickets == $lottery->quantity_tickets){
+            return redirect()->route('saled.lottery', $lottery->id);
+        }
+
         return view('buy-ticket.index')->with(compact(['lottery']));
     }
 
@@ -259,10 +265,10 @@ class LandingController extends Controller
             $tickets_extra_plain .= $ticket_xtra.' ';
         }
 
-        $tickets_plain .= rawurlencode("🏷️Boleto: ".$ticket->id."\r\n");
-        $tickets_plain .= rawurlencode("Oportunidades: ".$ticket->id." (".$tickets_extra_plain.")\r\n");
-        $tickets_plain .= rawurlencode("Costo por boleto: $".$lottery."\r\n");
-        $tickets_plain .= rawurlencode("----------------------------------------\r\n");
+        $tickets_plain .= urlencode("Boleto: *".$ticket->ticket."*\r\n");
+        $tickets_plain .= ($tickets_extra_plain) ? urlencode("Oportunidades: (*".$tickets_extra_plain."*)\r\n") : '';
+        $tickets_plain .= urlencode("Costo por boleto: $*".$lottery->price_ticket."*\r\n");
+        $tickets_plain .= urlencode("----------------------------------------\r\n");
 
 
         foreach($request->other_tickets as $Oticket_xtra){
@@ -292,25 +298,29 @@ class LandingController extends Controller
                 $tickets_extra_plain .= $ticket_xxtra.' ';
             }
 
-            $tickets_plain .= rawurlencode("*Boleto*: ".$Oticket_xtra." (".$tickets_extra_plain.")\r\n");
+            $tickets_plain .= urlencode("Boleto: *".$Oticket_xtra."*\r\n");
+            $tickets_plain .= ($tickets_extra_plain) ? urlencode("Oportunidades: (*".$tickets_extra_plain."*)\r\n") : '';
+            $tickets_plain .= urlencode("Costo por boleto: $*".$lottery->price_ticket."*\r\n");
+            $tickets_plain .= urlencode("----------------------------------------\r\n");
         }
 
         $whats_number = Setting::where('code', 'whatsapp_config')->first();
 
         $whats = "https://wa.me/".strip_tags($whats_number->content)."?text=";
 
-        $whats .= rawurlencode("Hola, aparte un boleto para la rifa:\r\n");
-        $whats .= rawurlencode($lottery->name."\r\n");
-        $whats .= rawurlencode("----------------------------------------\r\n");
-        // $whats .= rawurlencode("*Boleto*: ".$request->ticket." (".$tickets_extra_plain.")\r\n");
+        $whats .= urlencode("*Rifas Junior*:\r\n");
+        $whats .= urlencode("Hola, mi nombre es *".$request->nombre." ".$request->apellido." ".$request->apellidoM."* de *".$request->estado."* y mi número de teléfono es *".$request->whatsapp ."*\r\n");
+        $whats .= urlencode("He reservado boletos para la rifa:\r\n");
+        $whats .= urlencode("*".$lottery->name."*\r\n");
+        $whats .= urlencode("----------------------------------------\r\n");
+        // $whats .= urlencode("*Boleto*: ".$request->ticket." (".$tickets_extra_plain.")\r\n");
         $whats .= $tickets_plain;
-        $whats .= rawurlencode("*Nombre*: ".$request->nombre." ".$request->apellido." ".$request->apellidoM."\r\n");
-        $whats .= rawurlencode("*Costo de cada boleto*: $".$lottery->price_ticket."\r\n");
-        $whats .= rawurlencode("----------------------------------------\r\n");
-        $whats .= rawurlencode("Enlace de cuentas para pago:\r\n");
-        $whats .= rawurlencode("http://www.rifasjunior.com/aviso/pagos\r\n");
-        $whats .= rawurlencode("📌Me comprometo a enviarle mi comprobante de pago lo antes posible por este medio, de no ser así acepto que mi(s) boleto(s) sea(n) liberado(s) para su venta en 48 hrs.\r\n");
-        $whats .= rawurlencode("El siguiente paso es enviar foto del comprobante de pago por este medio (whatsapp)\r\n");
+        $whats .= urlencode("*Nombre*: ".$request->nombre." ".$request->apellido." ".$request->apellidoM."\r\n");
+        $whats .= urlencode("*Costo de cada boleto*: $".$lottery->price_ticket."\r\n");
+        $whats .= urlencode("----------------------------------------\r\n");
+        $whats .= urlencode("*Enlace de cuentas para pago:*\r\n");
+        $whats .= urlencode("http://www.rifasjunior.com/aviso/pagos\r\n");
+        $whats .= urlencode("Me comprometo a enviarle mi comprobante de pago lo antes posible por este medio, de no ser así acepto que mi(s) boleto(s) sea(n) liberado(s) para su venta en *48 hrs*.\r\n");
 
         return Response($whats);
 
