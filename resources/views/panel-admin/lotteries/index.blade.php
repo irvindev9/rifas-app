@@ -30,6 +30,7 @@
                                                 <th scope="col"></th>
                                                 <th scope="col"></th>
                                                 <th scope="col"></th>
+                                                <th scope="col"></th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -42,11 +43,11 @@
                                                     <td>{{ $lottery->lastday_lottery }}</td>
                                                     <td>
                                                         @if($lottery->active == 1)
-                                                            <strong class="text-success">Activa</strong> 
+                                                            <strong class="text-success">Activa</strong>
                                                         @else
-                                                            <strong class="text-danger">Desactivada</strong>     
+                                                            <strong class="text-danger">Desactivada</strong>
                                                         @endif
-                                                    </td>                                         
+                                                    </td>
                                                     <td>
                                                         <a href="{{ route('prizes.index', $lottery) }}" class="link-info">Premios</a>
                                                     </td>
@@ -54,6 +55,12 @@
                                                         <a href="{{ route('ticketsBuyed.index', $lottery) }}" class="link-info">
                                                             Boletos <br>
                                                             Comprados
+                                                        </a>
+                                                    </td>
+                                                    <td>
+                                                        <a href="{{ route('saled.lottery', $lottery->id) }}" class="link-info">
+                                                            Pagina <br>
+                                                            Boletos vendidos
                                                         </a>
                                                     </td>
                                                     <td>
@@ -68,12 +75,12 @@
                                                     </td>
                                                 </tr>
                                             @endforeach
-                                        </tbody>            
-                                    </table>     
-                                </div>  
+                                        </tbody>
+                                    </table>
+                                </div>
                             </div>
                         </div>
-                    </div>   
+                    </div>
                 </div>
             </div>
         </div>

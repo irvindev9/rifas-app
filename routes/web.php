@@ -58,6 +58,7 @@ Route::get('/boletos/file-export/{lotteryId}', [TicketBuyedController::class, 'f
 
 
 Route::get('aviso/{notice}', [NoticeController::class, 'show'])->name('notice');
+Route::get('sorteo/{lottery}/vendidos', [NoticeController::class, 'saled'])->name('saled.lottery');
 Route::get('bases/{notice}', [NoticeController::class, 'show_lottery'])->name('notice.lottery');
 
 Route::get('comprar/rifa/{contest}/verificador', [LandingController::class, 'verificator'])->name('verificator');

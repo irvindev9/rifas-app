@@ -38,12 +38,18 @@
     <input type="file" class="form-control" name="awardImage" value="{{ old('awardImage', $lottery->award_img) }}" accept="image/*">
 </div>
 <div class="form-group m-1 form-check ">
-    <label class="form-check-label" for="lotteryActive">Rifa activa</label>
+    <label class="form-check-label" for="lotteryActive">
+        <b>Rifa activa</b>
+    </label>
     @if ($lottery->active == 1)
         <input type="checkbox" class="form-check-input" checked id="lotteryActive" name="active">
     @else
         <input type="checkbox" class="form-check-input" id="lotteryActive" name="active">
     @endif
+</div>
+<div class="form-group p-1">
+    <label for="info">Mensaje de venta total</label>
+    <textarea class="form-control textarea" name="full_lottery_message" cols="30" rows="10" required>{{ old('full_lottery_message', $lottery->full_lottery_message) }}</textarea>
 </div>
 
 <button class="btn btn-outline-success float-right">{{ $btnText }}</button>

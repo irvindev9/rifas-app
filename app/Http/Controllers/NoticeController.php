@@ -58,15 +58,10 @@ class NoticeController extends Controller
 
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
+    public function saled($id)
     {
-        //
+        $notice = Lottery::where('id',$id)->first()->full_lottery_message ?? '<p style="text-align:center">Ups! Algo esta mal, deberias <a href="/"> regresar </a></p>';
+        return view('information-pages.notice')->with(compact(['notice']));
     }
 
     /**

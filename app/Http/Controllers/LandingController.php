@@ -17,7 +17,7 @@ class LandingController extends Controller
 
     public function index()
     {
-        $image = Lottery::where('active', 1)->first();
+        $image = Setting::where('code', 'imagen_inicio')->first();
 
         $lotteries = Lottery::where('active', 0)->where('award_img','<>', null)->get();
         $awards = new Collection();
@@ -31,7 +31,9 @@ class LandingController extends Controller
             );
         }
 
-        $image = isset($image) ? 'img/prizes/'.$image->image_lottery : 'img/silverado.jpg';
+        $image = str_replace('<p>', "", $image->content);
+        $image = str_replace('</p>', "", $image);
+        $image = str_replace('<br>', "", $image);
 
         return view('home.index')->with(compact(['image', 'awards']));
     }
@@ -66,7 +68,7 @@ class LandingController extends Controller
             return Response("Alguien tiene apartado el boleto, intenta con otro!", 401);
         }
 
-        $other = OtherTicketBuyed::where('lottery_id', $request->idLottery)->where('ticket_buyed_id', $request->ticket)->first();
+        $other = OtherTicketBuyed::where('lottery_id', $request->idLottery)->where('ticket', $request->ticket)->first();
 
         if(isset($other)){
             return Response("Alguien tiene apartado el boleto, intenta con otro!", 401);
@@ -129,6 +131,9 @@ class LandingController extends Controller
     }
 
     public function buy_ticket_form($lottery, $ticket){
+
+        $ticket = str_pad($ticket, 4, "0", STR_PAD_LEFT);
+
         return view('ticket-buyed.index')->with(compact(['lottery', 'ticket']));
     }
 

@@ -86,6 +86,7 @@ class LotteryController extends Controller
         $lottery->image_lottery = $fileNameToStore;
         $lottery->info = $request['info'];
         $lottery->award_img = $fileNameAwardImage;
+        $lottery->full_lottery_message = $request['full_lottery_message'];
         $lottery->active = isset($request['active']) ? 1 : 0;
 
         $lottery->save();
@@ -164,6 +165,7 @@ class LotteryController extends Controller
         $lottery->image_lottery = $fileNameToStore;
         $lottery->info = $request['info'];
         $lottery->award_img = $fileNameAwardImage;
+        $lottery->full_lottery_message = $request['full_lottery_message'];
         $lottery->active = isset($request['active']) ? 1 : 0;
 
         $lottery->save();

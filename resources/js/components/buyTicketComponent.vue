@@ -132,7 +132,7 @@
                 <div class="row" v-if="other_tickets.length > 0">
                     <p>Mis otras oportunidades:</p>
                     <p v-for="(otherT, index) in other_tickets" :key="index">
-                        {{otherT}} (<a style="margin-left:3px;margin-right:3px;" v-for="(tiket, index) in other_extra_tickets[otherT]" :key="index">{{tiket}}</a>)
+                        {{padLeft(otherT)}} (<a style="margin-left:3px;margin-right:3px;" v-for="(tiket, index) in other_extra_tickets[otherT]" :key="index">{{padLeft(tiket)}}</a>)
                     </p>
                 </div>
                 <div class="row">
@@ -177,7 +177,9 @@ export default {
                 if(this.nombre.toString().length > 3){
                     if(this.apellido.toString().length > 3){
                         if(this.estado != "Estado"){
-                            return true
+                            if(this.apellidoM.toString().length > 3){
+                                return true
+                            }
                         }
                     }
                 }
@@ -187,6 +189,10 @@ export default {
         }
     },
     methods: {
+        padLeft(number){
+            let s = "0000" + number;
+            return s.substr(s.length-4);
+        },
         checkTicket(){
             if(this.ticket != this.searchTicket && !this.other_tickets.includes(this.searchTicket))
                 axios.post('/api/checkTicket',{
@@ -290,7 +296,7 @@ export default {
         this.lottery = this.$attrs.lottery;
         this.ticket = this.$attrs.ticket;
 
-        
+
 
         axios.get('/get/lottery/'+this.$attrs.lottery).
             then(response => {
@@ -315,7 +321,7 @@ export default {
                         })
                 }
 
-                
+
             }).catch(error => {
                 alert("Tenemos problemas tecnicos, consulte al administrador.")
             })

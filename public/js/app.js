@@ -20026,7 +20026,9 @@ __webpack_require__.r(__webpack_exports__);
         if (this.nombre.toString().length > 3) {
           if (this.apellido.toString().length > 3) {
             if (this.estado != "Estado") {
-              return true;
+              if (this.apellidoM.toString().length > 3) {
+                return true;
+              }
             }
           }
         }
@@ -20036,6 +20038,10 @@ __webpack_require__.r(__webpack_exports__);
     }
   },
   methods: {
+    padLeft: function padLeft(number) {
+      var s = "0000" + number;
+      return s.substr(s.length - 4);
+    },
     checkTicket: function checkTicket() {
       var _this = this;
 
@@ -20679,7 +20685,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   }, "Boleto disponible, click para agregar!")])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $data.available ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", _hoisted_76, [_hoisted_77])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $data.other_tickets.length > 0 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", _hoisted_78, [_hoisted_79, ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($data.other_tickets, function (otherT, index) {
     return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("p", {
       key: index
-    }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)((0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(otherT) + " (", 1
+    }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)((0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($options.padLeft(otherT)) + " (", 1
     /* TEXT */
     ), ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($data.other_extra_tickets[otherT], function (tiket, index) {
       return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("a", {
@@ -20688,7 +20694,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
           "margin-right": "3px"
         },
         key: index
-      }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(tiket), 1
+      }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($options.padLeft(tiket)), 1
       /* TEXT */
       );
     }), 128
