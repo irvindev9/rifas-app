@@ -11,7 +11,7 @@
             </div>
             <div class="col-lg-5 col-xl-4 offset-lg-1 text-center">
                 <p class="lead fs-lg mb-6">Rifas Junior</p>
-                <p class="lead fs-lg mb-6">¡Trae para ti los mejores sorteos de toda la república!</p>
+                <p class="lead fs-lg mb-6">¡Trae para ti los mejores sorteos entre amigos de toda la república!</p>
                 <p class="lead fs-lg mb-6">Sorteos legales y avalados en base a resultados emitidos por Lotería Nacional Mexicana</p>
             </div>
         </div>
