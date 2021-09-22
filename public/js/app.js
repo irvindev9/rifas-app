@@ -20018,7 +20018,8 @@ __webpack_require__.r(__webpack_exports__);
       buscandoText: 'BUSCAR',
       standBy: [],
       available: false,
-      start: false
+      start: false,
+      isLoading: false
     };
   },
   computed: {
@@ -20104,6 +20105,12 @@ __webpack_require__.r(__webpack_exports__);
       this.message = "";
       this.upperCaseN;
 
+      if (this.isLoading == true) {
+        return false;
+      }
+
+      this.isLoading = true;
+
       if (this.whatsapp.toString().length == 10) {
         if (this.nombre.toString().length > 3) {
           if (this.apellido.toString().length > 3) {
@@ -20127,6 +20134,8 @@ __webpack_require__.r(__webpack_exports__);
                 }, 1000);
               })["catch"](function (err) {
                 _this2.message = err.response.data;
+              })["finally"](function () {
+                return _this2.isLoading = false;
               });
             } else {
               this.message = "Ingrese su estado";
@@ -20285,13 +20294,25 @@ var _hoisted_9 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("
 /* HOISTED */
 );
 
-var _hoisted_10 = {
+var _hoisted_10 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
+  "class": "row"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
+  "class": "col-12 col-md-10 col-lg-8 mx-auto ticket-container text-center mb-1"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", {
+  "class": "ticket"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("a", null, " ")]), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Disponible "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", {
+  "class": "ticket filled"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("a", null, " ")]), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Vendido ")])], -1
+/* HOISTED */
+);
+
+var _hoisted_11 = {
   "class": "row"
 };
-var _hoisted_11 = {
+var _hoisted_12 = {
   "class": "col-12 col-md-10 col-lg-8 mx-auto ticket-container"
 };
-var _hoisted_12 = {
+var _hoisted_13 = {
   key: 1,
   "for": "ticket"
 };
@@ -20323,7 +20344,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     }),
     href: "#!",
     "class": "btn btn-green rounded-pill mb-2 me-1"
-  }, "Boleto disponible, click para comprar!")])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $data.available ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", _hoisted_8, [_hoisted_9])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_10, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_11, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($data.numberTickets, function (item) {
+  }, "Boleto disponible, click para comprar!")])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $data.available ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", _hoisted_8, [_hoisted_9])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]), _hoisted_10, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_11, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_12, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($data.numberTickets, function (item) {
     return (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)(((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("span", {
       "class": ["ticket", {
         filled: $data.buyedTickets.includes(item)
@@ -20334,7 +20355,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       href: '/ticket/' + $data.idLotto + '/' + $options.fillZero(item)
     }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($options.fillZero(item)), 9
     /* TEXT, PROPS */
-    , ["href"])) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("label", _hoisted_12, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($options.fillZero(item)), 1
+    , ["href"])) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("label", _hoisted_13, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($options.fillZero(item)), 1
     /* TEXT */
     ))], 2
     /* CLASS */

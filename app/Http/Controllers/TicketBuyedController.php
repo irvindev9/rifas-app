@@ -25,9 +25,9 @@ class TicketBuyedController extends Controller
     public function index(Lottery $lottery)
     {
         if(isset($_GET['no_paid'])){
-            $ticketsBuyed = TicketBuyed::with(['otherTicketsBuyed'])->where('lottery_id', $lottery->id)->where('paid', 0)->get();
+            $ticketsBuyed = TicketBuyed::with(['otherTicketsBuyed'])->where('lottery_id', $lottery->id)->where('paid', 0)->orderBy('ticket')->get();
         }else{
-            $ticketsBuyed = TicketBuyed::with(['otherTicketsBuyed'])->where('lottery_id', $lottery->id)->get();
+            $ticketsBuyed = TicketBuyed::with(['otherTicketsBuyed'])->where('lottery_id', $lottery->id)->orderBy('ticket')->get();
         }
 
         return view('panel-admin.tickets-buyed.index', ['ticketsBuyed' => $ticketsBuyed, 'lottery' => $lottery]);

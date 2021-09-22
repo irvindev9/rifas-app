@@ -172,7 +172,8 @@ export default {
             buscandoText: 'BUSCAR',
             standBy: [],
             available: false,
-            start: false
+            start: false,
+            isLoading: false
         }
     },
     computed: {
@@ -259,6 +260,10 @@ export default {
         submit(){
             this.message = "";
             this.upperCaseN
+            if(this.isLoading == true){
+                return false
+            }
+            this.isLoading = true
 
             if(this.whatsapp.toString().length == 10){
                 if(this.nombre.toString().length > 3){
@@ -283,7 +288,7 @@ export default {
                                 }, 1000);
                             }).catch(err => {
                                 this.message = err.response.data;
-                            })
+                            }).finally(() => (this.isLoading = false))
                         }else{
                             this.message = "Ingrese su estado";
                         }

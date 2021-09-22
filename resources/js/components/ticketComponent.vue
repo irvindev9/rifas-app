@@ -21,6 +21,18 @@
             </div>
         </div>
         <div class="row">
+            <div class="col-12 col-md-10 col-lg-8 mx-auto ticket-container text-center mb-1">
+                <span class="ticket">
+                    <a>&nbsp;</a>
+                </span>
+                 Disponible
+                <span class="ticket filled">
+                    <a>&nbsp;</a>
+                </span>
+                 Vendido
+            </div>
+        </div>
+        <div class="row">
             <div class="col-12 col-md-10 col-lg-8 mx-auto ticket-container">
                 <span class="ticket" v-for="item in numberTickets" :key="item" :class="{filled : (buyedTickets.includes(item))}" v-show="isFinded(item)">
                     <a :href="'/ticket/' + idLotto + '/' + fillZero(item)" v-if="!buyedTickets.includes(item)">{{fillZero(item)}}</a>

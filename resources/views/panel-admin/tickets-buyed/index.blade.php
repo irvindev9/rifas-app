@@ -46,6 +46,7 @@
                                             <th scope="col">No. Whats</th>
                                             <th scope="col">Estado</th>
                                             <th scope="col">Fecha pagado</th>
+                                            <th scope="col">Fecha reservado</th>
                                             <th scope="col">Estatus</th>
                                             <th scope="col"></th>
                                         </tr>
@@ -65,6 +66,7 @@
                                                 <td>{{ $ticketBuyed->whats_number }}</td>
                                                 <td>{{ $ticketBuyed->state }}</td>
                                                 <td>{{ $ticketBuyed->date_buyed }}</td>
+                                                <td>{{ date("Y-m-d H:i:s", strtotime($ticketBuyed->created_at." -6 hours")) }}</td>
                                                 <td>
                                                     @if($ticketBuyed->paid == 1)
                                                         <strong class="text-success">Pagado</strong>

@@ -14,10 +14,10 @@
         </thead>
         <tbody>
             <tr>
-                <th scope="row">{{ $ticketBuyed->ticket }}</th>
+                <th scope="row">{{ str_pad($ticketBuyed->ticket, 4, "0", STR_PAD_LEFT) }}</th>
                 <th>
                     @foreach ($ticketBuyed->otherTicketsBuyed as $item)
-                        {{ $item->ticket }}
+                        {{ str_pad($item->ticket, 4, "0", STR_PAD_LEFT) }}
                     @endforeach
                 </th>
                 <td>{{ $ticketBuyed->name_client }}</td>
@@ -35,8 +35,10 @@
         </tbody>
     </table>
 </div>
-@else
+@elseif($ticketAvailable <= $lottery->quantity_tickets && $ticketAvailable > 0)
     @isset ($ticketAvailable)
         <a href="{{ route("contest.lotto.ticket", [$lottery, $ticketAvailable]) }}" class="available-ticket">Boleto {{ $ticketAvailable }} disponible</a>
     @endif
+@else 
+    <label class="available-ticket">Boleto NO disponible, intenta con otro</label>
 @endif

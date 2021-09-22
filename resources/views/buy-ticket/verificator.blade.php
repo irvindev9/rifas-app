@@ -19,7 +19,7 @@
                     </div>
                 </form>       
 
-                @includeWhen($showTableVerificator, 'buy-ticket._table-verificator', ['ticketBuyed' => $ticketBuyed])
+                @includeWhen($showTableVerificator, 'buy-ticket._table-verificator', ['ticketBuyed' => $ticketBuyed, 'lottery' => $lottery])
 
             </div>
         </div>
