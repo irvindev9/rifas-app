@@ -262,10 +262,10 @@ class LandingController extends Controller
 
             $ticket_extra->save();
 
-            $tickets_extra_plain .= $ticket_xtra.' ';
+            $tickets_extra_plain .= str_pad($ticket_xtra, 4, "0", STR_PAD_LEFT).' ';
         }
 
-        $tickets_plain .= urlencode("Boleto: *".$ticket->ticket."*\r\n");
+        $tickets_plain .= urlencode("Boleto: *".str_pad($ticket->ticket, 4, "0", STR_PAD_LEFT)."*\r\n");
         $tickets_plain .= ($tickets_extra_plain) ? urlencode("Oportunidades: (*".$tickets_extra_plain."*)\r\n") : '';
         $tickets_plain .= urlencode("Costo por boleto: $*".$lottery->price_ticket."*\r\n");
         $tickets_plain .= urlencode("----------------------------------------\r\n");
@@ -295,10 +295,10 @@ class LandingController extends Controller
 
                 $ticket_extra->save();
 
-                $tickets_extra_plain .= $ticket_xxtra.' ';
+                $tickets_extra_plain .= str_pad($ticket_xxtra, 4, "0", STR_PAD_LEFT).' ';
             }
 
-            $tickets_plain .= urlencode("Boleto: *".$Oticket_xtra."*\r\n");
+            $tickets_plain .= urlencode("Boleto: *".str_pad($Oticket_xtra, 4, "0", STR_PAD_LEFT)."*\r\n");
             $tickets_plain .= ($tickets_extra_plain) ? urlencode("Oportunidades: (*".$tickets_extra_plain."*)\r\n") : '';
             $tickets_plain .= urlencode("Costo por boleto: $*".$lottery->price_ticket."*\r\n");
             $tickets_plain .= urlencode("----------------------------------------\r\n");
