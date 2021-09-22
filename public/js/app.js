@@ -20585,7 +20585,7 @@ var _hoisted_83 = {
 
 var _hoisted_84 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
   "class": "col-12 mx-auto text-center text-red"
-}, " El boleto queda apartado por 72 hrs. ", -1
+}, " El boleto queda apartado por 48 hrs. ", -1
 /* HOISTED */
 );
 

@@ -137,7 +137,7 @@
                 </div>
                 <div class="row">
                     <div class="col-12 mx-auto text-center text-red">
-                        El boleto queda apartado por 72 hrs.
+                        El boleto queda apartado por 48 hrs.
                     </div>
                     <div class="col-12 mx-auto text-center mt-2">
                         <a v-if="other_tickets.length > 0" v-on:click="submit" href="#" class="btn btn-green rounded-pill mb-2 me-1">FINALIZAR Y APARTAR</a>
