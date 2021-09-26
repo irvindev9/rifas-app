@@ -67,7 +67,7 @@ class LotteryController extends Controller
             $path = $request->awardImage->move(public_path('img/prizes'), $fileNameAwardImage);
         } else
         {
-            $fileNameAwardImage = $lottery->award_img;
+            $fileNameAwardImage = $lottery->award_img ?? null;
         }
 
         $lottery = new Lottery;
@@ -148,7 +148,7 @@ class LotteryController extends Controller
             $path = $request->awardImage->move(public_path('img/prizes'), $fileNameAwardImage);
         } else
         {
-            $fileNameAwardImage = $lottery->award_img;
+            $fileNameAwardImage = $lottery->award_img ?? null;
         }
 
         $validated = $request->validate([
