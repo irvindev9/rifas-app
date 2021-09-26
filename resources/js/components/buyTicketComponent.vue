@@ -93,7 +93,7 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-12 mx-auto text-center text-red">
+                    <div class="col-12 mx-auto text-center text-red alert-text">
                         {{message}}
                     </div>
                 </div>
@@ -339,3 +339,10 @@ export default {
     }
 }
 </script>
+
+<style>
+.alert-text {
+    font-size: 24px;
+    font-weight: 500;
+}
+</style>
