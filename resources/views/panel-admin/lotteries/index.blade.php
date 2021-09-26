@@ -68,9 +68,9 @@
 
                                                         <form method="POST" action="{{ route('lotteries.delete', $lottery ) }}" class="">
                                                             @csrf
-                                                            {{-- <button class="btn btn-outline-danger btn-sm btn-block mb-1">Eliminar</button> --}}
+                                                            <button id="btn-{{$lottery->id}}" class="btn btn-outline-danger btn-sm btn-block mb-1">Eliminar</button>
                                                         </form>
-
+                                                        <button data-id="{{$lottery->id}}" class="btn-delete btn btn-outline-danger btn-sm btn-block">Eliminar</button>
                                                         <a class="btn btn-outline-success btn-sm btn-block" href="{{ route('ticketsBuyed.fileExport', $lottery->id) }}"  role="button">Boletos Excel</a>
                                                     </td>
                                                 </tr>
@@ -85,4 +85,14 @@
             </div>
         </div>
     </div>
+    <script>
+        $().ready(function(){
+            $('.btn-delete').click(function(){
+                let id = $(this).attr('data-id');
+                if (confirm("Seguro que desea eliminar todos los boletos no pagados?")) {
+                    $('#btn-' + id).click();
+                }
+            })
+        })
+    </script>
 </x-app-layout>
