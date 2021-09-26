@@ -68,7 +68,7 @@
 
                                                         <form method="POST" action="{{ route('lotteries.delete', $lottery ) }}" class="">
                                                             @csrf
-                                                            <button id="btn-{{$lottery->id}}" class="btn btn-outline-danger btn-sm btn-block mb-1">Eliminar</button>
+                                                            <button id="btn-{{$lottery->id}}" class="btn btn-outline-danger btn-sm btn-block mb-1 d-none">Eliminar</button>
                                                         </form>
                                                         <button data-id="{{$lottery->id}}" class="btn-delete btn btn-outline-danger btn-sm btn-block">Eliminar</button>
                                                         <a class="btn btn-outline-success btn-sm btn-block" href="{{ route('ticketsBuyed.fileExport', $lottery->id) }}"  role="button">Boletos Excel</a>
