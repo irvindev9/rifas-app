@@ -22,6 +22,7 @@
                                         <thead>
                                             <tr>
                                                 <th scope="col">Id</th>
+                                                <th scope="col">Número Rifa</th>
                                                 <th scope="col">Nombre de la rifa</th>
                                                 <th scope="col">Cantidad de boletos</th>
                                                 <th scope="col">Precio del boleto</th>
@@ -37,6 +38,7 @@
                                             @foreach ($lotteries as $lottery)
                                                 <tr>
                                                     <th scope="row">{{  $lottery->id }}</th>
+                                                    <th scope="row">{{  $lottery->lottery_number }}</th>
                                                     <td>{{ $lottery->name }}</td>
                                                     <td>{{ $lottery->quantity_tickets }}</td>
                                                     <td>{{ $lottery->price_ticket }}</td>

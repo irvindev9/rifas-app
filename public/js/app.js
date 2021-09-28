@@ -20845,7 +20845,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("p", _hoisted_10, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.lottery[index].prizes[0].prize), 1
     /* TEXT */
     ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_11, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("a", {
-      href: '/sorteo/' + $data.lottery[index].id,
+      href: '/sorteo/' + $data.lottery[index].lottery_number,
       "class": "btn btn-lg btn-success rounded-pill me-2"
     }, "Comprar boletos", 8
     /* PROPS */

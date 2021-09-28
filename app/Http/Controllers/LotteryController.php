@@ -74,12 +74,14 @@ class LotteryController extends Controller
 
         $validated = $request->validate([
             'name' => 'required',
+            'lottery_number' => 'required|unique:lotteries,lottery_number',
             'qtyTickets' => 'required|numeric',
             'priceTicket' => 'required',
             'date' => 'required',
         ]);
 
         $lottery->name = $validated['name'];
+        $lottery->lottery_number = $validated['lottery_number'];
         $lottery->quantity_tickets = $validated['qtyTickets'];
         $lottery->price_ticket = $validated['priceTicket'];
         $lottery->lastday_lottery = $request['date'];
@@ -153,12 +155,14 @@ class LotteryController extends Controller
 
         $validated = $request->validate([
             'name' => 'required',
+            'lottery_number' => 'required|unique:lotteries,lottery_number',
             'qtyTickets' => 'required|numeric',
             'priceTicket' => 'required',
             'date' => 'required',
         ]);
 
         $lottery->name = $validated['name'];
+        $lottery->lottery_number = $validated['lottery_number'];
         $lottery->quantity_tickets = $validated['qtyTickets'];
         $lottery->price_ticket = $validated['priceTicket'];
         $lottery->lastday_lottery = $request['date'];

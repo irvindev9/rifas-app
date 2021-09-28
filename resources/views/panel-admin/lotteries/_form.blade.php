@@ -4,6 +4,10 @@
     <input type="text" class="form-control" name="name" value="{{ old('name', $lottery->name) }}" required>
 </div>
 <div class="form-group p-1">
+    <label for="lottery_number">Número de la rifa</label>
+    <input type="text" class="form-control" name="lottery_number" value="{{ old('lottery_number', $lottery->lottery_number) }}" required>
+</div>
+<div class="form-group p-1">
     <label for="qtyTickets">Cantidad de boletos</label>
 
     <select class="form-select" aria-label="Default select example" name="qtyTickets">

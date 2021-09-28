@@ -94,7 +94,7 @@ class LandingController extends Controller
     }
 
     public function buy_ticket($lottery){
-        $lottery = Lottery::with(['prizes'])->where('active', 1)->where('id', $lottery)->first();
+        $lottery = Lottery::with(['prizes'])->where('active', 1)->where('lottery_number', $lottery)->first();
 
         $tickets = TicketBuyed::where('lottery_id', $lottery->id)->count();
 
