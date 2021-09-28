@@ -6,7 +6,7 @@
     <div class="container pt-10 pt-md-14 pb-0 text-center">
         <div class="row">
             <div class="col-lg-8 mx-auto">
-                <h1 class="display-6 mb-3">SORTEO #{{$lottery->id}}</h1>
+                <h1 class="display-6 mb-3">SORTEO #{{$lottery->lottery_number}}</h1>
                 <h2 class="display-7 mb-3">{{$lottery->name}}</h2>
                 @php
                     $month = [
