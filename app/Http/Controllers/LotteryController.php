@@ -54,7 +54,7 @@ class LotteryController extends Controller
             $path = $request->image->move(public_path('img/prizes'), $fileNameToStore);
         } else
         {
-            $fileNameToStore = 'noimage';
+            $fileNameToStore = null;
         }
 
         if ($request->hasFile('awardImage'))
@@ -67,7 +67,20 @@ class LotteryController extends Controller
             $path = $request->awardImage->move(public_path('img/prizes'), $fileNameAwardImage);
         } else
         {
-            $fileNameAwardImage = $lottery->award_img ?? null;
+            $fileNameAwardImage = null;
+        }
+
+        if ($request->hasFile('img_finished'))
+        {
+            $filenameWithExt = $request->file('img_finished')->getClientOriginalName ();
+            $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+            $extension = $request->file('img_finished')->getClientOriginalExtension();
+            $fileNameImageFinished = $filename.'_'. time().'.'.$extension;
+
+            $path = $request->img_finished->move(public_path('img/prizes'), $fileNameImageFinished);
+        } else
+        {
+            $fileNameImageFinished = null;
         }
 
         $lottery = new Lottery;
@@ -89,6 +102,7 @@ class LotteryController extends Controller
         $lottery->info = $request['info'];
         $lottery->award_img = $fileNameAwardImage;
         $lottery->full_lottery_message = $request['full_lottery_message'];
+        $lottery->img_finished = $fileNameImageFinished;
         $lottery->active = isset($request['active']) ? 1 : 0;
 
         $lottery->save();
@@ -153,6 +167,19 @@ class LotteryController extends Controller
             $fileNameAwardImage = $lottery->award_img ?? null;
         }
 
+        if ($request->hasFile('img_finished'))
+        {
+            $filenameWithExt = $request->file('img_finished')->getClientOriginalName ();
+            $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+            $extension = $request->file('img_finished')->getClientOriginalExtension();
+            $fileNameImageFinished = $filename.'_'. time().'.'.$extension;
+
+            $path = $request->img_finished->move(public_path('img/prizes'), $fileNameImageFinished);
+        } else
+        {
+            $fileNameImageFinished = $lottery->award_img ?? null;
+        }
+
         $validated = $request->validate([
             'name' => 'required',
             'lottery_number' => 'required|unique:lotteries,lottery_number',
@@ -170,6 +197,7 @@ class LotteryController extends Controller
         $lottery->info = $request['info'];
         $lottery->award_img = $fileNameAwardImage;
         $lottery->full_lottery_message = $request['full_lottery_message'];
+        $lottery->img_finished = $fileNameImageFinished;
         $lottery->active = isset($request['active']) ? 1 : 0;
 
         $lottery->save();

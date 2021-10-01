@@ -55,5 +55,9 @@
     <label for="info">Mensaje de venta total</label>
     <textarea class="form-control textarea" name="full_lottery_message" cols="30" rows="10">{{ old('full_lottery_message', $lottery->full_lottery_message) }}</textarea>
 </div>
+<div class="form-group p-1">
+    <label for="img_finished">Imágen de venta total</label>
+    <input type="file" class="form-control" name="img_finished" value="{{ old('img_finished', $lottery->img_finished) }}" accept="image/*">
+</div>
 
 <button class="btn btn-outline-success float-right">{{ $btnText }}</button>

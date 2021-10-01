@@ -61,7 +61,10 @@ class NoticeController extends Controller
     public function saled($id)
     {
         $notice = Lottery::where('id',$id)->first()->full_lottery_message ?? '<p style="text-align:center">Ups! Algo esta mal, deberias <a href="/"> regresar </a></p>';
-        return view('information-pages.notice')->with(compact(['notice']));
+
+        $image = Lottery::where('id',$id)->first()->img_finished ?? null;
+
+        return view('information-pages.notice')->with(compact(['notice', 'image']));
     }
 
     /**
