@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Lottery;
+use App\Models\Prize;
+use App\Models\OtherTicketBuyed;
+use App\Models\TicketBuyed;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -213,6 +216,9 @@ class LotteryController extends Controller
      */
     public function destroy(Lottery $lottery)
     {
+        Prize::where("lottery_id", $lottery->id)->delete();
+        OtherTicketBuyed::where("lottery_id", $lottery->id)->delete();
+        TicketBuyed::where("lottery_id", $lottery->id)->delete();
         $lottery->delete();
 
         return redirect()->route('dashboard')->with('status','La rifa se ha eleminado correctamente');
