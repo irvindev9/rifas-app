@@ -19933,6 +19933,7 @@ __webpack_require__.r(__webpack_exports__);
     checkTicket: function checkTicket() {
       var _this = this;
 
+      this.checkValue();
       this.available2 = true;
       axios__WEBPACK_IMPORTED_MODULE_0___default().post('/api/checkTicket', {
         idLottery: this.idLotto,
@@ -19948,7 +19949,8 @@ __webpack_require__.r(__webpack_exports__);
       window.location.href = "/ticket/" + this.idLotto + "/" + this.searchNumber;
     },
     fillZero: function fillZero(string) {
-      var numZeroes = 4 - string.toString().length + 1;
+      var zeros = this.numberTickets == 10000 ? 5 : 4;
+      var numZeroes = zeros - string.toString().length + 1;
 
       if (numZeroes > 0) {
         return Array(+numZeroes).join("0") + string;
@@ -19964,8 +19966,8 @@ __webpack_require__.r(__webpack_exports__);
       return (this.searchNumber + '').includes(number.toString());
     },
     checkValue: function checkValue() {
-      if (this.searchNumber.toString().length > 4) {
-        this.searchNumber = this.searchNumber.toString().slice(0, 4);
+      if (this.searchNumber.toString().length > 5) {
+        this.searchNumber = this.searchNumber.toString().slice(0, 5);
       }
     }
   },
@@ -20041,8 +20043,14 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     padLeft: function padLeft(number) {
-      var s = "0000" + number;
-      return s.substr(s.length - 4);
+      if (this.ticket == 10000) {
+        var s = "00000" + number;
+        return s.substr(s.length - 5);
+      } else {
+        var _s = "0000" + number;
+
+        return _s.substr(_s.length - 4);
+      }
     },
     checkTicket: function checkTicket() {
       var _this = this;
@@ -20307,10 +20315,13 @@ var _hoisted_10 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(
 );
 
 var _hoisted_11 = {
-  "class": "row"
+  "class": "row justify-content-center"
 };
 var _hoisted_12 = {
-  "class": "col-12 col-md-10 col-lg-8 mx-auto ticket-container"
+  "class": "col-12 col-md-10 col-lg-8 mx-auto ticket-container",
+  style: {
+    "display": "contents"
+  }
 };
 var _hoisted_13 = {
   key: 1,
@@ -20345,11 +20356,12 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     href: "#!",
     "class": "btn btn-green rounded-pill mb-2 me-1"
   }, "Boleto disponible, click para comprar!")])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $data.available ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", _hoisted_8, [_hoisted_9])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]), _hoisted_10, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_11, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_12, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($data.numberTickets, function (item) {
-    return (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)(((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("span", {
+    return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", {
+      key: item
+    }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("span", {
       "class": ["ticket", {
         filled: $data.buyedTickets.includes(item)
-      }],
-      key: item
+      }]
     }, [!$data.buyedTickets.includes(item) ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("a", {
       key: 0,
       href: '/ticket/' + $data.idLotto + '/' + $options.fillZero(item)
@@ -20359,7 +20371,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     /* TEXT */
     ))], 2
     /* CLASS */
-    )), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, $options.isFinded(item)]]);
+    ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, $options.isFinded(item)]])]);
   }), 128
   /* KEYED_FRAGMENT */
   ))])])]);

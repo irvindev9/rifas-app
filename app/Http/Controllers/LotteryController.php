@@ -185,7 +185,7 @@ class LotteryController extends Controller
 
         $validated = $request->validate([
             'name' => 'required',
-            'lottery_number' => 'required|unique:lotteries,lottery_number',
+            'lottery_number' => 'required|unique:lotteries,lottery_number,'.$lottery->id,
             'qtyTickets' => 'required|numeric',
             'priceTicket' => 'required',
             'date' => 'required',

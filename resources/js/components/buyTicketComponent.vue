@@ -195,8 +195,13 @@ export default {
     },
     methods: {
         padLeft(number){
-            let s = "0000" + number;
-            return s.substr(s.length-4);
+            if(this.ticket == 10000){
+                let s = "00000" + number;
+                return s.substr(s.length-5);
+            } else {
+                let s = "0000" + number;
+                return s.substr(s.length-4);
+            }
         },
         checkTicket(){
             if(this.ticket != this.searchTicket && !this.other_tickets.includes(String(parseInt(this.searchTicket))))

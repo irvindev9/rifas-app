@@ -24,6 +24,7 @@
                                                 <th scope="col">Id</th>
                                                 <th scope="col">Premio</th>
                                                 <th scope="col">Día de la rifa</th>
+                                                <th scope="col">Activo</th>
                                                 <th scope="col"></th>
                                             </tr>
                                         </thead>
@@ -33,6 +34,7 @@
                                                     <th scope="row">{{  $prize->id }}</th>
                                                     <td>{{ $prize->prize }}</td>
                                                     <td>{{ $prize->date_lottery_prize }}</td>
+                                                    <td>{!! $prize->active ? "si" : "no" !!}</td>
                                                     <td>
                                                         <a class="btn btn-outline-secondary btn-sm btn-block mb-1" href="{{ route('prizes.edit', $prize) }}" role="button">Editar</a>
                                                         <form method="POST" action="{{ route('prizes.delete', $prize ) }}" class="">

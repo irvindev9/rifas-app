@@ -54,10 +54,10 @@
                                     <tbody>
                                         @foreach ($ticketsBuyed as $ticketBuyed)
                                             <tr>
-                                                <th scope="row">{{ str_pad($ticketBuyed->ticket, 4, "0", STR_PAD_LEFT) }}</th>
+                                                <th scope="row">{!!  $lottery->quantity_tickets == 10000 ? str_pad($ticketBuyed->ticket, 5, "0", STR_PAD_LEFT) : str_pad($ticketBuyed->ticket, 4, "0", STR_PAD_LEFT) !!}</th>
                                                 <th>
                                                     @foreach ($ticketBuyed->otherTicketsBuyed as $item)
-                                                        {{ str_pad($item->ticket, 4, "0", STR_PAD_LEFT) }}
+                                                        {!!  $lottery->quantity_tickets == 10000 ? str_pad($item->ticket, 5, "0", STR_PAD_LEFT) : str_pad($item->ticket, 4, "0", STR_PAD_LEFT) !!}
                                                     @endforeach
                                                 </th>
                                                 <td>{{ $ticketBuyed->name_client }}</td>
