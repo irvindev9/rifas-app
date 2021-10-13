@@ -6,8 +6,8 @@
             </div>
             <div class="col-10 col-md-8 col-lg-5">
                 <div class="form-label-group mb-4">
-                    <input id="textInputExample" v-on:keyup="checkValue" type="text" class="form-control" placeholder="Número de boleto (4 cifras)" v-model.number="searchNumber">
-                    <label for="textInputExample">Número de boleto (4 cifras)</label>
+                    <input id="textInputExample" v-on:keyup="checkValue" type="text" class="form-control" :placeholder="'Número de boleto (' + cifras + ' cifras)'" v-model.number="searchNumber">
+                    <label for="textInputExample">Número de boleto ({{cifras}} cifras)</label>
                 </div>
             </div>
             <div class="col-12 col-md-2 col-lg-2 CONTAINER-BTN">
@@ -55,7 +55,8 @@
                 searchNumber : '',
                 available : false,
                 available2 : false,
-                numberTickets : 0
+                numberTickets : 0,
+                cifras: 4
             }
         },
         methods: {
@@ -97,6 +98,11 @@
         },
         created(){
             this.numberTickets = parseInt(this.$attrs.numbertickets);
+
+            if(this.numberTickets == 10000){
+                this.cifras = 5;
+            }
+
             this.idLotto = this.$attrs.idlotto;
 
 

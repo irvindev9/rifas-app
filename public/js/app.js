@@ -19926,7 +19926,8 @@ __webpack_require__.r(__webpack_exports__);
       searchNumber: '',
       available: false,
       available2: false,
-      numberTickets: 0
+      numberTickets: 0,
+      cifras: 4
     };
   },
   methods: {
@@ -19973,6 +19974,11 @@ __webpack_require__.r(__webpack_exports__);
     var _this2 = this;
 
     this.numberTickets = parseInt(this.$attrs.numbertickets);
+
+    if (this.numberTickets == 10000) {
+      this.cifras = 5;
+    }
+
     this.idLotto = this.$attrs.idlotto;
     axios__WEBPACK_IMPORTED_MODULE_0___default().post('/get_ticket_buyed', {
       lottery_id: this.idLotto
@@ -20268,13 +20274,9 @@ var _hoisted_3 = {
 var _hoisted_4 = {
   "class": "form-label-group mb-4"
 };
-
-var _hoisted_5 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", {
+var _hoisted_5 = {
   "for": "textInputExample"
-}, "Número de boleto (4 cifras)", -1
-/* HOISTED */
-);
-
+};
 var _hoisted_6 = {
   "class": "col-12 col-md-2 col-lg-2 CONTAINER-BTN"
 };
@@ -20324,15 +20326,17 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     }),
     type: "text",
     "class": "form-control",
-    placeholder: "Número de boleto (4 cifras)",
+    placeholder: 'Número de boleto (' + $data.cifras + ' cifras)',
     "onUpdate:modelValue": _cache[2] || (_cache[2] = function ($event) {
       return $data.searchNumber = $event;
     })
-  }, null, 544
-  /* HYDRATE_EVENTS, NEED_PATCH */
-  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.searchNumber, void 0, {
+  }, null, 40
+  /* PROPS, HYDRATE_EVENTS */
+  , ["placeholder"]), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.searchNumber, void 0, {
     number: true
-  }]]), _hoisted_5])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("a", {
+  }]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("label", _hoisted_5, "Número de boleto (" + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.cifras) + " cifras)", 1
+  /* TEXT */
+  )])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("a", {
     onClick: _cache[3] || (_cache[3] = function () {
       return $options.checkTicket && $options.checkTicket.apply($options, arguments);
     }),

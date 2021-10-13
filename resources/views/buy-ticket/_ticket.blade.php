@@ -2,12 +2,12 @@
 <div class="row justify-content-center mb-4">
     <div class="col-12 col-md-6 col-lg-4">
         <div class="rounded-0 border border-green buy-ticket border-2">
-            <div class="text-center mt-2" style="border-bottom: dashed">
+            <div class="text-center mt-1" style="border-bottom: dashed">
                 <img src="{{asset("img/rifasjuniorlogo.png")}}" class="w-11" alt="logo">
                 <h5>Rifas Jr</h5>
             </div>
 
-                <div class="px-4 py-2 text-left text-uppercas" style="border-bottom: dashed">
+                <div class="px-4 text-left text-uppercas" style="border-bottom: dashed">
                     <div>
                         <strong class="d-inline">Boleto: </strong>
                         <p class="d-inline">{{ str_pad($ticketBuyed->ticket, 4, "0", STR_PAD_LEFT) }}</p>
@@ -22,7 +22,7 @@
                     </div>
                 </div>
 
-                <div class="p-4 text-uppercase text-left">
+                <div class="px-4 text-uppercase text-left">
                     <div>
                         <strong class="d-inline">Rifa: </strong>
                         <p class="d-inline">{{ $lottery->name }}</p>
@@ -59,12 +59,12 @@
                     </div>
                 </div>
                 @isset($lottery->image_lottery)
-                    <div class="text-center mt-2" style="border-top: dashed">
+                    <div class="text-center mt-1" style="border-top: dashed">
                         <img src="{{asset("img/prizes/".$lottery->image_lottery)}}" class="w-50" alt="premio">
                     </div>
                 @endisset
                 <div class="text-center" style="border-top: dashed">
-                    <p class="mt-2 text-uppercase">¡Tómale captura de pantalla!</p>
+                    <p class="mt-1 text-uppercase">¡Tómale captura de pantalla!</p>
                 </div>
             </div>
         </div>
