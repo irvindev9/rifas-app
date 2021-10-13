@@ -32,12 +32,14 @@
                  Vendido
             </div>
         </div>
-        <div class="row">
-            <div class="col-12 col-md-10 col-lg-8 mx-auto ticket-container">
-                <span class="ticket" v-for="item in numberTickets" :key="item" :class="{filled : (buyedTickets.includes(item))}" v-show="isFinded(item)">
-                    <a :href="'/ticket/' + idLotto + '/' + fillZero(item)" v-if="!buyedTickets.includes(item)">{{fillZero(item)}}</a>
-                    <label for="ticket" v-else>{{fillZero(item)}}</label>
-                </span>
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-10 col-lg-8 mx-auto ticket-container" style="display:contents;">
+                <div v-for="item in numberTickets" :key="item" >
+                    <span class="ticket" :class="{filled : (buyedTickets.includes(item))}" v-show="isFinded(item)">
+                        <a :href="'/ticket/' + idLotto + '/' + fillZero(item)" v-if="!buyedTickets.includes(item)">{{fillZero(item)}}</a>
+                        <label for="ticket" v-else>{{fillZero(item)}}</label>
+                    </span>
+                </div>
             </div>
         </div>
     </div>
@@ -61,6 +63,7 @@
         },
         methods: {
              checkTicket(){
+                this.checkValue();
                 this.available2 = true
                 axios.post('/api/checkTicket',{
                     idLottery: this.idLotto,
@@ -78,7 +81,9 @@
                 window.location.href = "/ticket/"+this.idLotto+"/"+this.searchNumber;
             },
             fillZero(string){
-                const numZeroes = 4 - string.toString().length + 1;
+                let zeros = (this.numberTickets == 10000) ? 5 : 4;
+
+                const numZeroes = zeros - string.toString().length + 1;
                 if (numZeroes > 0) {
                     return Array(+numZeroes).join("0") + string;
                 }
@@ -91,8 +96,8 @@
                 return (this.searchNumber+'').includes(number.toString());
             },
             checkValue(){
-                if(this.searchNumber.toString().length > 4){
-                    this.searchNumber = this.searchNumber.toString().slice(0,4)
+                if(this.searchNumber.toString().length > 5){
+                    this.searchNumber = this.searchNumber.toString().slice(0,5)
                 }
             }
         },

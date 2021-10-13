@@ -20047,8 +20047,14 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     padLeft: function padLeft(number) {
-      var s = "0000" + number;
-      return s.substr(s.length - 4);
+      if (this.ticket == 10000) {
+        var s = "00000" + number;
+        return s.substr(s.length - 5);
+      } else {
+        var _s = "0000" + number;
+
+        return _s.substr(_s.length - 4);
+      }
     },
     checkTicket: function checkTicket() {
       var _this = this;

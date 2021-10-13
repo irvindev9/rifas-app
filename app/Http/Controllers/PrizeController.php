@@ -54,6 +54,7 @@ class PrizeController extends Controller
         $prize->prize = $validated['prize'];
         $prize->lottery_id = $lottery->id;
         $prize->date_lottery_prize = $request['date'];
+        $prize->active = isset($request['active']) ? 1 : 0;
 
         $prize->save();
 
@@ -102,6 +103,7 @@ class PrizeController extends Controller
 
         $prize->prize = $validated['prize'];
         $prize->date_lottery_prize = $request['date'];
+        $prize->active = isset($request['active']) ? 1 : 0;
 
         $prize->save();
 

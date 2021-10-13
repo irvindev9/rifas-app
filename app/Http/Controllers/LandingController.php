@@ -96,13 +96,15 @@ class LandingController extends Controller
     public function buy_ticket($lottery){
         $lottery = Lottery::with(['prizes'])->where('active', 1)->where('lottery_number', $lottery)->first();
 
+        $prize = Prize::where("lottery_id", $lottery->id)->where("active", 1)->first();
+
         $tickets = TicketBuyed::where('lottery_id', $lottery->id)->count();
 
         if($tickets == $lottery->quantity_tickets){
             return redirect()->route('saled.lottery', $lottery->id);
         }
 
-        return view('buy-ticket.index')->with(compact(['lottery']));
+        return view('buy-ticket.index')->with(compact(['lottery', 'prize']));
     }
 
     public function buyed_tickets(Request $request){
@@ -138,7 +140,7 @@ class LandingController extends Controller
 
     public function buy_ticket_form($lottery, $ticket){
 
-        $ticket = str_pad($ticket, 4, "0", STR_PAD_LEFT);
+        $ticket = Lottery::find($lottery)->quantity_tickets == 10000 ? str_pad($ticket, 5, "0", STR_PAD_LEFT) : str_pad($ticket, 4, "0", STR_PAD_LEFT);
 
         return view('ticket-buyed.index')->with(compact(['lottery', 'ticket']));
     }
@@ -146,7 +148,7 @@ class LandingController extends Controller
     public function generate_other_tickets($id, $reserve_ticket = null){
         $lottery = Lottery::find($id);
 
-        $total_tickets = 10000;
+        $total_tickets = $lottery->quantity_tickets == 10000 ? 60000 : 10000;
 
         if($lottery->quantity_tickets == 100){
             $total_tickets = 100;
@@ -228,6 +230,7 @@ class LandingController extends Controller
 
 
         $lottery = Lottery::find($request->idLottery);
+        $lottery_qty = $lottery->quantity_tickets == 10000 ? 5 : 4;
 
         if(isset($lottery)){
             if($lottery->active == 0){
@@ -262,10 +265,10 @@ class LandingController extends Controller
 
             $ticket_extra->save();
 
-            $tickets_extra_plain .= str_pad($ticket_xtra, 4, "0", STR_PAD_LEFT).' ';
+            $tickets_extra_plain .= str_pad($ticket_xtra, $lottery_qty, "0", STR_PAD_LEFT).' ';
         }
 
-        $tickets_plain .= urlencode("Boleto: *".str_pad($ticket->ticket, 4, "0", STR_PAD_LEFT)."*\r\n");
+        $tickets_plain .= urlencode("Boleto: *".str_pad($ticket->ticket, $lottery_qty, "0", STR_PAD_LEFT)."*\r\n");
         $tickets_plain .= ($tickets_extra_plain) ? urlencode("Oportunidades: (*".$tickets_extra_plain."*)\r\n") : '';
         $tickets_plain .= urlencode("Costo por boleto: $*".$lottery->price_ticket."*\r\n");
         $tickets_plain .= urlencode("----------------------------------------\r\n");
@@ -295,10 +298,10 @@ class LandingController extends Controller
 
                 $ticket_extra->save();
 
-                $tickets_extra_plain .= str_pad($ticket_xxtra, 4, "0", STR_PAD_LEFT).' ';
+                $tickets_extra_plain .= str_pad($ticket_xxtra, $lottery_qty, "0", STR_PAD_LEFT).' ';
             }
 
-            $tickets_plain .= urlencode("Boleto: *".str_pad($Oticket_xtra, 4, "0", STR_PAD_LEFT)."*\r\n");
+            $tickets_plain .= urlencode("Boleto: *".str_pad($Oticket_xtra, $lottery_qty, "0", STR_PAD_LEFT)."*\r\n");
             $tickets_plain .= ($tickets_extra_plain) ? urlencode("Oportunidades: (*".$tickets_extra_plain."*)\r\n") : '';
             $tickets_plain .= urlencode("Costo por boleto: $*".$lottery->price_ticket."*\r\n");
             $tickets_plain .= urlencode("----------------------------------------\r\n");

@@ -63,7 +63,7 @@
                 document.addEventListener('DOMContentLoaded', () => {
 
                 // Unix timestamp (in seconds) to count down to
-                var twoDaysFromNow = (new Date().getTime() / 1000) + ({{strtotime($lottery->lastday_lottery) - time()}}) + 1;
+                var twoDaysFromNow = (new Date().getTime() / 1000) + ({!! isset($prize) ? strtotime($prize->date_lottery_prize)  - time() : strtotime($lottery->lastday_lottery) - time() !!}) + 1;
 
                 // Set up FlipDown
                 var flipdown = new FlipDown(twoDaysFromNow)
@@ -117,6 +117,7 @@
         <div class="row">
             <div class="col-12 col-md-8 col-lg-6 mx-auto text-center">
                 <hr class="my-2">
+                <h3 class="display-8">Con su boleto liquidado participa por: </h3>
                 <ul class="icon-list bullet-primary">
                     @foreach ($lottery->prizes as $prize)
                         @php
