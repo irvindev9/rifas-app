@@ -54,8 +54,10 @@ class LandingController extends Controller
             $number_of_tickets = 100;
         } else if($lottery->quantity_tickets == 500){
             $number_of_tickets = 1000;
-        } else {
+        } else if($lottery->quantity_tickets < 10000){
             $number_of_tickets = 10000;
+        } else {
+            $number_of_tickets = 60000;
         }
 
         if($request->ticket > $number_of_tickets){
