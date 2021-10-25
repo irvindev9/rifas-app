@@ -1,3 +1,15 @@
+@php 
+    $number_of_tickets = 0;
+    if($lottery->quantity_tickets == 100){
+        $number_of_tickets = 100;
+    } else if($lottery->quantity_tickets == 500){
+        $number_of_tickets = 1000;
+    } else if($lottery->quantity_tickets < 10000){
+        $number_of_tickets = 10000;
+    } else {
+        $number_of_tickets = 60000;
+    }
+@endphp
 @isset ($ticketBuyed)
 <div class="table-responsive">
     <table class="table table-dark table-striped">
@@ -35,7 +47,8 @@
         </tbody>
     </table>
 </div>
-@elseif($ticketAvailable <= $lottery->quantity_tickets && $ticketAvailable > 0)
+
+@elseif($ticketAvailable <= $number_of_tickets && $ticketAvailable > 0)
     @isset ($ticketAvailable)
         <a href="{{ route("contest.lotto.ticket", [$lottery, $ticketAvailable]) }}" class="available-ticket">Boleto {{ $ticketAvailable }} disponible</a>
     @endif
