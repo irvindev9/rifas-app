@@ -124,7 +124,7 @@ class LandingController extends Controller
         if(!isset($ticketBuyed)){
             $idTicketBuyed = OtherTicketBuyed::select('ticket_buyed_id')->where('lottery_id', $contest)->where('ticket', $request['ticket'])->first();
             if(isset($idTicketBuyed)){
-                $ticketBuyed = TicketBuyed::with(['otherTicketsBuyed'])->where('lottery_id', $contest)->where('ticket', $idTicketBuyed->ticket_buyed_id)->first();
+                $ticketBuyed = TicketBuyed::with(['otherTicketsBuyed'])->where('lottery_id', $contest)->where('id', $idTicketBuyed->ticket_buyed_id)->first();
             }
         }
 
