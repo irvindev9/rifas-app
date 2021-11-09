@@ -44,6 +44,8 @@ Route::post('/eliminarPremio/{prize}', [PrizeController::class, 'destroy'])->nam
 Route::get('/boletos/{lottery}', [TicketBuyedController::class, 'index'])->name('ticketsBuyed.index');
 Route::get('/boletos/{id}/delete', [TicketBuyedController::class, 'deleteAll'])->name('ticketsBuyed.delete');
 Route::get('/editarCompra/{ticketBuyed}', [TicketBuyedController::class, 'edit'])->name('ticketsBuyed.edit');
+Route::get('/editarExtra/{idTicket}', [TicketBuyedController::class, 'edit_extra'])->name('ticketsBuyed.edit_extra');
+Route::post('/actualizarExtra/{OtherTicketBuyed}', [TicketBuyedController::class, 'update_extra'])->name('ticketsBuyed.update_extra');
 Route::post('/actualizarCompra/{ticketBuyed}', [TicketBuyedController::class, 'update'])->name('ticketsBuyed.update');
 Route::post('/eliminarCompra/{ticketBuyed}', [TicketBuyedController::class, 'destroy'])->name('ticketsBuyed.delete');
 

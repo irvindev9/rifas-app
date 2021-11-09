@@ -5,9 +5,9 @@
 </div>
 <div class="form-group p-1">
     <label for="otherTickets">Boletos extras</label>
-    <div class="form-control" name="otherTickets" id="otherTickets" readonly>
-        @foreach ($ticketBuyed->otherTicketsBuyed as $item)
-            {{ $item->ticket }}
+    <div class="form-control" name="otherTickets" id="otherTickets">
+        @foreach ($ticketBuyed->otherTicketsBuyed as $otherTicketsBuyed)
+            <a href="{{route("ticketsBuyed.edit_extra",[$otherTicketsBuyed->id])}}">{{ $otherTicketsBuyed->ticket }}</a> &nbsp;
         @endforeach
     </div>
 </div>

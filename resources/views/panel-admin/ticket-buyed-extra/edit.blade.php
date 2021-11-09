@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            <a href="{{ route('ticketsBuyed.index', $lottery) }}" class="link-secondary">{{$lottery->name}}</a> / {{ __('Premios') }}
+            <a href="{{ route('ticketsBuyed.index', $lottery) }}" class="link-secondary">{{$lottery->name}}</a> / {{ __('Edición Boleto Extra') }}
         </h2>
     </x-slot>
 
@@ -17,9 +17,9 @@
                             <div class="col-md-12">
                                 <h3>Editar Boleto</h3>
 
-                                <form method="POST" action="{{ route('ticketsBuyed.update', $ticketBuyed) }}">
+                                <form method="POST" action="{{route("ticketsBuyed.update_extra",[$OtherTicketBuyed])}}">
                                     @csrf
-                                    @include('panel-admin.tickets-buyed._form',['btnText'=>'Actualizar'])
+                                    @include('panel-admin.ticket-buyed-extra._form')
                                 </form>
                             </div>
                         </div>

@@ -183,4 +183,32 @@ class TicketBuyedController extends Controller
     {
         return Excel::download(new TicketBuyedExport($lotteryId), 'boletos-comprados.xlsx');
     }
+
+    public function edit_extra($id)
+    {
+        $OtherTicketBuyed = OtherTicketBuyed::where('id',$id)->first();
+
+        $lottery = Lottery::find($OtherTicketBuyed->lottery_id);
+
+        return view('panel-admin.ticket-buyed-extra.edit', ['OtherTicketBuyed' => $OtherTicketBuyed,'lottery' => $lottery]);
+    }
+
+    public function update_extra(Request $request, OtherTicketBuyed $OtherTicketBuyed)
+    {
+
+        $validated = $request->validate([
+            'ticket' => 'required|numeric'
+        ]);
+
+        if($exist = OtherTicketBuyed::where('lottery_id', $OtherTicketBuyed->lottery_id)->where('ticket', $validated['ticket'])->first()){
+            return redirect()->route('ticketsBuyed.index', $OtherTicketBuyed->lottery_id)->with('status','El boleto ya existe');
+        }
+
+        $OtherTicketBuyed->ticket = $validated['ticket'];
+        $OtherTicketBuyed->save();
+
+        $lottery = Lottery::find($OtherTicketBuyed->lottery_id);
+
+        return redirect()->route('ticketsBuyed.index', $lottery)->with('status','Se ha actualizado la compra');
+    }
 }
