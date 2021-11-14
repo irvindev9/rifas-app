@@ -21,6 +21,21 @@
                                     @csrf
                                     @include('panel-admin.ticket-buyed-extra._form')
                                 </form>
+                                <form method="POST" action="{{ route('ticketsBuyed.delete_extra', $OtherTicketBuyed ) }}">
+                                    @csrf
+                                    <button id="btn-{{$OtherTicketBuyed->id}}" class="btn btn-outline-danger btn-sm btn-block mb-1 d-none">Eliminar</button>
+                                </form>
+
+                                <script>
+                                    $().ready(function(){
+                                        $('.btn-delete').click(function(){
+                                            let id = $(this).attr('data-id');
+                                            if (confirm("Seguro que desea eliminar el boleto extra? No hay manera de revertir el cambio")) {
+                                                $('#btn-' + id).click();
+                                            }
+                                        })
+                                    })
+                                </script>
                             </div>
                         </div>
                     </div>

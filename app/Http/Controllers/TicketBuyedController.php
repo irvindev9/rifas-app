@@ -211,4 +211,14 @@ class TicketBuyedController extends Controller
 
         return redirect()->route('ticketsBuyed.index', $lottery)->with('status','Se ha actualizado la compra');
     }
+
+    public function destroy_extra(OtherTicketBuyed $OtherTicketBuyed)
+    {
+
+        $lottery = Lottery::find($OtherTicketBuyed->lottery_id);
+
+        $OtherTicketBuyed->delete();
+
+        return redirect()->route('ticketsBuyed.index', $lottery)->with('status','El boleto se ha eleminado correctamente');
+    }
 }
