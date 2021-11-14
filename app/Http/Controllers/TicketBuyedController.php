@@ -200,14 +200,20 @@ class TicketBuyedController extends Controller
             'ticket' => 'required|numeric'
         ]);
 
+        $lottery = Lottery::find($OtherTicketBuyed->lottery_id);
+
         if($exist = OtherTicketBuyed::where('lottery_id', $OtherTicketBuyed->lottery_id)->where('ticket', $validated['ticket'])->first()){
             return redirect()->route('ticketsBuyed.index', $OtherTicketBuyed->lottery_id)->with('status','El boleto ya existe');
+        }
+
+        if($validated['ticket'] <= $lottery->quantity_tickets) {
+            return redirect()->route('ticketsBuyed.index', $OtherTicketBuyed->lottery_id)->with('status','Fuera de rango para un boleto extra, solo puede un boleto que no se encuentre en la lista');
         }
 
         $OtherTicketBuyed->ticket = $validated['ticket'];
         $OtherTicketBuyed->save();
 
-        $lottery = Lottery::find($OtherTicketBuyed->lottery_id);
+
 
         return redirect()->route('ticketsBuyed.index', $lottery)->with('status','Se ha actualizado la compra');
     }
